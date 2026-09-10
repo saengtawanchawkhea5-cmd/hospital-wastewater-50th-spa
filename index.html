@@ -508,14 +508,26 @@ i[class*="fa-"], span[class*="fa-"] {
 
 /* Desktop Sidebar Collapsed State (Active only on Desktop >= 1024px) */
 @media (min-width: 1024px) {
-    .app-container.sidebar-collapsed #main-sidebar {
+    .app-container.sidebar-collapsed #main-sidebar,
+    .app-container.sidebar-collapsed #sidebar,
+    .app-container.sidebar-collapsed .sidebar,
+    .app-layout.sidebar-collapsed #main-sidebar,
+    .app-layout.sidebar-collapsed #sidebar,
+    .app-layout.sidebar-collapsed .sidebar,
+    #main-sidebar.collapsed,
+    #sidebar.collapsed,
+    .sidebar.collapsed {
         transform: translateX(-100%) !important;
         box-shadow: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
     }
 
-    .app-container.sidebar-collapsed .main-content {
+    .app-container.sidebar-collapsed .main-content,
+    .app-layout.sidebar-collapsed .main-content {
         margin-left: 0 !important;
         width: 100% !important;
+        max-width: 100% !important;
     }
 }
 
@@ -3793,7 +3805,14 @@ body {
 
     /* Mobile Slide-in Drawer Sidebar */
     #main-sidebar,
-    .app-container.sidebar-collapsed #main-sidebar {
+    #sidebar,
+    .sidebar,
+    .app-container #main-sidebar,
+    .app-container #sidebar,
+    .app-container .sidebar,
+    .app-layout #main-sidebar,
+    .app-layout #sidebar,
+    .app-layout .sidebar {
         position: fixed !important;
         top: 0 !important;
         bottom: 0 !important;
@@ -3806,17 +3825,30 @@ body {
         z-index: 1000 !important;
         box-shadow: none !important;
         transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1) !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
     }
 
     #main-sidebar.open,
-    .app-container.sidebar-collapsed #main-sidebar.open {
+    #sidebar.open,
+    .sidebar.open,
+    .app-container #main-sidebar.open,
+    .app-container #sidebar.open,
+    .app-container .sidebar.open,
+    .app-layout #main-sidebar.open,
+    .app-layout #sidebar.open,
+    .app-layout .sidebar.open {
         transform: translateX(0) !important;
         box-shadow: 20px 0 50px rgba(0, 0, 0, 0.85) !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
     }
 
     .sidebar-backdrop {
         position: fixed !important;
         inset: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
         background: rgba(0, 0, 0, 0.75) !important;
         backdrop-filter: blur(6px) !important;
         -webkit-backdrop-filter: blur(6px) !important;
@@ -3824,11 +3856,38 @@ body {
         display: none !important;
         opacity: 0 !important;
         transition: opacity 0.28s ease !important;
+        cursor: pointer !important;
     }
 
     .sidebar-backdrop.active {
         display: block !important;
         opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+
+    .sidebar-close-btn,
+    .sidebar-collapse-btn {
+        background: rgba(30, 41, 59, 0.8) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        color: #94a3b8 !important;
+        width: 32px !important;
+        height: 32px !important;
+        border-radius: 8px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        font-size: 0.95rem !important;
+        transition: all 0.2s ease !important;
+        flex-shrink: 0 !important;
+    }
+
+    .sidebar-close-btn:hover,
+    .sidebar-collapse-btn:hover {
+        background: rgba(225, 29, 72, 0.3) !important;
+        color: #ffffff !important;
+        border-color: rgba(225, 29, 72, 0.6) !important;
+        transform: scale(1.05) !important;
     }
 
     .sidebar-menu {
@@ -5498,27 +5557,45 @@ body {
     position: relative !important;
 }
 
-/* Main Content Area */
-.main-content {
-    flex: 1 1 auto !important;
-    margin-left: 275px !important;
-    width: calc(100% - 275px) !important;
-    max-width: calc(100% - 275px) !important;
-    min-height: 100vh !important;
-    display: flex !important;
-    flex-direction: column !important;
-    background: transparent !important;
-    overflow-x: hidden !important;
-    box-sizing: border-box !important;
-    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
+/* Main Content Area (Desktop >= 1024px) */
+@media (min-width: 1024px) {
+    .main-content {
+        flex: 1 1 auto !important;
+        margin-left: 275px !important;
+        width: calc(100% - 275px) !important;
+        max-width: calc(100% - 275px) !important;
+        min-height: 100vh !important;
+        display: flex !important;
+        flex-direction: column !important;
+        background: transparent !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+        transition: margin-left 0.28s cubic-bezier(0.4, 0, 0.2, 1), width 0.28s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
 
-/* Sidebar Collapsed State */
-.sidebar.closed ~ .main-content,
-.app-layout.sidebar-collapsed .main-content {
-    margin-left: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
+    /* Sidebar Collapsed State on Desktop */
+    .app-container.sidebar-collapsed #main-sidebar,
+    .app-container.sidebar-collapsed #sidebar,
+    .app-container.sidebar-collapsed .sidebar,
+    .app-layout.sidebar-collapsed #main-sidebar,
+    .app-layout.sidebar-collapsed #sidebar,
+    .app-layout.sidebar-collapsed .sidebar,
+    #main-sidebar.collapsed,
+    #sidebar.collapsed,
+    .sidebar.collapsed {
+        transform: translateX(-100%) !important;
+        box-shadow: none !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
+    .sidebar.closed ~ .main-content,
+    .app-container.sidebar-collapsed .main-content,
+    .app-layout.sidebar-collapsed .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
 }
 
 /* Section Containers - Seamless Top Alignment */
@@ -5602,6 +5679,15 @@ body {
 }
 
 @media (max-width: 1024px) {
+    #main-sidebar:not(.open),
+    #sidebar:not(.open),
+    .sidebar:not(.open),
+    aside.sidebar:not(.open) {
+        transform: translateX(-100%) !important;
+        visibility: hidden !important;
+        pointer-events: none !important;
+    }
+
     .main-content {
         margin-left: 0 !important;
         width: 100% !important;
@@ -6000,8 +6086,11 @@ body {
     <!-- MAIN APPLICATION LAYOUT -->
     <div class="app-container app-layout hidden" id="main-app-container" style="display: none;">
 
+        <!-- SIDEBAR BACKDROP OVERLAY (Mobile/Tablet) -->
+        <div id="sidebar-backdrop" class="sidebar-backdrop" onclick="window.toggleSidebar ? window.toggleSidebar(false) : null"></div>
+
         <!-- SIDEBAR NAVIGATION -->
-        <aside id="sidebar" class="sidebar">
+        <aside id="main-sidebar" class="sidebar main-sidebar">
             <div class="sidebar-header">
                 <div class="sidebar-logo">
                     <i class="fa-solid fa-droplet text-emerald-400"></i>
@@ -6011,7 +6100,7 @@ body {
                     <span class="sidebar-subtitle">รพ.๕๐ พรรษา มหาวชิราลงกรณ</span>
                     <span class="inline-block mt-0.5 px-1.5 py-0.2 rounded text-[9px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 tracking-wider">GREEN HOSPITAL</span>
                 </div>
-                <button id="btn-close-sidebar" class="sidebar-close-btn lg:hidden" title="ปิดเมนู">
+                <button type="button" id="btn-close-sidebar" class="sidebar-close-btn sidebar-collapse-btn lg:hidden" title="ปิดเมนู" onclick="window.toggleSidebar ? window.toggleSidebar(false) : null">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
             </div>
@@ -27670,9 +27759,27 @@ class AppController {
             if (window.AutoGeneratorModule) await safeInit('AutoGenerator', () => window.AutoGeneratorModule.init());
 
             // คืนค่าสถานะย่อ/ขยาย Sidebar บนหน้าจอ Desktop
-            if (window.innerWidth >= 1024 && localStorage.getItem('spa_sidebar_collapsed') === 'true') {
-                const appContainer = document.getElementById('main-app-container') || document.body;
-                appContainer.classList.add('sidebar-collapsed');
+            const appContainer = document.getElementById('main-app-container') || document.body;
+            const sidebar = document.getElementById('main-sidebar') || document.getElementById('sidebar') || document.querySelector('.sidebar');
+            const backdrop = document.getElementById('sidebar-backdrop');
+            if (window.innerWidth >= 1024) {
+                if (localStorage.getItem('spa_sidebar_collapsed') === 'true') {
+                    appContainer.classList.add('sidebar-collapsed');
+                    if (sidebar) sidebar.classList.add('collapsed');
+                } else {
+                    appContainer.classList.remove('sidebar-collapsed');
+                    if (sidebar) sidebar.classList.remove('collapsed');
+                }
+                if (sidebar) sidebar.classList.remove('open');
+                if (backdrop) backdrop.classList.remove('active');
+            } else {
+                // บนจอมือถือ / แท็บเล็ต: เริ่มต้นแบบปิดแถบเมนูเสมอ
+                appContainer.classList.remove('sidebar-collapsed');
+                if (sidebar) {
+                    sidebar.classList.remove('open');
+                    sidebar.classList.remove('collapsed');
+                }
+                if (backdrop) backdrop.classList.remove('active');
             }
 
             this.isAppInitialized = true;
@@ -27688,7 +27795,7 @@ class AppController {
 
     toggleSidebar(forceState) {
         const appContainer = document.getElementById('main-app-container') || document.body;
-        const sidebar = document.getElementById('main-sidebar');
+        const sidebar = document.getElementById('main-sidebar') || document.getElementById('sidebar') || document.querySelector('.sidebar');
         const backdrop = document.getElementById('sidebar-backdrop');
         const isDesktop = window.innerWidth >= 1024;
 
@@ -27700,16 +27807,20 @@ class AppController {
 
             if (willCollapse) {
                 appContainer.classList.add('sidebar-collapsed');
+                if (sidebar) sidebar.classList.add('collapsed');
                 localStorage.setItem('spa_sidebar_collapsed', 'true');
             } else {
                 appContainer.classList.remove('sidebar-collapsed');
+                if (sidebar) sidebar.classList.remove('collapsed');
                 localStorage.setItem('spa_sidebar_collapsed', 'false');
             }
             if (sidebar) sidebar.classList.remove('open');
             if (backdrop) backdrop.classList.remove('active');
+            document.body.classList.remove('sidebar-open-mobile');
         } else {
             // บนจอมือถือ/แท็บเล็ต (< 1024px): สลับคลาส open และ backdrop active
             appContainer.classList.remove('sidebar-collapsed');
+            if (sidebar) sidebar.classList.remove('collapsed');
 
             if (sidebar) {
                 const willOpen = (typeof forceState === 'boolean') 
@@ -27719,9 +27830,11 @@ class AppController {
                 if (willOpen) {
                     sidebar.classList.add('open');
                     if (backdrop) backdrop.classList.add('active');
+                    document.body.classList.add('sidebar-open-mobile');
                 } else {
                     sidebar.classList.remove('open');
                     if (backdrop) backdrop.classList.remove('active');
+                    document.body.classList.remove('sidebar-open-mobile');
                 }
             }
         }
@@ -27755,49 +27868,41 @@ class AppController {
         // ปุ่ม Toggle Sidebar ที่ Top Navbar (ปุ่ม 3 ขีด)
         const toggleBtn = document.getElementById('btn-toggle-sidebar');
         if (toggleBtn) {
-            const handleToggle = (e) => {
+            toggleBtn.onclick = (e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 window.toggleSidebar();
             };
-            toggleBtn.addEventListener('click', handleToggle);
-            toggleBtn.addEventListener('touchend', handleToggle, { passive: false });
         }
 
-        // ปุ่มซ่อน/ปิดเมนูที่ Sidebar Header
-        const collapseBtn = document.getElementById('btn-sidebar-collapse');
-        if (collapseBtn) {
-            const handleCollapse = (e) => {
+        // ปุ่มซ่อน/ปิดเมนูที่ Sidebar Header (ปุ่ม X บนมือถือ)
+        const closeBtns = document.querySelectorAll('#btn-close-sidebar, #btn-sidebar-collapse, .sidebar-close-btn, .sidebar-collapse-btn');
+        closeBtns.forEach(btn => {
+            btn.onclick = (e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 window.toggleSidebar(false);
             };
-            collapseBtn.addEventListener('click', handleCollapse);
-            collapseBtn.addEventListener('touchend', handleCollapse, { passive: false });
-        }
+        });
 
         // ปุ่มเมนูทั้งหมดที่ Bottom Bar บนมือถือ
         const btnMobileMore = document.getElementById('btn-mobile-more-menu');
         if (btnMobileMore) {
-            const handleMore = (e) => {
+            btnMobileMore.onclick = (e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 window.toggleSidebar();
             };
-            btnMobileMore.addEventListener('click', handleMore);
-            btnMobileMore.addEventListener('touchend', handleMore, { passive: false });
         }
 
         // ปิด Sidebar เมื่อกดที่ Backdrop บนมือถือ
         const backdrop = document.getElementById('sidebar-backdrop');
         if (backdrop) {
-            const handleBackdrop = (e) => {
+            backdrop.onclick = (e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 window.toggleSidebar(false);
             };
-            backdrop.addEventListener('click', handleBackdrop);
-            backdrop.addEventListener('touchend', handleBackdrop, { passive: false });
         }
 
         // Touch Swipe Gestures เพื่อเปิด/ปิด Sidebar บนมือถือ
@@ -27819,20 +27924,45 @@ class AppController {
 
             // หากเป็นการปัดในแนวนอนมากกว่าแนวตั้ง
             if (diffY < 60 && window.innerWidth < 1024) {
-                const sidebar = document.getElementById('main-sidebar');
+                const sidebar = document.getElementById('main-sidebar') || document.getElementById('sidebar') || document.querySelector('.sidebar');
                 const backdrop = document.getElementById('sidebar-backdrop');
-                // ปัดขวาจากขอบจอซ้ายสุด (startX < 40px) เพื่อเปิด Sidebar
+                // ปัดขวาจากขอบจอซ้ายสุด (startX < 45px) เพื่อเปิด Sidebar
                 if (diffX > 60 && touchStartX < 45) {
                     if (sidebar) sidebar.classList.add('open');
                     if (backdrop) backdrop.classList.add('active');
+                    document.body.classList.add('sidebar-open-mobile');
                 }
                 // ปัดซ้ายเมื่อเปิด Sidebar เพื่อปิด
                 if (diffX < -60 && sidebar && sidebar.classList.contains('open')) {
                     sidebar.classList.remove('open');
                     if (backdrop) backdrop.classList.remove('active');
+                    document.body.classList.remove('sidebar-open-mobile');
                 }
             }
         }, { passive: true });
+
+        // ตรวจจับการปรับขนาดหน้าจอ (Window Resize)
+        window.addEventListener('resize', () => {
+            const isDesktop = window.innerWidth >= 1024;
+            const sidebar = document.getElementById('main-sidebar') || document.getElementById('sidebar') || document.querySelector('.sidebar');
+            const backdrop = document.getElementById('sidebar-backdrop');
+            const appContainer = document.getElementById('main-app-container') || document.body;
+            if (isDesktop) {
+                if (sidebar) sidebar.classList.remove('open');
+                if (backdrop) backdrop.classList.remove('active');
+                document.body.classList.remove('sidebar-open-mobile');
+                if (localStorage.getItem('spa_sidebar_collapsed') === 'true') {
+                    appContainer.classList.add('sidebar-collapsed');
+                    if (sidebar) sidebar.classList.add('collapsed');
+                } else {
+                    appContainer.classList.remove('sidebar-collapsed');
+                    if (sidebar) sidebar.classList.remove('collapsed');
+                }
+            } else {
+                appContainer.classList.remove('sidebar-collapsed');
+                if (sidebar) sidebar.classList.remove('collapsed');
+            }
+        });
 
         // ปุ่มปิด Modal ทุกตัว (ปุ่ม X และปุ่มยกเลิก) และ Event Delegation สำหรับปิด Modal ทั่วทั้งระบบ
         document.addEventListener('click', (e) => {

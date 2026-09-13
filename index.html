@@ -5920,13 +5920,14 @@ body {
 
     </style>
 
-    <!-- Supabase Configuration -->
+    <!-- Supabase Configuration (Embedded Official Credentials) -->
     <script>
+        window.SUPABASE_EMBEDDED_CONFIG = {
+            url: "https://gcvbfhsnyohxudcdvwzg.supabase.co",
+            anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdjdmJmaHNueW9oeHVkY2R2d3pnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODc1NDA2NDYsImV4cCI6MjEwMzExNjY0Nn0.Z6Aj-9s3leKHFoFN8q7ywgg4lfdPDHEcLQX4KrsOLOQ"
+        };
         window.APP_CONFIG = {
-            supabase: {
-                url: "https://gcvbfhsnyohxudcdvwzg.supabase.co",
-                anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdjdmJmaHNueW9oeHVkY2R2d3pnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAzNTQ5ODUsImV4cCI6MjA1NTkzMDk4NX0.U9jB012z4Xp8tX18a6XF6_m-5bY24d9c79f3214e"
-            }
+            supabase: window.SUPABASE_EMBEDDED_CONFIG
         };
     </script>
 </head>
@@ -6120,59 +6121,59 @@ body {
 
             <nav class="sidebar-menu">
                 <div class="menu-category">ภาพรวม & ข้อมูลรายงาน</div>
-                <a href="#dashboard" class="nav-link active" data-route="dashboard">
+                <a href="#dashboard" class="nav-link active" data-route="dashboard" onclick="if(window.App){window.App.navigateTo('dashboard');}if(window.innerWidth<1024&&window.toggleSidebar){window.toggleSidebar(false);}">
                     <i class="fa-solid fa-chart-pie"></i>
                     <span>แดชบอร์ด สร. & คาร์บอน</span>
                 </a>
 
                 <div class="menu-category">ลงบันทึกข้อมูลน้ำเสีย</div>
-                <a href="#influent" class="nav-link" data-route="influent">
+                <a href="#influent" class="nav-link" data-route="influent" onclick="if(window.App){window.App.navigateTo('influent');}if(window.innerWidth<1024&&window.toggleSidebar){window.toggleSidebar(false);}">
                     <i class="fa-solid fa-faucet-drip"></i>
                     <span>บันทึกน้ำเสียเข้าระบบ</span>
                 </a>
-                <a href="#electricity" class="nav-link" data-route="electricity">
+                <a href="#electricity" class="nav-link" data-route="electricity" onclick="if(window.App){window.App.navigateTo('electricity');}if(window.innerWidth<1024&&window.toggleSidebar){window.toggleSidebar(false);}">
                     <i class="fa-solid fa-bolt"></i>
                     <span>การใช้พลังงานไฟฟ้า รพ.</span>
                 </a>
-                <a href="#water-quality" class="nav-link" data-route="water-quality">
+                <a href="#water-quality" class="nav-link" data-route="water-quality" onclick="if(window.App){window.App.navigateTo('water-quality');}if(window.innerWidth<1024&&window.toggleSidebar){window.toggleSidebar(false);}">
                     <i class="fa-solid fa-flask-vial"></i>
                     <span>การตรวจคุณภาพน้ำ</span>
                 </a>
 
                 <div class="menu-category">เครื่องจักร & ซ่อมบำรุง</div>
-                <a href="#machinery" class="nav-link" data-route="machinery">
+                <a href="#machinery" class="nav-link" data-route="machinery" onclick="if(window.App){window.App.navigateTo('machinery');}if(window.innerWidth<1024&&window.toggleSidebar){window.toggleSidebar(false);}">
                     <i class="fa-solid fa-gears"></i>
                     <span>ตรวจระบบเครื่องจักร</span>
                 </a>
-                <a href="#maintenance" class="nav-link" data-route="maintenance">
+                <a href="#maintenance" class="nav-link" data-route="maintenance" onclick="if(window.App){window.App.navigateTo('maintenance');}if(window.innerWidth<1024&&window.toggleSidebar){window.toggleSidebar(false);}">
                     <i class="fa-solid fa-screwdriver-wrench"></i>
                     <span>บันทึกการซ่อมบำรุง</span>
                 </a>
-                <a href="#equipment-ref" class="nav-link" data-route="equipment-ref">
+                <a href="#equipment-ref" class="nav-link" data-route="equipment-ref" onclick="if(window.App){window.App.navigateTo('equipment-ref');}if(window.innerWidth<1024&&window.toggleSidebar){window.toggleSidebar(false);}">
                     <i class="fa-solid fa-list-check"></i>
                     <span>ฐานข้อมูลอ้างอิงอุปกรณ์</span>
                 </a>
 
                 <div class="menu-category">บริหารความเสี่ยง & รายงาน</div>
-                <a href="#risk-incident" class="nav-link" data-route="risk-incident">
+                <a href="#risk-incident" class="nav-link" data-route="risk-incident" onclick="if(window.App){window.App.navigateTo('risk-incident');}if(window.innerWidth<1024&&window.toggleSidebar){window.toggleSidebar(false);}">
                     <i class="fa-solid fa-shield-halved"></i>
                     <span>ความเสี่ยง & เหตุการณ์</span>
                 </a>
-                <a href="#monthly-report" class="nav-link" data-route="monthly-report">
+                <a href="#monthly-report" class="nav-link" data-route="monthly-report" onclick="if(window.App){window.App.navigateTo('monthly-report');}if(window.innerWidth<1024&&window.toggleSidebar){window.toggleSidebar(false);}">
                     <i class="fa-solid fa-file-invoice"></i>
                     <span>รายงานสรุปรายเดือน</span>
                 </a>
-                <a href="#documents" class="nav-link" data-route="documents">
+                <a href="#documents" class="nav-link" data-route="documents" onclick="if(window.App){window.App.navigateTo('documents');}if(window.innerWidth<1024&&window.toggleSidebar){window.toggleSidebar(false);}">
                     <i class="fa-solid fa-folder-open"></i>
                     <span>คลังรายงาน & คู่มือ SOP</span>
                 </a>
 
                 <div class="menu-category admin-only-menu">การจัดการข้อมูล & การตั้งค่า (Admin)</div>
-                <a href="#users-admin" class="nav-link admin-only-menu" data-route="users-admin">
+                <a href="#users-admin" class="nav-link admin-only-menu" data-route="users-admin" onclick="if(window.App){window.App.navigateTo('users-admin');}if(window.innerWidth<1024&&window.toggleSidebar){window.toggleSidebar(false);}">
                     <i class="fa-solid fa-users-gear"></i>
                     <span>จัดการผู้ใช้ & สิทธิ์</span>
                 </a>
-                <a href="#backup-restore" class="nav-link admin-only-menu" data-route="backup-restore">
+                <a href="#backup-restore" class="nav-link admin-only-menu" data-route="backup-restore" onclick="if(window.App){window.App.navigateTo('backup-restore');}if(window.innerWidth<1024&&window.toggleSidebar){window.toggleSidebar(false);}">
                     <i class="fa-solid fa-database"></i>
                     <span>สำรองข้อมูล / กู้คืน</span>
                 </a>
@@ -6206,8 +6207,8 @@ body {
                         <span>Supabase Online</span>
                     </span>
 
-                    <!-- Top Bar Auto-Record Generator Button -->
-                    <button type="button" id="btn-top-auto-gen" onclick="window.openAutoRecordModal ? window.openAutoRecordModal(window.App ? window.App.currentRoute : 'influent') : (window.AutoGeneratorModule && window.AutoGeneratorModule.openGeneratorModal(window.App ? window.App.currentRoute : 'influent'))" class="btn btn-warning btn-sm bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-bold inline-flex items-center gap-1.5 shadow-md shadow-amber-950/30 transition transform hover:scale-[1.02] cursor-pointer" title="บันทึกข้อมูลอัตโนมัติประจำวัน (เฉพาะหน้านี้)">
+                    <!-- Top Bar Dynamic Action Button (Adapts to Active Route) -->
+                    <button type="button" id="btn-top-auto-gen" onclick="window.handleTopAction ? window.handleTopAction() : null" class="btn btn-warning btn-sm bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-bold inline-flex items-center gap-1.5 shadow-md shadow-amber-950/30 transition transform hover:scale-[1.02] cursor-pointer" title="บันทึกข้อมูลอัตโนมัติประจำวัน (เฉพาะหน้านี้)">
                         <i class="fa-solid fa-bolt text-slate-950"></i>
                         <span class="hidden xs:inline sm:inline">บันทึกข้อมูลอัตโนมัติประจำวัน</span>
                     </button>
@@ -7107,9 +7108,9 @@ body {
                                         <option value="2567">2567</option>
                                     </select>
                                     <select id="filter-inf-month" class="form-control text-xs bg-[#0a1120] border border-slate-800 focus:border-emerald-500 rounded-lg p-1.5 text-white">
-                                        <option value="all">ทุกเดือน</option>
+                                        <option value="all" selected>ทุกเดือน</option>
                                         <option value="1">ม.ค.</option><option value="2">ก.พ.</option><option value="3">มี.ค.</option><option value="4">เม.ย.</option>
-                                        <option value="5">พ.ค.</option><option value="6">มิ.ย.</option><option value="7">ก.ค.</option><option value="8" selected>ส.ค.</option>
+                                        <option value="5">พ.ค.</option><option value="6">มิ.ย.</option><option value="7">ก.ค.</option><option value="8">ส.ค.</option>
                                         <option value="9">ก.ย.</option><option value="10">ต.ค.</option><option value="11">พ.ย.</option><option value="12">ธ.ค.</option>
                                     </select>
                                 </div>
@@ -7207,7 +7208,7 @@ body {
                                 <i class="fa-solid fa-bolt text-slate-950"></i>
                                 <span>บันทึกข้อมูลอัตโนมัติประจำวัน</span>
                             </button>
-                            <button type="button" id="btn-add-electricity" class="btn btn-secondary text-xs py-2.5 px-4 rounded-xl flex items-center gap-2 border border-slate-700 hover:border-amber-500 transition cursor-pointer">
+                            <button type="button" id="btn-add-electricity" onclick="window.ElectricityModule ? window.ElectricityModule.openAddModal() : (window.App && window.App.openModal('modal-electricity'))" class="btn btn-secondary text-xs py-2.5 px-4 rounded-xl flex items-center gap-2 border border-slate-700 hover:border-amber-500 transition cursor-pointer">
                                 <i class="fa-solid fa-plus text-amber-400"></i>
                                 <span>+ บันทึกมิเตอร์เดี่ยว</span>
                             </button>
@@ -7279,11 +7280,11 @@ body {
                 <section id="section-water-quality" class="spa-section">
                     <!-- Nav Tabs for Water Quality -->
                     <div class="flex items-center gap-2 border-b border-slate-700/80 pb-3 mb-4 flex-wrap">
-                        <button type="button" id="tab-btn-prelim" class="btn active bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-xl border border-emerald-500 shadow-md shadow-emerald-950/30 flex items-center gap-2 transition cursor-pointer">
+                        <button type="button" id="tab-btn-prelim" onclick="window.WaterQualityModule && window.WaterQualityModule.switchTab('prelim')" class="btn active bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-xl border border-emerald-500 shadow-md shadow-emerald-950/30 flex items-center gap-2 transition cursor-pointer">
                             <i class="fa-solid fa-flask-vial text-emerald-300"></i>
                             <span>ตรวจคุณภาพน้ำเบื้องต้น (รายวัน/รายเวร)</span>
                         </button>
-                        <button type="button" id="tab-btn-quarter" class="btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium px-4 py-2.5 rounded-xl border border-slate-700 flex items-center gap-2 transition cursor-pointer">
+                        <button type="button" id="tab-btn-quarter" onclick="window.WaterQualityModule && window.WaterQualityModule.switchTab('quarter')" class="btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium px-4 py-2.5 rounded-xl border border-slate-700 flex items-center gap-2 transition cursor-pointer">
                             <i class="fa-solid fa-microscope text-purple-400"></i>
                             <span>ส่งตรวจมาตรฐานประจำไตรมาส (11 พารามิเตอร์ สธ.)</span>
                         </button>
@@ -7304,7 +7305,7 @@ body {
                                     <i class="fa-solid fa-bolt text-slate-950"></i>
                                     <span>บันทึกข้อมูลอัตโนมัติประจำวัน</span>
                                 </button>
-                                <button type="button" id="btn-add-prelim-quality" class="btn btn-secondary text-xs py-2.5 px-4 rounded-xl flex items-center gap-2 border border-slate-700 hover:border-emerald-500 transition cursor-pointer">
+                                <button type="button" id="btn-add-prelim-quality" onclick="window.WaterQualityModule && window.WaterQualityModule.openAddPrelimModal()" class="btn btn-secondary text-xs py-2.5 px-4 rounded-xl flex items-center gap-2 border border-slate-700 hover:border-emerald-500 transition cursor-pointer">
                                     <i class="fa-solid fa-plus text-emerald-400"></i>
                                     <span>+ บันทึกผลตรวจเดี่ยว</span>
                                 </button>
@@ -7379,7 +7380,7 @@ body {
                                     <i class="fa-solid fa-bolt text-slate-950"></i>
                                     <span>บันทึกผลแล็บอัตโนมัติ</span>
                                 </button>
-                                <button type="button" id="btn-add-quarterly-quality" class="btn btn-primary text-xs py-2.5 px-4 rounded-xl flex items-center gap-2 shadow-lg shadow-purple-950/30 transition cursor-pointer">
+                                <button type="button" id="btn-add-quarterly-quality" onclick="window.WaterQualityModule && window.WaterQualityModule.openAddQuarterlyModal()" class="btn btn-primary text-xs py-2.5 px-4 rounded-xl flex items-center gap-2 shadow-lg shadow-purple-950/30 transition cursor-pointer">
                                     <i class="fa-solid fa-plus text-white"></i>
                                     <span>+ บันทึกผลส่งตรวจไตรมาส</span>
                                 </button>
@@ -7450,7 +7451,7 @@ body {
                                 <i class="fa-solid fa-bolt text-slate-950"></i>
                                 <span>บันทึกข้อมูลอัตโนมัติประจำวัน</span>
                             </button>
-                            <button type="button" id="btn-add-machinery" class="btn btn-secondary text-xs py-2.5 px-4 rounded-xl flex items-center gap-2 border border-slate-700 hover:border-blue-500 transition cursor-pointer">
+                            <button type="button" id="btn-add-machinery" onclick="window.MachineryModule ? window.MachineryModule.openAddModal() : (window.App && window.App.openModal('modal-machinery'))" class="btn btn-secondary text-xs py-2.5 px-4 rounded-xl flex items-center gap-2 border border-slate-700 hover:border-blue-500 transition cursor-pointer">
                                 <i class="fa-solid fa-plus text-blue-400"></i>
                                 <span>+ บันทึกผลตรวจเดี่ยว</span>
                             </button>
@@ -7526,13 +7527,13 @@ body {
                             <p class="text-xs text-slate-400">บันทึกงานตรวจสอบ/ป้องกัน/แก้ไข/ซ่อมบำรุง พร้อมควบคุมค่าใช้จ่ายและแนบรูปภาพ</p>
                         </div>
                         <div class="flex items-center gap-2.5 flex-wrap">
-                            <button type="button" id="btn-add-maintenance-auto" onclick="window.openAutoRecordModal ? window.openAutoRecordModal('machinery') : (window.AutoGeneratorModule && window.AutoGeneratorModule.openGeneratorModal('machinery'))" class="btn btn-warning bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-bold text-xs py-2.5 px-4 rounded-xl shadow-lg shadow-amber-950/30 flex items-center gap-2 transition transform hover:scale-[1.02] cursor-pointer">
-                                <i class="fa-solid fa-bolt text-slate-950"></i>
-                                <span>บันทึกข้อมูลอัตโนมัติประจำวัน</span>
+                            <button type="button" id="btn-add-maintenance" onclick="window.MaintenanceModule ? window.MaintenanceModule.openAddModal() : (window.App && window.App.openModal('modal-maintenance'))" class="btn btn-warning bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-slate-950 font-bold text-xs py-2.5 px-4 rounded-xl shadow-lg shadow-amber-950/30 flex items-center gap-2 transition transform hover:scale-[1.02] cursor-pointer">
+                                <i class="fa-solid fa-plus text-slate-950 font-bold"></i>
+                                <span>+ บันทึกงานซ่อมบำรุง</span>
                             </button>
-                            <button type="button" id="btn-add-maintenance" class="btn btn-secondary text-xs py-2.5 px-4 rounded-xl flex items-center gap-2 border border-slate-700 hover:border-amber-500 transition cursor-pointer">
-                                <i class="fa-solid fa-plus text-amber-400"></i>
-                                <span>+ บันทึกงานซ่อมเดี่ยว</span>
+                            <button type="button" id="btn-add-maintenance-sample" onclick="window.MaintenanceModule && window.MaintenanceModule.quickAddPMRecord()" class="btn btn-secondary text-xs py-2.5 px-4 rounded-xl flex items-center gap-2 border border-slate-700 hover:border-amber-500 transition cursor-pointer text-slate-300 hover:text-white" title="สุ่มตัวอย่างงานบำรุงรักษาเชิงป้องกัน (PM) ลงตารางทันที">
+                                <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i>
+                                <span>+ สุ่มตัวอย่างงานซ่อม PM</span>
                             </button>
                         </div>
                     </div>
@@ -7643,7 +7644,7 @@ body {
                     <div id="section-risk-view">
                         <div class="flex items-center justify-between flex-wrap gap-4 mb-4">
                             <h3 class="text-lg font-bold text-white">ตารางการบริหารจัดการความเสี่ยงระบบบำบัดน้ำเสีย</h3>
-                            <button id="btn-add-risk" class="btn btn-danger">
+                            <button id="btn-add-risk" onclick="window.RiskIncidentModule ? window.RiskIncidentModule.openAddRiskModal() : (window.App && window.App.openModal('modal-risk'))" class="btn btn-danger">
                                 <i class="fa-solid fa-plus"></i>
                                 <span>เพิ่มรายการความเสี่ยง</span>
                             </button>
@@ -7675,7 +7676,7 @@ body {
                     <div id="section-incident-view" style="display: none;">
                         <div class="flex items-center justify-between flex-wrap gap-4 mb-4">
                             <h3 class="text-lg font-bold text-white">บันทึกเหตุการณ์ผิดปกติและเหตุฉุกเฉิน</h3>
-                            <button id="btn-add-incident" class="btn btn-warning">
+                            <button id="btn-add-incident" onclick="window.RiskIncidentModule ? window.RiskIncidentModule.openAddIncidentModal() : (window.App && window.App.openModal('modal-incident'))" class="btn btn-warning">
                                 <i class="fa-solid fa-plus"></i>
                                 <span>บันทึกเหตุการณ์</span>
                             </button>
@@ -7717,7 +7718,7 @@ body {
                             </h2>
                             <p class="text-xs text-slate-400">สรุปปริมาณน้ำเสียรวม ค่าไฟฟ้าเฉลี่ย อัตราผ่านมาตรฐานน้ำทิ้ง และค่าใช้จ่าย</p>
                         </div>
-                        <button id="btn-add-monthly-report" class="btn btn-success">
+                        <button id="btn-add-monthly-report" onclick="window.MonthlyReportModule ? window.MonthlyReportModule.openAddModal() : (window.App && window.App.openModal('modal-monthly-report'))" class="btn btn-success">
                             <i class="fa-solid fa-plus"></i>
                             <span>สร้างรายงานสรุปประจำเดือน</span>
                         </button>
@@ -7788,7 +7789,7 @@ body {
                             </h2>
                             <p class="text-xs text-slate-400">รายชื่อเครื่องจักรและอุปกรณ์ที่ใช้แสดงในตะกร้าเช็คลิสต์ตรวจสภาพและซ่อมบำรุง</p>
                         </div>
-                        <button id="btn-add-equipment-ref" class="btn btn-primary">
+                        <button id="btn-add-equipment-ref" onclick="window.EquipmentRefModule ? window.EquipmentRefModule.openAddModal() : (window.App && window.App.openModal('modal-equipment-ref'))" class="btn btn-primary">
                             <i class="fa-solid fa-plus"></i>
                             <span>เพิ่มอุปกรณ์ใหม่</span>
                         </button>
@@ -7901,11 +7902,31 @@ body {
                     <!-- Sub-view 1: Report Storage -->
                     <div id="section-docs-report">
                         <div class="flex items-center justify-between flex-wrap gap-4 mb-4">
-                            <h3 class="text-lg font-bold text-white">คลังจัดเก็บไฟล์รายงานและเอกสารทางการ</h3>
-                            <button id="btn-add-doc-report" class="btn btn-primary">
-                                <i class="fa-solid fa-upload"></i>
-                                <span>อัปโหลด / บันทึกรายงาน</span>
-                            </button>
+                            <div>
+                                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                                    <i class="fa-solid fa-folder-open text-cyan-400"></i> คลังจัดเก็บไฟล์รายงานและเอกสารทางการ
+                                </h3>
+                                <p class="text-xs text-slate-400 mt-0.5">จัดเก็บรายงาน ทส.2, คุณภาพน้ำ, รายงานสิ่งแวดล้อม รองรับไฟล์ PDF, รูปภาพ, Word (.doc/.docx) และ Excel (.xls/.xlsx)</p>
+                            </div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <div class="flex items-center gap-1.5 bg-slate-900/80 px-2.5 py-1.5 rounded-lg border border-slate-700">
+                                    <i class="fa-solid fa-filter text-xs text-cyan-400"></i>
+                                    <select id="drep-filter-category" class="bg-transparent text-xs text-slate-200 border-0 focus:ring-0 focus:outline-none cursor-pointer">
+                                        <option value="all">ทุกหมวดหมู่รายงานทั้งหมด</option>
+                                        <option value="รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งกระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม">ทส.2 - ส่งกระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม</option>
+                                        <option value="รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งสำนักงานสาธารณสุขจังหวัดอุบลราชธานี">ทส.2 - ส่ง สสจ.อุบลราชธานี</option>
+                                        <option value="รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งองค์การบริหารส่วนตำบลไร่น้อย">ทส.2 - ส่ง อบต.ไร่น้อย</option>
+                                        <option value="รายงานวิเคราะห์คุณภาพน้ำ">รายงานวิเคราะห์คุณภาพน้ำ</option>
+                                        <option value="รายงานสิ่งแวดล้อม">รายงานสิ่งแวดล้อม</option>
+                                        <option value="รายงานสรุปการเดินระบบ">รายงานสรุปการเดินระบบ</option>
+                                        <option value="รายงานส่งหน่วยงานภายนอก">รายงานส่งหน่วยงานภายนอก</option>
+                                    </select>
+                                </div>
+                                <button id="btn-add-doc-report" onclick="window.DocumentsModule ? window.DocumentsModule.openAddReportModal() : (window.App && window.App.openModal('modal-doc-report'))" class="btn btn-primary">
+                                    <i class="fa-solid fa-upload"></i>
+                                    <span>อัปโหลด / บันทึกรายงาน</span>
+                                </button>
+                            </div>
                         </div>
 
                         <div class="table-responsive">
@@ -7934,7 +7955,7 @@ body {
                     <div id="section-docs-manual" style="display: none;">
                         <div class="flex items-center justify-between flex-wrap gap-4 mb-4">
                             <h3 class="text-lg font-bold text-white">คู่มือการปฏิบัติงานมาตรฐานระบบบำบัดน้ำเสีย (SOP & Manuals)</h3>
-                            <button id="btn-add-doc-manual" class="btn btn-success">
+                            <button id="btn-add-doc-manual" onclick="window.DocumentsModule ? window.DocumentsModule.openAddManualModal() : (window.App && window.App.openModal('modal-doc-manual'))" class="btn btn-success">
                                 <i class="fa-solid fa-plus"></i>
                                 <span>เพิ่มคู่มือระบบบำบัด</span>
                             </button>
@@ -7975,7 +7996,7 @@ body {
                             </h2>
                             <p class="text-xs text-slate-400">แยกสิทธิ์การใช้งานระหว่าง Super Admin (Sangtawan) และ เจ้าหน้าที่ (User)</p>
                         </div>
-                        <button id="btn-add-user" class="btn btn-primary">
+                        <button id="btn-add-user" onclick="window.UsersAdminModule ? window.UsersAdminModule.openAddModal() : (window.App && window.App.openModal('modal-user-admin'))" class="btn btn-primary">
                             <i class="fa-solid fa-user-plus"></i>
                             <span>เพิ่มผู้ใช้งานใหม่</span>
                         </button>
@@ -8512,22 +8533,72 @@ body {
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Enhanced Lab Report File Upload Area (PDF, Images, Word, Excel) -->
+                    <div class="form-group mb-3">
+                        <label class="form-label flex items-center justify-between">
+                            <span>แนบไฟล์รายงานผลตรวจวิเคราะห์จากแล็บ <span class="text-slate-400 font-normal">(PDF, รูปภาพ, Word, Excel)</span></span>
+                            <span class="text-[11px] text-purple-400 font-normal">รองรับไฟล์สแกน, PDF และตาราง Excel</span>
+                        </label>
+                        
+                        <div id="qwq-dropzone" class="border-2 border-dashed border-slate-600 hover:border-purple-400 bg-slate-900/70 hover:bg-slate-900/90 rounded-xl p-3 text-center cursor-pointer transition-all duration-200">
+                            <input type="file" id="qwq-file-upload-input" accept=".pdf,image/*,.doc,.docx,.xls,.xlsx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" style="display: none;" />
+                            
+                            <div id="qwq-dropzone-prompt" class="space-y-1.5 py-1">
+                                <div class="flex items-center justify-center gap-3 text-xl">
+                                    <i class="fa-solid fa-file-pdf text-rose-400" title="PDF ผลแล็บ"></i>
+                                    <i class="fa-solid fa-file-image text-amber-400" title="รูปภาพใบรายงาน"></i>
+                                    <i class="fa-solid fa-file-word text-blue-400" title="Word (.docx)"></i>
+                                    <i class="fa-solid fa-file-excel text-emerald-400" title="Excel (.xlsx)"></i>
+                                </div>
+                                <div class="text-xs font-semibold text-slate-200">คลิกเพื่อเลือกไฟล์ หรือลากไฟล์รายงานผลแล็บมาวางที่นี่</div>
+                                <div class="flex items-center justify-center flex-wrap gap-1 text-[10px] text-slate-400">
+                                    <span class="px-1.5 py-0.5 rounded bg-rose-500/10 border border-rose-500/30 text-rose-300">PDF (.pdf)</span>
+                                    <span class="px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300">รูปภาพ</span>
+                                    <span class="px-1.5 py-0.5 rounded bg-blue-500/10 border border-blue-500/30 text-blue-300">Word</span>
+                                    <span class="px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-300">Excel</span>
+                                </div>
+                            </div>
+
+                            <div id="qwq-dropzone-fileinfo" class="hidden p-2.5 bg-slate-800/80 rounded-lg border border-purple-500/40 flex items-center justify-between text-left">
+                                <div class="flex items-center gap-2.5 overflow-hidden">
+                                    <div id="qwq-file-type-icon" class="w-9 h-9 rounded-lg bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-base text-purple-400 shrink-0">
+                                        <i class="fa-solid fa-file-lines"></i>
+                                    </div>
+                                    <div class="truncate">
+                                        <div id="qwq-dropzone-filename" class="text-xs font-semibold text-white truncate">lab_report.pdf</div>
+                                        <div id="qwq-dropzone-filesize" class="text-[11px] text-slate-400 font-mono">PDF • 1.2 MB</div>
+                                    </div>
+                                </div>
+                                <button type="button" id="qwq-btn-remove-file" class="text-xs text-rose-400 hover:text-rose-300 px-2 py-0.5 rounded bg-rose-500/10 border border-rose-500/30 shrink-0">
+                                    <i class="fa-solid fa-xmark mr-1"></i>เปลี่ยนไฟล์
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Fallback URL -->
+                        <div class="mt-1 flex items-center justify-between">
+                            <button type="button" id="btn-toggle-qwq-url" class="text-[11px] text-slate-400 hover:text-purple-400 flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0" onclick="const f=document.getElementById('qwq-url-wrapper'); f.classList.toggle('hidden');">
+                                <i class="fa-solid fa-link"></i> หรือระบุลิงก์ URL ผลแล็บภายนอก
+                            </button>
+                            <span class="text-[10px] text-slate-500 font-mono">บันทึกอัตโนมัติ</span>
+                        </div>
+                        <div id="qwq-url-wrapper" class="hidden mt-1.5">
+                            <input type="text" id="qwq-form-file" class="form-control font-mono text-xs" placeholder="https://drive.google.com/... หรือ data:application/pdf;base64,...">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                         <div class="form-group">
                             <label class="form-label">การดำเนินการ / การแก้ไข</label>
-                            <input type="text" id="qwq-form-action" class="form-control" placeholder="เช่น ผลวิเคราะห์อยู่ในเกณฑ์ดีเยี่ยม">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">ลิงก์ไฟล์รายงานผลแล็บ (URL)</label>
-                            <input type="url" id="qwq-form-file" class="form-control" placeholder="https://...">
+                            <input type="text" id="qwq-form-action" class="form-control text-xs" placeholder="เช่น ผลวิเคราะห์อยู่ในเกณฑ์ดีเยี่ยม">
                         </div>
                         <div class="form-group">
                             <label class="form-label">ผู้ตรวจสอบ / เจ้าหน้าที่แล็บ <span class="required">*</span></label>
-                            <input type="text" id="qwq-form-inspector" class="form-control" required>
+                            <input type="text" id="qwq-form-inspector" class="form-control text-xs" required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">หมายเหตุ</label>
-                            <input type="text" id="qwq-form-remarks" class="form-control">
+                            <input type="text" id="qwq-form-remarks" class="form-control text-xs">
                         </div>
                     </div>
                 </div>
@@ -9105,32 +9176,82 @@ body {
                             <input type="date" id="drep-form-date" class="form-control font-mono" required>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">หมวดหมู่รายงาน</label>
-                            <select id="drep-form-category" class="form-control">
-                                <option value="รายงานสิ่งแวดล้อม">รายงานสิ่งแวดล้อม</option>
-                                <option value="รายงานวิเคราะห์คุณภาพน้ำ" selected>รายงานวิเคราะห์คุณภาพน้ำ</option>
-                                <option value="รายงานสรุปการเดินระบบ">รายงานสรุปการเดินระบบ</option>
-                                <option value="รายงานส่งหน่วยงานภายนอก">รายงานส่งหน่วยงานภายนอก</option>
+                            <label class="form-label">หมวดหมู่รายงาน <span class="required">*</span></label>
+                            <select id="drep-form-category" class="form-control" required>
+                                <optgroup label="รายงานระบบบำบัดน้ำเสีย (ทส.2)">
+                                    <option value="รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งกระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม">รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งกระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม</option>
+                                    <option value="รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งสำนักงานสาธารณสุขจังหวัดอุบลราชธานี">รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งสำนักงานสาธารณสุขจังหวัดอุบลราชธานี</option>
+                                    <option value="รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งองค์การบริหารส่วนตำบลไร่น้อย">รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งองค์การบริหารส่วนตำบลไร่น้อย</option>
+                                </optgroup>
+                                <optgroup label="รายงานทั่วไปและคุณภาพน้ำ">
+                                    <option value="รายงานวิเคราะห์คุณภาพน้ำ" selected>รายงานวิเคราะห์คุณภาพน้ำ</option>
+                                    <option value="รายงานสรุปการเดินระบบ">รายงานสรุปการเดินระบบ</option>
+                                    <option value="รายงานสิ่งแวดล้อม">รายงานสิ่งแวดล้อม</option>
+                                    <option value="รายงานส่งหน่วยงานภายนอก">รายงานส่งหน่วยงานภายนอก</option>
+                                </optgroup>
                             </select>
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label class="form-label">ชื่อเรื่องรายงาน <span class="required">*</span></label>
-                        <input type="text" id="drep-form-title" class="form-control" required placeholder="เช่น รายงานการตรวจสอบคุณภาพสิ่งแวดล้อมและน้ำทิ้งโรงพยาบาล กรกฎาคม 2569">
+                        <input type="text" id="drep-form-title" class="form-control" required placeholder="เช่น รายงานระบบบำบัดน้ำเสีย (ทส.2) ประจำเดือนสิงหาคม 2569">
                     </div>
 
+                    <!-- Enhanced Multi-Format File Upload Area (PDF, Image, Word, Excel) -->
                     <div class="form-group">
-                        <div class="flex items-center justify-between mb-1">
-                            <label class="form-label mb-0">ลิงก์ URL ไฟล์รายงาน <span class="required">*</span></label>
-                            <div class="flex items-center gap-2">
-                                <input type="file" id="drep-file-upload-input" accept="application/pdf,image/*,.doc,.docx,.xls,.xlsx" style="display: none;" />
-                                <button type="button" class="text-xs text-cyan-400 hover:text-cyan-300 flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0" onclick="document.getElementById('drep-file-upload-input').click()">
-                                    <i class="fa-solid fa-folder-open"></i> อัปโหลดไฟล์จากเครื่อง
+                        <label class="form-label flex items-center justify-between">
+                            <span>อัปโหลดไฟล์เอกสารรายงาน <span class="required">*</span></span>
+                            <span class="text-[11px] text-cyan-400 font-normal">รองรับ PDF, รูปภาพ, Word, Excel</span>
+                        </label>
+                        
+                        <div id="drep-dropzone" class="border-2 border-dashed border-slate-600 hover:border-cyan-400 bg-slate-900/70 hover:bg-slate-900/90 rounded-xl p-3.5 text-center cursor-pointer transition-all duration-200">
+                            <input type="file" id="drep-file-upload-input" accept=".pdf,image/*,.doc,.docx,.xls,.xlsx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" style="display: none;" />
+                            
+                            <div id="drep-dropzone-prompt" class="space-y-2 py-1">
+                                <div class="flex items-center justify-center gap-3 text-2xl">
+                                    <i class="fa-solid fa-file-pdf text-rose-400" title="PDF (.pdf)"></i>
+                                    <i class="fa-solid fa-file-image text-amber-400" title="รูปภาพ (PNG/JPG)"></i>
+                                    <i class="fa-solid fa-file-word text-blue-400" title="Word (.doc/.docx)"></i>
+                                    <i class="fa-solid fa-file-excel text-emerald-400" title="Excel (.xls/.xlsx)"></i>
+                                </div>
+                                <div class="text-sm font-semibold text-slate-200">คลิกเพื่อเลือกไฟล์ หรือลากไฟล์มาวางที่นี่</div>
+                                <div class="flex items-center justify-center flex-wrap gap-1.5 text-[11px] text-slate-400">
+                                    <span class="px-2 py-0.5 rounded bg-rose-500/10 border border-rose-500/30 text-rose-300 font-medium"><i class="fa-solid fa-file-pdf mr-1"></i>PDF (.pdf)</span>
+                                    <span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300 font-medium"><i class="fa-solid fa-image mr-1"></i>รูปภาพ (PNG/JPG)</span>
+                                    <span class="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/30 text-blue-300 font-medium"><i class="fa-solid fa-file-word mr-1"></i>Word (.doc/.docx)</span>
+                                    <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-medium"><i class="fa-solid fa-file-excel mr-1"></i>Excel (.xls/.xlsx)</span>
+                                </div>
+                            </div>
+
+                            <div id="drep-dropzone-fileinfo" class="hidden items-center justify-between bg-slate-800/90 border border-slate-700 rounded-lg p-3 text-left">
+                                <div class="flex items-center gap-3 min-w-0">
+                                    <div id="drep-file-icon" class="text-2xl shrink-0">
+                                        <i class="fa-solid fa-file text-cyan-400"></i>
+                                    </div>
+                                    <div class="min-w-0">
+                                        <div id="drep-file-name" class="font-semibold text-white text-sm truncate max-w-[280px]">filename.pdf</div>
+                                        <div id="drep-file-meta" class="text-xs text-slate-400">PDF • 2.4 MB</div>
+                                    </div>
+                                </div>
+                                <button type="button" id="drep-btn-clear-file" class="text-xs text-rose-400 hover:text-rose-300 px-2.5 py-1 bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 rounded flex items-center gap-1 shrink-0">
+                                    <i class="fa-solid fa-xmark"></i> เปลี่ยนไฟล์
                                 </button>
                             </div>
                         </div>
-                        <input type="text" id="drep-form-url" class="form-control font-mono text-xs" required placeholder="https://example.com/docs/env_report_jul2026.pdf">
+
+                        <!-- Fallback URL Input (Collapsible / Syncs with Dropzone) -->
+                        <div class="mt-2">
+                            <div class="flex items-center justify-between mb-1">
+                                <label class="form-label mb-0 text-[11px] text-slate-400">ลิงก์ URL หรือ Base64 Data แนบไฟล์</label>
+                                <button type="button" class="text-[11px] text-cyan-400 hover:text-cyan-300 bg-transparent border-0 cursor-pointer" onclick="const el = document.getElementById('drep-form-url-wrapper'); el.classList.toggle('hidden');">
+                                    <i class="fa-solid fa-link"></i> แสดง/ซ่อนช่องพิมพ์ URL
+                                </button>
+                            </div>
+                            <div id="drep-form-url-wrapper" class="hidden">
+                                <input type="text" id="drep-form-url" class="form-control font-mono text-xs" required placeholder="https://example.com/docs/report.pdf หรือ แนบไฟล์ด้านบน">
+                            </div>
+                        </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
@@ -9188,17 +9309,58 @@ body {
                         <input type="text" id="man-form-title" class="form-control" required placeholder="เช่น คู่มือมาตรฐานการเดินระบบ Activated Sludge">
                     </div>
 
+                    <!-- Enhanced Multi-Format File Upload Area (PDF, Image, Word, Excel) -->
                     <div class="form-group">
-                        <div class="flex items-center justify-between mb-1">
-                            <label class="form-label mb-0">ลิงก์ URL ไฟล์คู่มือ <span class="required">*</span></label>
-                            <div class="flex items-center gap-2">
-                                <input type="file" id="man-file-upload-input" accept="application/pdf,image/*,.doc,.docx" style="display: none;" />
-                                <button type="button" class="text-xs text-emerald-400 hover:text-emerald-300 flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0" onclick="document.getElementById('man-file-upload-input').click()">
-                                    <i class="fa-solid fa-folder-open"></i> อัปโหลดไฟล์จากเครื่อง
+                        <label class="form-label flex items-center justify-between">
+                            <span>อัปโหลดไฟล์เอกสารคู่มือ <span class="required">*</span></span>
+                            <span class="text-[11px] text-emerald-400 font-normal">รองรับ PDF, รูปภาพ, Word, Excel</span>
+                        </label>
+                        
+                        <div id="man-dropzone" class="border-2 border-dashed border-slate-600 hover:border-emerald-400 bg-slate-900/70 hover:bg-slate-900/90 rounded-xl p-3.5 text-center cursor-pointer transition-all duration-200">
+                            <input type="file" id="man-file-upload-input" accept=".pdf,image/*,.doc,.docx,.xls,.xlsx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" style="display: none;" />
+                            
+                            <div id="man-dropzone-prompt" class="space-y-2 py-1">
+                                <div class="flex items-center justify-center gap-3 text-2xl">
+                                    <i class="fa-solid fa-file-pdf text-rose-400" title="PDF (.pdf)"></i>
+                                    <i class="fa-solid fa-file-image text-amber-400" title="รูปภาพ (PNG/JPG)"></i>
+                                    <i class="fa-solid fa-file-word text-blue-400" title="Word (.doc/.docx)"></i>
+                                    <i class="fa-solid fa-file-excel text-emerald-400" title="Excel (.xls/.xlsx)"></i>
+                                </div>
+                                <div class="text-sm font-semibold text-slate-200">คลิกเพื่อเลือกไฟล์ หรือลากไฟล์มาวางที่นี่</div>
+                                <div class="flex items-center justify-center flex-wrap gap-1.5 text-[11px] text-slate-400">
+                                    <span class="px-2 py-0.5 rounded bg-rose-500/10 border border-rose-500/30 text-rose-300 font-medium"><i class="fa-solid fa-file-pdf mr-1"></i>PDF (.pdf)</span>
+                                    <span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-300 font-medium"><i class="fa-solid fa-file-image mr-1"></i>รูปภาพ (PNG/JPG)</span>
+                                    <span class="px-2 py-0.5 rounded bg-blue-500/10 border border-blue-500/30 text-blue-300 font-medium"><i class="fa-solid fa-file-word mr-1"></i>Word (.doc/.docx)</span>
+                                    <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 font-medium"><i class="fa-solid fa-file-excel mr-1"></i>Excel (.xls/.xlsx)</span>
+                                </div>
+                            </div>
+
+                            <div id="man-dropzone-fileinfo" class="hidden p-3 bg-slate-800/80 rounded-lg border border-emerald-500/40 flex items-center justify-between text-left">
+                                <div class="flex items-center gap-3 overflow-hidden">
+                                    <div id="man-file-type-icon" class="w-10 h-10 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-lg text-emerald-400 shrink-0">
+                                        <i class="fa-solid fa-file-lines"></i>
+                                    </div>
+                                    <div class="truncate">
+                                        <div id="man-dropzone-filename" class="text-sm font-semibold text-white truncate">filename.pdf</div>
+                                        <div id="man-dropzone-filesize" class="text-xs text-slate-400 font-mono">PDF • 2.4 MB</div>
+                                    </div>
+                                </div>
+                                <button type="button" id="man-btn-remove-file" class="text-xs text-rose-400 hover:text-rose-300 px-2.5 py-1 rounded bg-rose-500/10 border border-rose-500/30 shrink-0">
+                                    <i class="fa-solid fa-xmark mr-1"></i>เปลี่ยนไฟล์
                                 </button>
                             </div>
                         </div>
-                        <input type="text" id="man-form-url" class="form-control font-mono text-xs" required placeholder="https://example.com/docs/sop_manual.pdf">
+
+                        <!-- Fallback External URL Accordion -->
+                        <div class="mt-1.5 flex items-center justify-between">
+                            <button type="button" id="btn-toggle-man-url" class="text-[11px] text-slate-400 hover:text-emerald-400 flex items-center gap-1 bg-transparent border-0 cursor-pointer p-0" onclick="const f=document.getElementById('man-url-wrapper'); f.classList.toggle('hidden');">
+                                <i class="fa-solid fa-link"></i> ลิงก์ URL หรือ Base64 Data แนบไฟล์
+                            </button>
+                            <span class="text-[11px] text-slate-500 font-mono">บันทึกอัตโนมัติ</span>
+                        </div>
+                        <div id="man-url-wrapper" class="hidden mt-1.5">
+                            <input type="text" id="man-form-url" class="form-control font-mono text-xs" required placeholder="https://example.com/docs/manual.pdf หรือ data:application/pdf;base64,...">
+                        </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
@@ -9217,6 +9379,62 @@ body {
                     <button type="submit" class="btn btn-primary bg-emerald-600 hover:bg-emerald-500 border-emerald-500 text-white font-bold flex items-center gap-2">
                         <i class="fa-solid fa-floppy-disk"></i>
                         <span>บันทึกคู่มือ</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 14b. MODAL: USER ADMIN - ADD/EDIT USER -->
+    <div id="modal-user-admin" class="modal-overlay">
+        <div class="modal-dialog" style="max-width: 520px;">
+            <div class="modal-header border-b border-slate-800 pb-3">
+                <h5 id="modal-user-title" class="modal-title text-base font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-user-plus text-emerald-400"></i> เพิ่มผู้ใช้งานระบบใหม่
+                </h5>
+                <button type="button" class="btn-close" onclick="window.App && window.App.closeModal('modal-user-admin')"></button>
+            </div>
+            <form id="form-user-admin" onsubmit="event.preventDefault(); window.UsersAdminModule && window.UsersAdminModule.saveUser()">
+                <div class="modal-body space-y-4 py-4">
+                    <div class="grid grid-cols-1 gap-4">
+                        <div>
+                            <label class="form-label text-xs text-slate-400 mb-1 block"><i class="fa-solid fa-user text-emerald-400"></i> ชื่อผู้ใช้งาน (Username) <span class="text-red-400">*</span></label>
+                            <input type="text" id="uadm-form-username" class="form-control" placeholder="ชื่อผู้ใช้งานสำหรับ Login" required>
+                        </div>
+                        <div>
+                            <label class="form-label text-xs text-slate-400 mb-1 block"><i class="fa-solid fa-key text-amber-400"></i> รหัสผ่าน <span class="text-red-400">*</span></label>
+                            <input type="password" id="uadm-form-password" class="form-control" placeholder="รหัสผ่านสำหรับ Login">
+                        </div>
+                        <div>
+                            <label class="form-label text-xs text-slate-400 mb-1 block"><i class="fa-solid fa-id-card text-sky-400"></i> ชื่อ-นามสกุล <span class="text-red-400">*</span></label>
+                            <input type="text" id="uadm-form-fullname" class="form-control" placeholder="ชื่อ-นามสกุลจริง" required>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="form-label text-xs text-slate-400 mb-1 block"><i class="fa-solid fa-shield-halved text-purple-400"></i> บทบาท (Role)</label>
+                                <select id="uadm-form-role" class="form-control">
+                                    <option value="user">User (ผู้ใช้งานทั่วไป)</option>
+                                    <option value="admin">Admin (ผู้ดูแลระบบ)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="form-label text-xs text-slate-400 mb-1 block"><i class="fa-solid fa-circle-dot text-green-400"></i> สถานะ</label>
+                                <select id="uadm-form-status" class="form-control">
+                                    <option value="active">ใช้งานอยู่ (Active)</option>
+                                    <option value="inactive">ปิดใช้งาน (Inactive)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="form-label text-xs text-slate-400 mb-1 block"><i class="fa-solid fa-building text-rose-400"></i> หน่วยงาน / แผนก</label>
+                            <input type="text" id="uadm-form-department" class="form-control" placeholder="หน่วยงานหรือแผนก" value="หน่วยบำบัดน้ำเสีย">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer flex items-center justify-end gap-2">
+                    <button type="button" class="btn btn-secondary" onclick="window.App && window.App.closeModal('modal-user-admin')">ยกเลิก</button>
+                    <button type="submit" class="btn btn-primary bg-emerald-600 hover:bg-emerald-500 border-emerald-500 text-white font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        <span>บันทึกผู้ใช้งาน</span>
                     </button>
                 </div>
             </form>
@@ -9266,7 +9484,7 @@ body {
                         <div class="flex items-center justify-between gap-2">
                             <span class="text-xs sm:text-sm font-medium text-slate-400 shrink-0">Database URL:</span>
                             <span id="monitor-db-url" class="text-[11px] sm:text-xs font-mono text-slate-400 truncate text-right">
-                                https://vzamkmomhvgnylvrspec.supabase.co
+                                https://gcvbfhsnyohxudcdvwzg.supabase.co
                             </span>
                         </div>
                     </div>
@@ -9553,10 +9771,10 @@ body {
                         <i class="fa-solid fa-bolt"></i>
                     </div>
                     <div>
-                        <h3 class="text-base sm:text-lg font-bold text-white mb-0.5">
+                        <h3 id="auto-gen-modal-title" class="text-base sm:text-lg font-bold text-white mb-0.5">
                             ระบบบันทึกข้อมูลน้ำเสียอัตโนมัติ (Smart Auto-Record Generator)
                         </h3>
-                        <span class="text-xs text-slate-400">คำนวณค่าน้ำเสีย 80%, หน่วยไฟฟ้า kWh, ผลตรวจคุณภาพน้ำ, และเช็คลิสต์เครื่องจักร พร้อมบันทึกลงระบบ</span>
+                        <span id="auto-gen-modal-subtitle" class="text-xs text-slate-400">คำนวณค่าน้ำเสีย 80%, หน่วยไฟฟ้า kWh, ผลตรวจคุณภาพน้ำ, และเช็คลิสต์เครื่องจักร พร้อมบันทึกลงระบบ</span>
                     </div>
                 </div>
                 <button type="button" class="modal-close text-slate-400 hover:text-white text-xl transition cursor-pointer" onclick="window.closeAutoRecordModal ? window.closeAutoRecordModal() : (window.App && window.App.closeModal('modal-auto-generator'))">&times;</button>
@@ -9842,7 +10060,7 @@ body {
                                         <th class="py-2.5 px-3.5 w-28 text-slate-300">วันที่</th>
                                         <th class="py-2.5 px-3.5 w-36 text-slate-300">รอบ / เวลา</th>
                                         <th class="py-2.5 px-3.5 w-44 text-slate-300">แผนก / จุดตรวจ / รายการ</th>
-                                        <th class="py-2.5 px-3.5 text-right text-amber-300">ค่าน้ำ / ค่าไฟ / ผลตรวจ (แก้ไขได้ ✏️)</th>
+                                        <th id="auto-gen-col-metric-header" class="py-2.5 px-3.5 text-right text-amber-300">ค่าน้ำ / ค่าไฟ / ผลตรวจ (แก้ไขได้ ✏️)</th>
                                     </tr>
                                 </thead>
                                 <tbody id="auto-gen-preview-table-body" class="divide-y divide-slate-800/60 font-mono">
@@ -9898,12 +10116,13 @@ body {
                 document.body.style.overflow = 'hidden';
                 document.body.classList.add('modal-open');
             }
+            var targetMod = mod || (window.App ? window.App.currentRoute : 'all');
             if (window.AutoGeneratorModule && typeof window.AutoGeneratorModule.openGeneratorModal === 'function') {
-                window.AutoGeneratorModule.openGeneratorModal(mod || 'influent');
+                window.AutoGeneratorModule.openGeneratorModal(targetMod);
             } else {
                 setTimeout(function() {
                     if (window.AutoGeneratorModule && typeof window.AutoGeneratorModule.openGeneratorModal === 'function') {
-                        window.AutoGeneratorModule.openGeneratorModal(mod || 'influent');
+                        window.AutoGeneratorModule.openGeneratorModal(targetMod);
                     }
                 }, 100);
             }
@@ -10228,9 +10447,12 @@ const SAMPLE_DATABASE = {
         { id: 'mr-2601', report_month: '2026-01', report_year: 2569, total_water_m3: 5850.60, wastewater_80_m3: 4680.48, total_kwh: 4290.40, total_cost_thb: 19306.80, avg_bod: 11.70, avg_do: 4.22, ghg_reduced_tco2e: 3.398, compliance_rate: 100.0, status: 'approved', approved_by: 'นพ.ผู้อำนวยการ รพ.๕๐ พรรษาฯ' }
     ],
     report_storage: [
-        { id: 'doc-001', doc_code: 'REP-2026-08', doc_title: 'รายงานสรุปผลการวิเคราะห์คุณภาพน้ำทิ้งประจำเดือน สิงหาคม 2569', doc_type: 'รายงานประจำเดือน', report_date: '2026-08-30', file_name: 'Wastewater_Report_Aug_2026.pdf', file_size: '2.4 MB', file_url: '#', uploader: 'แสงตะวัน ชาวเขา', status: 'verified' },
-        { id: 'doc-002', doc_code: 'LAB-2026-Q2', doc_title: 'ใบรับรองผลการตรวจวิเคราะห์น้ำเสียโดยห้องปฏิบัติการภายนอก (ISO/IEC 17025) ไตรมาสที่ 2/2569', doc_type: 'ผลตรวจ Lab ภายนอก', report_date: '2026-06-30', file_name: 'Certified_Lab_Q2_2026.pdf', file_size: '4.1 MB', file_url: '#', uploader: 'น.ส.อัญชลี พรหมดี', status: 'verified' },
-        { id: 'doc-003', doc_code: 'REP-2026-07', doc_title: 'รายงานสรุปผลการวิเคราะห์คุณภาพน้ำทิ้งประจำเดือน กรกฎาคม 2569', doc_type: 'รายงานประจำเดือน', report_date: '2026-07-31', file_name: 'Wastewater_Report_Jul_2026.pdf', file_size: '2.3 MB', file_url: '#', uploader: 'แสงตะวัน ชาวเขา', status: 'verified' }
+        { id: 'doc-001', title: 'รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งกระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม ประจำเดือนสิงหาคม 2569', category: 'รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งกระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม', report_date: '2026-08-31', file_size: '3.2 MB', file_url: 'https://example.com/docs/ts2_env_ministry_aug2026.pdf', uploaded_by: 'แสงตะวัน ชาวเขา (Super Admin)' },
+        { id: 'doc-002', title: 'รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งสำนักงานสาธารณสุขจังหวัดอุบลราชธานี ประจำเดือนสิงหาคม 2569', category: 'รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งสำนักงานสาธารณสุขจังหวัดอุบลราชธานี', report_date: '2026-08-31', file_size: '1.8 MB', file_url: 'https://example.com/docs/ts2_ph_ubon_aug2026.docx', uploaded_by: 'แสงตะวัน ชาวเขา (Super Admin)' },
+        { id: 'doc-003', title: 'รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งองค์การบริหารส่วนตำบลไร่น้อย ประจำเดือนสิงหาคม 2569', category: 'รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งองค์การบริหารส่วนตำบลไร่น้อย', report_date: '2026-08-31', file_size: '850 KB', file_url: 'https://example.com/docs/ts2_sao_rainoi_aug2026.xlsx', uploaded_by: 'แสงตะวัน ชาวเขา (Super Admin)' },
+        { id: 'doc-004', title: 'รายงานสรุปผลการวิเคราะห์คุณภาพน้ำทิ้งประจำเดือน สิงหาคม 2569', category: 'รายงานวิเคราะห์คุณภาพน้ำ', report_date: '2026-08-30', file_size: '2.4 MB', file_url: 'https://example.com/docs/water_quality_report_aug2026.pdf', uploaded_by: 'น.ส.อัญชลี พรหมดี' },
+        { id: 'doc-005', title: 'รายงานสรุปสถิติการใช้ไฟฟ้าและปริมาณน้ำเสียประจำเดือน สิงหาคม 2569', category: 'รายงานสรุปการเดินระบบ', report_date: '2026-08-28', file_size: '1.2 MB', file_url: 'https://example.com/docs/electricity_summary_aug2026.xlsx', uploaded_by: 'นายสมชาย มั่นคง' },
+        { id: 'doc-006', title: 'รายงานภาพถ่ายการตรวจสภาพบ่อเติมอากาศและรางระบายน้ำทิ้ง', category: 'รายงานสิ่งแวดล้อม', report_date: '2026-08-25', file_size: '4.6 MB', file_url: 'https://example.com/docs/inspection_photo_aug2026.jpg', uploaded_by: 'นายประเสริฐ ช่างทอง' }
     ],
     treatment_manuals: [
         { id: 'sop-001', manual_code: 'SOP-WWT-01', title: 'คู่มือมาตรฐานการเดินระบบบำบัดน้ำเสียแบบตะกอนเร่ง (Activated Sludge Standard Operating Procedure)', category: 'คู่มือการเดินระบบ', version: 'Rev. 3.0 (2026)', updated_at: '2026-01-15', file_name: 'SOP_Activated_Sludge_System_2026.pdf', file_size: '5.8 MB', file_url: '#', author: 'งานสิ่งแวดล้อมและระบบบำบัดน้ำเสีย' },
@@ -10291,6 +10513,15 @@ class DataStore {
         const embeddedUrl = (window.SUPABASE_EMBEDDED_CONFIG && window.SUPABASE_EMBEDDED_CONFIG.url) ? window.SUPABASE_EMBEDDED_CONFIG.url.trim() : "";
         const embeddedKey = (window.SUPABASE_EMBEDDED_CONFIG && window.SUPABASE_EMBEDDED_CONFIG.anonKey) ? window.SUPABASE_EMBEDDED_CONFIG.anonKey.trim() : "";
 
+        // ตรวจสอบว่า localStorage มี URL เก่าที่ยกเลิกไปแล้ว (vzamkmomhvgnylvrspec) หรือคีย์เก่าที่หมดอายุหรือไม่
+        const localSavedKey = localStorage.getItem("spa_50th_supabase_key") || "";
+        const localSavedUrl = localStorage.getItem("spa_50th_supabase_url") || "";
+        if (localSavedUrl.includes("vzamkmomhvgnylvrspec") || localSavedKey.includes("U9jB012z4Xp8tX18a6XF6_m")) {
+            console.log("Purging obsolete Supabase credentials from localStorage...");
+            localStorage.removeItem("spa_50th_supabase_url");
+            localStorage.removeItem("spa_50th_supabase_key");
+        }
+
         let savedUrl = embeddedUrl || localStorage.getItem("spa_50th_supabase_url") || (window.APP_CONFIG && window.APP_CONFIG.supabaseDefault && window.APP_CONFIG.supabaseDefault.url) || "";
         let savedKey = embeddedKey || localStorage.getItem("spa_50th_supabase_key") || (window.APP_CONFIG && window.APP_CONFIG.supabaseDefault && window.APP_CONFIG.supabaseDefault.anonKey) || "";
 
@@ -10306,7 +10537,17 @@ class DataStore {
             try {
                 this.supabaseClient = window.supabase.createClient(savedUrl, savedKey);
                 // ทดสอบการเชื่อมต่อจริงด้วย Ping query
-                const testResult = await this.testConnection();
+                let testResult = await this.testConnection();
+                if (!testResult.success && embeddedUrl && embeddedKey && (savedKey !== embeddedKey || savedUrl !== embeddedUrl)) {
+                    console.warn("Initial Supabase ping failed, retrying with official embedded credentials...");
+                    localStorage.setItem("spa_50th_supabase_url", embeddedUrl);
+                    localStorage.setItem("spa_50th_supabase_key", embeddedKey);
+                    savedUrl = embeddedUrl;
+                    savedKey = embeddedKey;
+                    this.supabaseClient = window.supabase.createClient(savedUrl, savedKey);
+                    testResult = await this.testConnection();
+                }
+
                 if (testResult.success) {
                     this.isSupabaseConnected = true;
                     this.supabaseConnectionError = null;
@@ -10461,7 +10702,7 @@ class DataStore {
             isOnline: isOnline,
             latency: latency || 28,
             errorMessage,
-            url: currentUrl || "https://vzamkmomhvgnylvrspec.supabase.co",
+            url: currentUrl || "https://gcvbfhsnyohxudcdvwzg.supabase.co",
             counts
         };
     }
@@ -10625,9 +10866,13 @@ class DataStore {
                         ? window.App.sortData(allRows, orderField, sortDirection)
                         : allRows;
 
-                    const db = this.getLocalDatabase();
-                    db[tableName] = sortedData;
-                    this.saveLocalDatabase(db);
+                    try {
+                        const db = this.getLocalDatabase();
+                        db[tableName] = sortedData.slice(0, 100);
+                        this.saveLocalDatabase(db);
+                    } catch (e) {
+                        console.warn("Offline cache save warning:", e);
+                    }
 
                     return sortedData;
                 } else {
@@ -10754,6 +10999,18 @@ class DataStore {
                 'id', 'report_month', 'total_wastewater_inflow', 'total_electricity_kwh',
                 'avg_ph', 'avg_do', 'avg_tds', 'avg_sediment', 'avg_chlorine',
                 'standard_pass_rate', 'total_cost', 'created_at'
+            ],
+            report_storage: [
+                'id', 'report_date', 'title', 'category', 'file_url', 'file_size', 'uploaded_by', 'created_at'
+            ],
+            treatment_manuals: [
+                'id', 'title', 'category', 'file_url', 'file_size', 'uploaded_by', 'created_at'
+            ],
+            risk_management: [
+                'id', 'recorded_at', 'risk_name', 'severity_level', 'impact', 'likelihood', 'prevention_plan', 'status', 'risk_manager', 'created_at'
+            ],
+            incident_records: [
+                'id', 'recorded_at', 'incident_type', 'description', 'severity', 'resolution_status', 'action_taken', 'reporter', 'created_at'
             ]
         };
 
@@ -10775,6 +11032,19 @@ class DataStore {
 
     generateUUID() {
         return generateUUID();
+    }
+
+    // เมธอด set: บันทึกข้อมูลแบบ Upsert (หากมี ID ให้ update หากไม่มีให้ insert) ป้องกัน window.DataStore.set is not a function
+    async set(tableName, id, record) {
+        if (!id && record && record.id) id = record.id;
+        if (!record) record = {};
+        if (id) {
+            const existing = await this.getById(tableName, id);
+            if (existing) {
+                return await this.update(tableName, id, record);
+            }
+        }
+        return await this.insert(tableName, { ...record, id: id || generateUUID() });
     }
 
     // เพิ่มข้อมูลใหม่
@@ -11673,6 +11943,7 @@ class AutoGeneratorController {
             btn.addEventListener('click', async () => {
                 this.currentModule = btn.getAttribute('data-module') || 'influent';
                 this.highlightModuleScope(this.currentModule);
+                this.updateModalHeaders(this.currentModule);
                 await this.loadLatestMeters();
                 await this.checkMissingDates();
                 this.updatePreviewBadge();
@@ -11724,16 +11995,66 @@ class AutoGeneratorController {
      * ค้นหาและแมปชื่อโมดูลเป้าหมายให้ตรงกับหน้าปัจจุบันของระบบ 100%
      */
     resolveActiveModule(mod) {
-        if (mod && mod !== 'all') {
-            if (mod === 'water-quality') return 'water_quality';
+        if (mod) {
+            if (mod === 'all') return 'all';
+            if (mod === 'water-quality' || mod === 'water_quality') return 'water_quality';
+            if (mod === 'electricity') return 'electricity';
+            if (mod === 'influent') return 'influent';
+            if (mod === 'machinery') return 'machinery';
             return mod;
         }
         if (window.App && window.App.currentRoute) {
             const r = window.App.currentRoute;
+            if (r === 'dashboard') return 'all';
             if (r === 'water-quality' || r === 'water_quality') return 'water_quality';
-            if (r === 'influent' || r === 'electricity' || r === 'machinery') return r;
+            if (r === 'electricity') return 'electricity';
+            if (r === 'influent') return 'influent';
+            if (r === 'machinery') return 'machinery';
         }
         return 'influent';
+    }
+
+    /**
+     * อัปเดตหัวข้อ คำอธิบาย และหัวคอลัมน์ของหน้าต่าง Auto Generator ตามโมดูลที่เลือก
+     */
+    updateModalHeaders(mod) {
+        const titleEl = document.getElementById('auto-gen-modal-title');
+        const subtitleEl = document.getElementById('auto-gen-modal-subtitle');
+        const colMetricEl = document.getElementById('auto-gen-col-metric-header');
+        
+        const configs = {
+            influent: {
+                title: 'ระบบบันทึกข้อมูลปริมาณน้ำเสียอัตโนมัติ (Daily Inflow Auto-Generator)',
+                subtitle: 'คำนวณปริมาณน้ำใช้ ลบ.ม., ค่าน้ำเสีย 80% และเลขมิเตอร์น้ำ พร้อมบันทึกลงระบบ',
+                colMetric: 'ปริมาณน้ำใช้ (ลบ.ม.) / น้ำเสีย 80% (แก้ไขได้ ✏️)'
+            },
+            electricity: {
+                title: 'ระบบบันทึกการใช้พลังงานไฟฟ้าอัตโนมัติ (Electricity Auto-Generator)',
+                subtitle: 'คำนวณหน่วยไฟฟ้า kWh, ค่าไฟฟ้าบาท (4.50 บ./หน่วย) และเลขมิเตอร์ไฟฟ้า พร้อมบันทึกลงระบบ',
+                colMetric: 'หน่วยไฟฟ้า (kWh) / ค่าไฟบาท (แก้ไขได้ ✏️)'
+            },
+            water_quality: {
+                title: 'ระบบบันทึกผลตรวจวัดคุณภาพน้ำเบื้องต้นอัตโนมัติ (Water Quality Auto-Generator)',
+                subtitle: 'สุ่มผลตรวจวิเคราะห์ pH, DO, TDS, คลอรีนอิสระ, ตะกอนแขวนลอย SS ตามเกณฑ์มาตรฐาน',
+                colMetric: 'ผลตรวจวัด pH, DO, TDS, Cl, SS (แก้ไขได้ ✏️)'
+            },
+            machinery: {
+                title: 'ระบบบันทึกการตรวจเช็คเครื่องจักรอัตโนมัติ (Machinery Daily Checklist)',
+                subtitle: 'บันทึกสถานะการทำงานปกติของเครื่องจักรหลัก 9 รายการประจำวัน',
+                colMetric: 'สถานะการทำงานเครื่องจักร 9 รายการ (แก้ไขได้ ✏️)'
+            },
+            all: {
+                title: 'ระบบบันทึกข้อมูลครบวงจรอัตโนมัติ (All-In-One Auto Generator)',
+                subtitle: 'คำนวณค่าน้ำเสีย 80%, หน่วยไฟฟ้า kWh, ผลตรวจคุณภาพน้ำ, และเช็คลิสต์เครื่องจักร พร้อมบันทึกลงระบบ',
+                colMetric: 'ค่าน้ำ / ค่าไฟ / ผลตรวจ (แก้ไขได้ ✏️)'
+            }
+        };
+
+        const target = mod || this.currentModule || 'all';
+        const cfg = configs[target] || configs.all;
+        if (titleEl) titleEl.textContent = cfg.title;
+        if (subtitleEl) subtitleEl.textContent = cfg.subtitle;
+        if (colMetricEl) colMetricEl.textContent = cfg.colMetric;
     }
 
     /**
@@ -11742,15 +12063,13 @@ class AutoGeneratorController {
      */
     bindGlobalPageTriggers() {
         const triggerConfigs = [
-            { id: 'btn-top-auto-gen', module: null },
             { id: 'btn-dash-auto-gen', module: null },
             { id: 'btn-inf-auto-gen', module: 'influent' },
             { id: 'btn-elec-auto-gen', module: 'electricity' },
             { id: 'btn-add-influent-auto', module: 'influent' },
             { id: 'btn-add-electricity-auto', module: 'electricity' },
             { id: 'btn-add-prelim-quality-auto', module: 'water_quality' },
-            { id: 'btn-add-machinery-auto', module: 'machinery' },
-            { id: 'btn-add-maintenance-auto', module: 'machinery' }
+            { id: 'btn-add-machinery-auto', module: 'machinery' }
         ];
 
         triggerConfigs.forEach(({ id, module }) => {
@@ -11832,8 +12151,9 @@ class AutoGeneratorController {
             try { window.App.openModal('modal-auto-generator'); } catch(e) {}
         }
 
-        // 2. ไฮไลต์โมดูลที่เลือก
+        // 2. ไฮไลต์โมดูลที่เลือก และอัปเดตหัวข้อ/คอลัมน์ให้ตรงกับโมดูลเป้าหมาย
         this.highlightModuleScope(this.currentModule);
+        this.updateModalHeaders(this.currentModule);
 
         // 3. ตรวจสอบให้แน่ใจว่ามีวันที่ และ Clamp ไม่ให้เกินวันปัจจุบัน
         const todayStr = this.getTodayISO();
@@ -13638,6 +13958,47 @@ class AttachmentManager {
             return;
         }
 
+        const dataStr = (typeof data === 'string') ? data.toLowerCase() : '';
+        const isWord = (typeof item === 'object' && item.type === 'word') || dataStr.includes('.docx') || dataStr.includes('.doc') || dataStr.includes('wordprocessingml') || dataStr.includes('msword');
+        const isExcel = (typeof item === 'object' && item.type === 'excel') || dataStr.includes('.xlsx') || dataStr.includes('.xls') || dataStr.includes('spreadsheetml') || dataStr.includes('vnd.ms-excel');
+
+        if (isWord || isExcel) {
+            const isXls = isExcel;
+            const iconClass = isXls ? 'fa-solid fa-file-excel text-emerald-400' : 'fa-solid fa-file-word text-blue-400';
+            const typeLabel = isXls ? 'เอกสาร Microsoft Excel' : 'เอกสาร Microsoft Word';
+            const btnColor = isXls ? '#10b981' : '#3b82f6';
+            const ext = isXls ? '.xlsx' : '.docx';
+
+            Swal.fire({
+                title: `<div class="text-base font-bold text-white flex items-center justify-center gap-2"><i class="${iconClass}"></i> ${name}</div>`,
+                html: `
+                    <div class="p-6 text-center bg-slate-900 rounded-xl border border-slate-700 my-2">
+                        <div class="mb-3"><i class="${iconClass} text-5xl"></i></div>
+                        <p class="text-sm text-slate-200 font-bold mb-1">${typeLabel}</p>
+                        <p class="text-xs text-slate-400">กรุณากดปุ่มด้านล่างเพื่อดาวน์โหลดและเปิดดูเอกสารด้วยโปรแกรม Office บนอุปกรณ์ของคุณ</p>
+                    </div>
+                `,
+                showCancelButton: true,
+                cancelButtonText: 'ปิด',
+                confirmButtonText: '<i class="fa-solid fa-download mr-1"></i> ดาวน์โหลดไฟล์',
+                confirmButtonColor: btnColor,
+                preConfirm: () => {
+                    try {
+                        const link = document.createElement('a');
+                        link.href = data;
+                        const safeName = name ? (name.includes('.') ? name : name + ext) : ('เอกสาร' + ext);
+                        link.download = safeName;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    } catch (e) {
+                        window.open(data, '_blank');
+                    }
+                }
+            });
+            return;
+        }
+
         // Image Viewer
         Swal.fire({
             title: `<div class="text-sm font-bold text-white flex items-center justify-center gap-2"><i class="fa-solid fa-image text-cyan-400"></i> ${name}</div>`,
@@ -13881,17 +14242,41 @@ class DashboardModule {
     }
 
     async render() {
-        // 1. ดึงข้อมูลทุกตารางที่จำเป็นจาก DataStore
-        let waterList = await window.DataStore.getAll('influent_wastewater', { orderBy: 'recorded_at', ascending: true });
-        let elecList = await window.DataStore.getAll('electricity_consumption', { orderBy: 'recorded_at', ascending: true });
-        let qualityList = await window.DataStore.getAll('preliminary_water_quality', { orderBy: 'recorded_at', ascending: true });
-        let machList = await window.DataStore.getAll('machinery_inspection', { orderBy: 'recorded_at', ascending: false });
-        let maintList = await window.DataStore.getAll('maintenance_records', { orderBy: 'recorded_at', ascending: false });
-        let riskList = await window.DataStore.getAll('risk_management', { orderBy: 'recorded_at', ascending: false });
-        let incidentList = await window.DataStore.getAll('incident_records', { orderBy: 'recorded_at', ascending: false });
-        let eqList = await window.DataStore.getAll('equipment_ref');
-        let logsList = await window.DataStore.getAll('system_logs', { orderBy: 'recorded_at', ascending: false });
-        let monthlyReports = await window.DataStore.getAll('monthly_reports', { orderBy: 'report_month', ascending: true });
+        // 1. ดึงข้อมูลทุกตารางที่จำเป็นจาก DataStore แบบขนาน (Promise.all) เพื่อความเร็วสูงสุด
+        const [
+            waterListRaw,
+            elecListRaw,
+            qualityListRaw,
+            machListRaw,
+            maintListRaw,
+            riskListRaw,
+            incidentListRaw,
+            eqListRaw,
+            logsListRaw,
+            monthlyReportsRaw
+        ] = await Promise.all([
+            window.DataStore.getAll('influent_wastewater', { orderBy: 'recorded_at', ascending: true }),
+            window.DataStore.getAll('electricity_consumption', { orderBy: 'recorded_at', ascending: true }),
+            window.DataStore.getAll('preliminary_water_quality', { orderBy: 'recorded_at', ascending: true }),
+            window.DataStore.getAll('machinery_inspection', { orderBy: 'recorded_at', ascending: false }),
+            window.DataStore.getAll('maintenance_records', { orderBy: 'recorded_at', ascending: false }),
+            window.DataStore.getAll('risk_management', { orderBy: 'recorded_at', ascending: false }),
+            window.DataStore.getAll('incident_records', { orderBy: 'recorded_at', ascending: false }),
+            window.DataStore.getAll('equipment_ref'),
+            window.DataStore.getAll('system_logs', { orderBy: 'recorded_at', ascending: false }),
+            window.DataStore.getAll('monthly_reports', { orderBy: 'report_month', ascending: true })
+        ]);
+
+        let waterList = waterListRaw;
+        let elecList = elecListRaw;
+        let qualityList = qualityListRaw;
+        let machList = machListRaw;
+        let maintList = maintListRaw;
+        let riskList = riskListRaw;
+        let incidentList = incidentListRaw;
+        let eqList = eqListRaw;
+        let logsList = logsListRaw;
+        let monthlyReports = monthlyReportsRaw;
 
         // Fallback จาก SAMPLE_DATABASE หากตารางว่าง
         if ((!waterList || waterList.length === 0) && window.SAMPLE_DATABASE && window.SAMPLE_DATABASE.influent_wastewater) {
@@ -13931,22 +14316,46 @@ class DashboardModule {
         this.renderExecutiveCards(metrics);
 
         // 5. วาดกราฟ Chart.js (h-72, maintainAspectRatio: false)
-        this.renderCharts(monthlyReports, metrics, filteredQuality, maintList, filteredWater);
+        try {
+            this.renderCharts(monthlyReports, metrics, filteredQuality, maintList, filteredWater);
+        } catch (chartErr) {
+            console.warn("Chart rendering warning:", chartErr);
+        }
 
         // 6. แสดงผลส่วนตรวจวัดคุณภาพน้ำและเกณฑ์มาตรฐาน 5 ค่าหลัก
-        this.renderWaterQualityCompliance(qualityList);
+        try {
+            this.renderWaterQualityCompliance(qualityList);
+        } catch (e) {
+            console.warn("Water quality compliance warning:", e);
+        }
 
         // 7. แสดงผลสถานะเครื่องจักรและภาพรวมงานซ่อมบำรุง
-        this.renderMachineryAndMaintenance(eqList, machList, maintList);
+        try {
+            this.renderMachineryAndMaintenance(eqList, machList, maintList);
+        } catch (e) {
+            console.warn("Machinery & maint warning:", e);
+        }
 
         // 8. แสดงผลการบริหารความเสี่ยงและเหตุการณ์ผิดปกติ
-        this.renderRiskAndIncidents(riskList, incidentList);
+        try {
+            this.renderRiskAndIncidents(riskList, incidentList);
+        } catch (e) {
+            console.warn("Risk & incident warning:", e);
+        }
 
         // 9. แสดงตารางจำแนกข้อมูลเชิงมิติรายอาคาร/กิจกรรม
-        this.renderDimensionalTable(filteredWater, filteredElec, metrics);
+        try {
+            this.renderDimensionalTable(filteredWater, filteredElec, metrics);
+        } catch (e) {
+            console.warn("Dimensional table warning:", e);
+        }
 
         // 10. แสดงผลบันทึกกิจกรรมระบบล่าสุด (Live Activity Feed)
-        this.renderRecentActivityFeed(logsList);
+        try {
+            this.renderRecentActivityFeed(logsList);
+        } catch (e) {
+            console.warn("Activity feed warning:", e);
+        }
     }
 
     filterRecords(list, dateField) {
@@ -15386,9 +15795,11 @@ class InfluentModule {
         const pillThisYear = document.getElementById('pill-inf-this-year');
         if (pillThisYear) pillThisYear.addEventListener('click', () => {
             this.resetFilters();
-            this.filters.year = '2569';
+            const now = new Date();
+            const curY = String(now.getFullYear() + 543);
+            this.filters.year = curY;
             const el = document.getElementById('filter-inf-year');
-            if (el) el.value = '2569';
+            if (el) el.value = curY;
             this.setActivePill('pill-inf-this-year');
             this.applyFilters();
         });
@@ -15396,12 +15807,15 @@ class InfluentModule {
         const pillThisMonth = document.getElementById('pill-inf-this-month');
         if (pillThisMonth) pillThisMonth.addEventListener('click', () => {
             this.resetFilters();
-            this.filters.month = '8';
-            this.filters.year = '2569';
+            const now = new Date();
+            const curM = String(now.getMonth() + 1);
+            const curY = String(now.getFullYear() + 543);
+            this.filters.month = curM;
+            this.filters.year = curY;
             const elM = document.getElementById('filter-inf-month');
-            if (elM) elM.value = '8';
+            if (elM) elM.value = curM;
             const elY = document.getElementById('filter-inf-year');
-            if (elY) elY.value = '2569';
+            if (elY) elY.value = curY;
             this.setActivePill('pill-inf-this-month');
             this.applyFilters();
         });
@@ -15480,7 +15894,7 @@ class InfluentModule {
         const ids = ['filter-inf-search', 'filter-inf-building', 'filter-inf-category', 'filter-inf-start-date', 'filter-inf-end-date', 'filter-inf-year', 'filter-inf-month'];
         ids.forEach(id => {
             const el = document.getElementById(id);
-            if (el) el.value = el.tagName === 'SELECT' ? (id.includes('year') ? '2569' : (id.includes('month') ? '8' : 'all')) : '';
+            if (el) el.value = el.tagName === 'SELECT' ? 'all' : '';
         });
     }
 
@@ -17298,6 +17712,15 @@ class WaterQualityModule {
             month: 'all'
         };
         this.currentTab = 'prelim';
+
+        // ป้องกัน Event หลุดหรือเรียกไม่ถึง: ผูก Event เมื่อ DOM พร้อมอัตโนมัติ
+        if (typeof document !== 'undefined') {
+            if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                setTimeout(() => this.bindEvents(), 50);
+            } else {
+                document.addEventListener('DOMContentLoaded', () => this.bindEvents());
+            }
+        }
     }
 
     async init() {
@@ -17305,30 +17728,37 @@ class WaterQualityModule {
         await this.loadData();
     }
 
-    bindEvents() {
-        // จัดการแท็บสลับมุมมอง (เบื้องต้น vs ส่งตรวจรายไตรมาส 11 พารามิเตอร์)
+    switchTab(tab = 'prelim') {
+        this.currentTab = tab;
         const tabPrelim = document.getElementById('tab-btn-prelim');
         const tabQuarter = document.getElementById('tab-btn-quarter');
         const secPrelim = document.getElementById('section-prelim-quality');
         const secQuarter = document.getElementById('section-quarter-quality');
 
-        if (tabPrelim && tabQuarter) {
-            tabPrelim.addEventListener('click', () => {
-                this.currentTab = 'prelim';
-                tabPrelim.className = 'btn active bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-xl border border-emerald-500 shadow-md shadow-emerald-950/30 flex items-center gap-2 transition cursor-pointer';
-                tabQuarter.className = 'btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium px-4 py-2.5 rounded-xl border border-slate-700 flex items-center gap-2 transition cursor-pointer';
-                if (secPrelim) secPrelim.style.display = 'block';
-                if (secQuarter) secQuarter.style.display = 'none';
-            });
+        if (tab === 'prelim') {
+            if (tabPrelim) tabPrelim.className = 'btn active bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-xl border border-emerald-500 shadow-md shadow-emerald-950/30 flex items-center gap-2 transition cursor-pointer';
+            if (tabQuarter) tabQuarter.className = 'btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium px-4 py-2.5 rounded-xl border border-slate-700 flex items-center gap-2 transition cursor-pointer';
+            if (secPrelim) secPrelim.style.display = 'block';
+            if (secQuarter) secQuarter.style.display = 'none';
+        } else {
+            if (tabQuarter) tabQuarter.className = 'btn active bg-purple-600 hover:bg-purple-700 text-white font-bold px-4 py-2.5 rounded-xl border border-purple-500 shadow-md shadow-purple-950/30 flex items-center gap-2 transition cursor-pointer';
+            if (tabPrelim) tabPrelim.className = 'btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium px-4 py-2.5 rounded-xl border border-slate-700 flex items-center gap-2 transition cursor-pointer';
+            if (secPrelim) secPrelim.style.display = 'none';
+            if (secQuarter) secQuarter.style.display = 'block';
+            this.renderQuarterlyTable(this.quarterlyList);
+        }
+    }
 
-            tabQuarter.addEventListener('click', () => {
-                this.currentTab = 'quarter';
-                tabQuarter.className = 'btn active bg-purple-600 hover:bg-purple-700 text-white font-bold px-4 py-2.5 rounded-xl border border-purple-500 shadow-md shadow-purple-950/30 flex items-center gap-2 transition cursor-pointer';
-                tabPrelim.className = 'btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium px-4 py-2.5 rounded-xl border border-slate-700 flex items-center gap-2 transition cursor-pointer';
-                if (secPrelim) secPrelim.style.display = 'none';
-                if (secQuarter) secQuarter.style.display = 'block';
-                this.renderQuarterlyTable(this.quarterlyList);
-            });
+    bindEvents() {
+        // จัดการแท็บสลับมุมมอง (เบื้องต้น vs ส่งตรวจรายไตรมาส 11 พารามิเตอร์)
+        const tabPrelim = document.getElementById('tab-btn-prelim');
+        const tabQuarter = document.getElementById('tab-btn-quarter');
+
+        if (tabPrelim) {
+            tabPrelim.onclick = () => this.switchTab('prelim');
+        }
+        if (tabQuarter) {
+            tabQuarter.onclick = () => this.switchTab('quarter');
         }
 
         // ผูกการคลิกจัดเรียงหัวตารางอัตโนมัติ (วันที่ล่าสุดขึ้นก่อนเสมอ)
@@ -17526,22 +17956,53 @@ class WaterQualityModule {
                 themeColor: 'emerald',
                 singleMode: false
             });
+        }
 
-            // ผูก Universal Attachment Manager (ผลตรวจไตรมาส: Lab Report PDF, ภาพถ่ายหน้างาน)
-            window.AttachmentManager.bindFormAttachments({
-                moduleInstance: this,
-                itemsProperty: 'uploadedQuarterlyAttachments',
-                containerId: 'qwq-image-gallery-container',
-                fileInputId: 'qwq-file-upload-input',
-                browseBtnId: 'btn-qwq-browse-files',
-                cameraInputId: 'qwq-file-camera-input',
-                cameraBtnId: 'btn-qwq-open-camera',
-                urlInputId: 'qwq-form-image-url-input',
-                addUrlBtnId: 'btn-qwq-add-url-image',
-                clearBtnId: 'btn-qwq-clear-all-images',
-                badgeId: 'qwq-image-count-badge',
-                themeColor: 'cyan',
-                singleMode: false
+        // ผูก Drag & Drop สำหรับไฟล์รายงานผลแล็บไตรมาส (PDF, รูปภาพ, Word, Excel)
+        const qwqDropzone = document.getElementById('qwq-dropzone');
+        const qwqFileInput = document.getElementById('qwq-file-upload-input');
+        const qwqBtnRemove = document.getElementById('qwq-btn-remove-file');
+
+        if (qwqDropzone && qwqFileInput) {
+            qwqDropzone.addEventListener('click', (e) => {
+                if (e.target.closest('#qwq-btn-remove-file') || e.target.id === 'qwq-btn-remove-file') return;
+                qwqFileInput.click();
+            });
+
+            qwqFileInput.addEventListener('change', (e) => {
+                if (e.target.files && e.target.files[0]) {
+                    this.processQuarterlyLabFile(e.target.files[0]);
+                }
+            });
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                qwqDropzone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    qwqDropzone.classList.add('border-purple-400', 'bg-purple-500/10');
+                });
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                qwqDropzone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    qwqDropzone.classList.remove('border-purple-400', 'bg-purple-500/10');
+                });
+            });
+
+            qwqDropzone.addEventListener('drop', (e) => {
+                const dt = e.dataTransfer;
+                if (dt && dt.files && dt.files[0]) {
+                    this.processQuarterlyLabFile(dt.files[0]);
+                }
+            });
+        }
+
+        if (qwqBtnRemove) {
+            qwqBtnRemove.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.resetQuarterlyDropzone();
             });
         }
 
@@ -18145,6 +18606,11 @@ class WaterQualityModule {
                     </td>
                     <td class="text-center whitespace-nowrap">
                         <div class="flex items-center justify-center gap-1">
+                            ${item.lab_report_file ? `
+                                <button type="button" class="btn btn-outline btn-icon btn-sm text-purple-400 hover:text-white" onclick="window.WaterQualityModule.openQuarterlyFile('${item.id}')" title="เปิดดู/ดาวน์โหลดไฟล์รายงานแล็บ (${(this.getLabFileTypeInfo(item.lab_report_file)).badgeText})">
+                                    <i class="${(this.getLabFileTypeInfo(item.lab_report_file)).icon}"></i>
+                                </button>
+                            ` : ''}
                             <button type="button" class="btn btn-outline btn-icon btn-sm text-blue-400 hover:text-white" onclick="window.WaterQualityModule.viewQuarterlyDetails('${item.id}')" title="ดูรายละเอียด 11 พารามิเตอร์">
                                 <i class="fa-solid fa-eye"></i>
                             </button>
@@ -19020,9 +19486,7 @@ class WaterQualityModule {
         if (inspEl) inspEl.value = currentName;
 
         this.uploadedQuarterlyAttachments = [];
-        if (window.AttachmentManager) {
-            window.AttachmentManager.updateContainerDisplay(this, 'uploadedQuarterlyAttachments', 'qwq-image-gallery-container', 'qwq-image-count-badge', 'cyan', false);
-        }
+        this.resetQuarterlyDropzone();
 
         window.App.openModal('modal-quarter-quality');
     }
@@ -19055,18 +19519,237 @@ class WaterQualityModule {
         setVal('qwq-form-fcb', item.fcb);
         setVal('qwq-form-status', item.status || 'ผ่านเกณฑ์มาตรฐาน');
         setVal('qwq-form-action', item.action_taken || '');
-        setVal('qwq-form-file', item.lab_report_file || item.file_url || '');
         setVal('qwq-form-inspector', item.inspector || '');
         setVal('qwq-form-remarks', item.remarks || '');
 
-        this.uploadedQuarterlyAttachments = window.AttachmentManager 
-            ? window.AttachmentManager.normalizeAttachments(item.lab_report_file || item.file_url) 
-            : [];
-        if (window.AttachmentManager) {
-            window.AttachmentManager.updateContainerDisplay(this, 'uploadedQuarterlyAttachments', 'qwq-image-gallery-container', 'qwq-image-count-badge', 'cyan', false);
+        this.resetQuarterlyDropzone();
+        const labFile = item.lab_report_file || item.file_url || '';
+        setVal('qwq-form-file', labFile);
+
+        if (labFile) {
+            const fileInfo = this.getLabFileTypeInfo(labFile, 'ผลการตรวจวิเคราะห์ไตรมาส');
+            const promptEl = document.getElementById('qwq-dropzone-prompt');
+            const infoEl = document.getElementById('qwq-dropzone-fileinfo');
+            const iconEl = document.getElementById('qwq-file-type-icon');
+            const nameEl = document.getElementById('qwq-dropzone-filename');
+            const sizeEl = document.getElementById('qwq-dropzone-filesize');
+
+            if (promptEl) promptEl.style.display = 'none';
+            if (infoEl) {
+                infoEl.classList.remove('hidden');
+                infoEl.style.display = 'flex';
+            }
+            if (iconEl) iconEl.innerHTML = `<i class="${fileInfo.icon}"></i>`;
+            if (nameEl) nameEl.textContent = `ไฟล์แนบผลตรวจแล็บ (${fileInfo.label})`;
+            if (sizeEl) sizeEl.textContent = `${fileInfo.badgeText} • พร้อมเปิดดู / ดาวน์โหลด`;
         }
 
         window.App.openModal('modal-quarter-quality');
+    }
+
+    getLabFileTypeInfo(fileUrl = '', title = '') {
+        const url = (fileUrl || '').toLowerCase();
+        const t = (title || '').toLowerCase();
+
+        // 1. Excel (.xlsx, .xls, .csv, mime)
+        if (url.includes('.xlsx') || url.includes('.xls') || url.includes('.csv') ||
+            url.includes('spreadsheetml') || url.includes('vnd.ms-excel') || url.includes('text/csv') ||
+            t.endsWith('.xlsx') || t.endsWith('.xls') || t.endsWith('.csv')) {
+            return {
+                type: 'excel',
+                icon: 'fa-solid fa-file-excel text-emerald-400',
+                badgeClass: 'badge-success bg-emerald-500/20 text-emerald-300 border border-emerald-500/40',
+                badgeText: 'Excel',
+                label: 'ไฟล์ตาราง Excel',
+                color: 'emerald',
+                isDocument: true
+            };
+        }
+
+        // 2. Word (.docx, .doc, mime)
+        if (url.includes('.docx') || url.includes('.doc') ||
+            url.includes('wordprocessingml') || url.includes('msword') ||
+            t.endsWith('.docx') || t.endsWith('.doc')) {
+            return {
+                type: 'word',
+                icon: 'fa-solid fa-file-word text-blue-400',
+                badgeClass: 'badge-info bg-blue-500/20 text-blue-300 border border-blue-500/40',
+                badgeText: 'Word',
+                label: 'ไฟล์เอกสาร Word',
+                color: 'blue',
+                isDocument: true
+            };
+        }
+
+        // 3. Image (png, jpg, jpeg, webp, data:image/)
+        if (url.startsWith('data:image/') || url.includes('.png') || url.includes('.jpg') || url.includes('.jpeg') || url.includes('.webp') ||
+            t.endsWith('.png') || t.endsWith('.jpg') || t.endsWith('.jpeg') || t.endsWith('.webp')) {
+            return {
+                type: 'image',
+                icon: 'fa-solid fa-file-image text-amber-400',
+                badgeClass: 'badge-warning bg-amber-500/20 text-amber-300 border border-amber-500/40',
+                badgeText: 'รูปภาพ',
+                label: 'ไฟล์รูปภาพ / ผลสแกน',
+                color: 'amber',
+                isDocument: false
+            };
+        }
+
+        // 4. PDF (Default or .pdf, data:application/pdf)
+        return {
+            type: 'pdf',
+            icon: 'fa-solid fa-file-pdf text-rose-400',
+            badgeClass: 'badge-danger bg-rose-500/20 text-rose-300 border border-rose-500/40',
+            badgeText: 'PDF',
+            label: 'เอกสารผลตรวจ PDF',
+            color: 'rose',
+            isDocument: true
+        };
+    }
+
+    processQuarterlyLabFile(file) {
+        if (!file) return;
+
+        // ตรวจสอบขนาดไฟล์ (สูงสุด 25MB)
+        const maxBytes = 25 * 1024 * 1024;
+        if (file.size > maxBytes) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'ไฟล์มีขนาดใหญ่เกินไป',
+                text: 'กรุณาอัปโหลดไฟล์ขนาดไม่เกิน 25 MB'
+            });
+            return;
+        }
+
+        const formattedSize = file.size > 1024 * 1024 
+            ? `${(file.size / (1024 * 1024)).toFixed(1)} MB` 
+            : `${Math.round(file.size / 1024)} KB`;
+
+        const fileInfo = this.getLabFileTypeInfo(file.type, file.name);
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const base64Data = event.target.result;
+            const fileUrlInput = document.getElementById('qwq-form-file');
+            if (fileUrlInput) fileUrlInput.value = base64Data;
+
+            const promptEl = document.getElementById('qwq-dropzone-prompt');
+            const infoEl = document.getElementById('qwq-dropzone-fileinfo');
+            const iconEl = document.getElementById('qwq-file-type-icon');
+            const nameEl = document.getElementById('qwq-dropzone-filename');
+            const sizeEl = document.getElementById('qwq-dropzone-filesize');
+
+            if (promptEl) promptEl.style.display = 'none';
+            if (infoEl) {
+                infoEl.classList.remove('hidden');
+                infoEl.style.display = 'flex';
+            }
+            if (iconEl) iconEl.innerHTML = `<i class="${fileInfo.icon}"></i>`;
+            if (nameEl) nameEl.textContent = file.name;
+            if (sizeEl) sizeEl.textContent = `${fileInfo.badgeText} • ${formattedSize}`;
+
+            Swal.fire({
+                icon: 'success',
+                title: 'แนบไฟล์ผลตรวจสำเร็จ!',
+                html: `ประเภท: <strong>${fileInfo.label}</strong><br>ไฟล์: <strong>${file.name}</strong> (${formattedSize})`,
+                timer: 1500,
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end'
+            });
+        };
+        reader.readAsDataURL(file);
+    }
+
+    resetQuarterlyDropzone() {
+        const fileInput = document.getElementById('qwq-file-upload-input');
+        if (fileInput) fileInput.value = '';
+
+        const fileUrlInput = document.getElementById('qwq-form-file');
+        if (fileUrlInput) fileUrlInput.value = '';
+
+        const promptEl = document.getElementById('qwq-dropzone-prompt');
+        const infoEl = document.getElementById('qwq-dropzone-fileinfo');
+        if (promptEl) promptEl.style.display = 'block';
+        if (infoEl) {
+            infoEl.classList.add('hidden');
+            infoEl.style.display = 'none';
+        }
+    }
+
+    openQuarterlyFile(id) {
+        const item = this.quarterlyList.find(x => x.id === id);
+        if (item && item.lab_report_file) {
+            this.openOrDownloadFile(item.lab_report_file, `ผลตรวจคุณภาพน้ำไตรมาส_${item.sampling_date || 'report'}`);
+        } else {
+            Swal.fire({
+                icon: 'info',
+                title: 'ไม่มีไฟล์รายงานแนบ',
+                text: 'รายการนี้ยังไม่ได้อัปโหลดไฟล์ผลตรวจแล็บ',
+                confirmButtonText: 'ตกลง',
+                confirmButtonColor: '#8b5cf6'
+            });
+        }
+    }
+
+    openOrDownloadFile(fileUrl, fileName, fileType) {
+        if (!fileUrl || fileUrl === '#' || fileUrl.trim() === '') {
+            Swal.fire({
+                icon: 'info',
+                title: 'ไม่มีไฟล์รายงานผลตรวจแนบ',
+                text: 'รายการนี้ยังไม่ได้อัปโหลดไฟล์ผลตรวจจากห้องปฏิบัติการ',
+                confirmButtonText: 'รับทราบ',
+                confirmButtonColor: '#8b5cf6'
+            });
+            return;
+        }
+
+        const info = this.getLabFileTypeInfo(fileUrl, fileName);
+        const resolvedType = fileType || info.type;
+
+        // 1. PDF: เปิดดูใน AttachmentManager หรือ new window
+        if (resolvedType === 'pdf') {
+            if (window.AttachmentManager && window.AttachmentManager.openMediaViewer) {
+                window.AttachmentManager.openMediaViewer({ data: fileUrl, type: 'pdf', name: fileName || 'รายงานผลวิเคราะห์คุณภาพน้ำ' });
+            } else {
+                window.open(fileUrl, '_blank');
+            }
+            return;
+        }
+
+        // 2. Image: เปิดดูภาพขยาย
+        if (resolvedType === 'image') {
+            if (window.AttachmentManager && window.AttachmentManager.openMediaViewer) {
+                window.AttachmentManager.openMediaViewer({ data: fileUrl, type: 'image', name: fileName || 'รูปภาพผลตรวจห้องปฏิบัติการ' });
+            } else {
+                window.open(fileUrl, '_blank');
+            }
+            return;
+        }
+
+        // 3. Word หรือ Excel: ดาวน์โหลดลงเครื่องทันที
+        try {
+            const link = document.createElement('a');
+            link.href = fileUrl;
+            let ext = resolvedType === 'excel' ? '.xlsx' : '.docx';
+            link.download = fileName ? (fileName.includes('.') ? fileName : `${fileName}${ext}`) : `รายงานผลตรวจ_${new Date().toISOString().split('T')[0]}${ext}`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            Swal.fire({
+                icon: 'success',
+                title: `กำลังดาวน์โหลด${info.label}`,
+                text: link.download,
+                timer: 1500,
+                showConfirmButton: false,
+                toast: true,
+                position: 'top-end'
+            });
+        } catch (err) {
+            console.error('Download error:', err);
+            window.open(fileUrl, '_blank');
+        }
     }
 
     viewQuarterlyDetails(id) {
@@ -19114,6 +19797,8 @@ class WaterQualityModule {
             </tr>
         `).join('');
 
+        const fileInfo = item.lab_report_file ? this.getLabFileTypeInfo(item.lab_report_file) : null;
+
         Swal.fire({
             title: `<div class="text-base font-bold text-white flex items-center gap-2"><i class="fa-solid fa-microscope text-purple-400"></i> รายละเอียดผลตรวจวิเคราะห์น้ำทิ้ง 11 พารามิเตอร์</div>`,
             html: `
@@ -19140,11 +19825,23 @@ class WaterQualityModule {
                         </table>
                     </div>
 
-                    <div class="p-2.5 bg-slate-950 rounded-lg border border-slate-800 space-y-1 text-[11px]">
+                    <div class="p-2.5 bg-slate-950 rounded-lg border border-slate-800 space-y-2 text-[11px]">
                         <div><strong>การดำเนินการ / ข้อปฏิบัติ:</strong> <span class="text-slate-300">${item.action_taken || 'ระบบบำบัดทำงานเต็มประสิทธิภาพ'}</span></div>
                         <div><strong>ผู้ตรวจสอบ / เจ้าหน้าที่แล็บ:</strong> <span class="text-emerald-400 font-medium">${item.inspector || '-'}</span></div>
                         ${item.remarks ? `<div><strong>หมายเหตุ:</strong> <span class="text-slate-400">${item.remarks}</span></div>` : ''}
-                        ${item.lab_report_file ? `<div class="pt-1 border-t border-slate-800"><a href="${item.lab_report_file}" target="_blank" class="text-cyan-400 hover:underline flex items-center gap-1 font-mono"><i class="fa-solid fa-file-pdf text-rose-400"></i> เปิดดูไฟล์รายงานผลวิเคราะห์แล็บ</a></div>` : ''}
+                        ${item.lab_report_file ? `
+                            <div class="pt-2 border-t border-slate-800 flex items-center justify-between flex-wrap gap-2">
+                                <div class="text-slate-400 flex items-center gap-1.5">
+                                    <i class="${fileInfo.icon}"></i>
+                                    <span>ไฟล์รายงานผลแล็บ (${fileInfo.label})</span>
+                                </div>
+                                <button type="button" onclick="window.WaterQualityModule.openQuarterlyFile('${item.id}')" 
+                                    class="px-2.5 py-1 rounded bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 border border-purple-500/40 text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                    <span>เปิดดู / ดาวน์โหลด (${fileInfo.badgeText})</span>
+                                </button>
+                            </div>
+                        ` : ''}
                     </div>
                 </div>
             `,
@@ -19166,11 +19863,9 @@ class WaterQualityModule {
             : null;
         const currentName = currentUser ? (currentUser.full_name || currentUser.username) : 'แสงตะวัน ชาวเขา';
 
-        let qwqFileVal = null;
-        if (window.AttachmentManager && this.uploadedQuarterlyAttachments && this.uploadedQuarterlyAttachments.length > 0) {
+        let qwqFileVal = document.getElementById('qwq-form-file')?.value?.trim() || null;
+        if (!qwqFileVal && window.AttachmentManager && this.uploadedQuarterlyAttachments && this.uploadedQuarterlyAttachments.length > 0) {
             qwqFileVal = window.AttachmentManager.serializeAttachments(this.uploadedQuarterlyAttachments, false);
-        } else {
-            qwqFileVal = document.getElementById('qwq-form-file')?.value?.trim() || null;
         }
 
         const payload = {
@@ -21929,14 +22624,8 @@ class MaintenanceModule {
         const btnAdd = document.getElementById('btn-add-maintenance');
         if (btnAdd) btnAdd.addEventListener('click', () => this.openAddModal());
 
-        const btnAddAuto = document.getElementById('btn-add-maintenance-auto');
-        if (btnAddAuto) btnAddAuto.addEventListener('click', () => {
-            if (window.AutoGeneratorModule) {
-                window.AutoGeneratorModule.openGeneratorModal('all');
-            } else {
-                this.openAddModal();
-            }
-        });
+        const btnAddSample = document.getElementById('btn-add-maintenance-sample');
+        if (btnAddSample) btnAddSample.addEventListener('click', () => this.quickAddPMRecord());
 
         // Quick Action Toolbar Buttons
         const btnRefresh = document.getElementById('btn-maint-refresh');
@@ -22617,9 +23306,126 @@ class MaintenanceModule {
             this.renderImageGallery();
         }
 
-        await this.populateEquipmentSelect();
-
+        // เปิด Modal ก่อน แล้วโหลดอุปกรณ์ในพื้นหลัง
         window.App.openModal('modal-maintenance');
+        await this.populateEquipmentSelect();
+    }
+
+    /**
+     * สุ่มตัวอย่างงานบำรุงรักษาเชิงป้องกัน (PM) สมจริงลงตารางงานซ่อมบำรุงโดยตรง
+     * ไม่เปิดโมดอลน้ำเสีย และบันทึกลง Supabase Cloud พร้อมแสดงผลทันที
+     */
+    async quickAddPMRecord() {
+        const pmTemplates = [
+            {
+                equipment: 'เครื่องเติมอากาศ Roots Blower #1',
+                problem: 'ถึงรอบบำรุงรักษาเชิงป้องกัน (PM) ประจำเดือน',
+                cause: 'การเสื่อมสภาพตามชั่วโมงการทำงาน (Run time > 720 ชม.)',
+                method: 'เปลี่ยนถ่ายน้ำมันหล่อลื่นเกียร์และแบริ่ง, ตรวจสอบความตึงสายพาน V-Belt, ทำความสะอาดไส้กรองอากาศทางดูด',
+                result: 'เครื่องเดินเงียบ อุณหภูมิผิวเครื่องปกติ 42°C แรงดันลม 0.45 bar อัตราการไหลปกติ',
+                cost: 1500,
+                location: 'อาคารระบบบำบัดน้ำเสีย - ห้องเครื่องเป่าลม'
+            },
+            {
+                equipment: 'ปั๊มจุ่มสูบน้ำเสีย Submersible Pump #1',
+                problem: 'ถึงรอบตรวจสอบบำรุงรักษาเชิงป้องกัน (PM) ประจำไตรมาส',
+                cause: 'การสะสมของคราบไขมันและตะกอนในตัวเรือนปั๊ม',
+                method: 'ยกปั๊มตรวจเช็ค Mechanical Seal, ล้างทำความสะอาดใบพัดและห้องสูบ, วัดค่าความต้านทานฉนวนมอเตอร์ (>50 MΩ)',
+                result: 'กระแสไฟฟ้าทำงาน 4.8A ปกติ ไม่มีการรั่วซึมของน้ำมันซีล พร้อมใช้งาน',
+                cost: 2200,
+                location: 'บ่อสูบน้ำเสียรวม (Equalization Basin)'
+            },
+            {
+                equipment: 'ปั๊มจ่ายสารคลอรีน Dosing Pump #1',
+                problem: 'ถึงรอบตรวจเช็คระบบท่อส่งและหัวฉีดสารเคมี',
+                cause: 'การตกตะกอนของผลึกคลอรีนบริเวณ Diaphragm Valve',
+                method: 'ล้างทำความสะอาด Check Valve, เปลี่ยนแผ่นไดอะแฟรมสำรอง, สอบเทียบอัตราการจ่ายสารคลอรีน 15 มล./นาที',
+                result: 'ปั๊มจ่ายสารเคมีแม่นยำ ไม่พบรอยรั่วซึมที่ข้อต่อ',
+                cost: 850,
+                location: 'ห้องเตรียมและจ่ายสารเคมี'
+            },
+            {
+                equipment: 'หัววัดค่าออนไลน์ Online pH / DO Sensor',
+                problem: 'ถึงรอบสอบเทียบและทำความสะอาดหัวเซนเซอร์ประจำสัปดาห์',
+                cause: 'คราบฟิล์มจุลินทรีย์ (Biofilm) เกาะติดบริเวณกระจกอิเล็กโทรด',
+                method: 'ทำความสะอาดหัวโพรบด้วยสารละลายกรดอ่อน, Calibrate ด้วยสารละลายบัฟเฟอร์มาตรฐาน pH 4.01, 7.00 และ 10.01',
+                result: 'ค่าอ่านกลับมาตรงตามค่ามาตรฐาน ค่า Slope 98.5% ผ่านเกณฑ์รับรอง',
+                cost: 500,
+                location: 'ถังตกตะกอน / สระน้ำทิ้ง'
+            },
+            {
+                equipment: 'เครื่องวัดอัตราการไหล Flow Meter',
+                problem: 'ถึงรอบตรวจเช็คสภาพสายสัญญาณและ Zero Calibration',
+                cause: 'การสะสมของความชื้นและฝุ่นละอองรอบตัวตู้แปลงสัญญาณ Transmitter',
+                method: 'เป่าทำความสะอาดตู้คอนโทรล ตรวจสอบขั้วต่อสาย 4-20mA และทำการ Zero Point Calibration',
+                result: 'สัญญาณเชื่อมโยงกับระบบบันทึกแม่นยำ ค่าแสดงผลตรงกับอัตราสูบจริง',
+                cost: 650,
+                location: 'จุดระบายน้ำทิ้งส่วนกลาง'
+            }
+        ];
+
+        const tpl = pmTemplates[Math.floor(Math.random() * pmTemplates.length)];
+        const currentUser = (window.AuthService && typeof window.AuthService.getCurrentUser === 'function')
+            ? window.AuthService.getCurrentUser()
+            : null;
+        const operatorName = currentUser ? (currentUser.full_name || currentUser.username) : "แสงตะวัน ชาวเขา";
+
+        const now = new Date();
+        const isoStr = now.toISOString();
+
+        const newRecord = {
+            id: 'maint-' + Date.now(),
+            recorded_at: isoStr,
+            location: tpl.location,
+            job_type: 'ป้องกัน',
+            equipment_list: [tpl.equipment],
+            problem: tpl.problem,
+            cause: tpl.cause,
+            fix_method: tpl.method,
+            fix_result: tpl.result,
+            cost: tpl.cost,
+            operator: operatorName,
+            status: 'เสร็จสิ้น',
+            remarks: 'บันทึกผ่านระบบสุ่มตัวอย่างงานบำรุงรักษาเชิงป้องกัน (PM) อัตโนมัติ',
+            created_at: isoStr,
+            updated_at: isoStr
+        };
+
+        try {
+            await window.DataStore.insert('maintenance_records', newRecord);
+            await this.loadData();
+
+            if (window.Swal) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'บันทึกงานซ่อม PM เรียบร้อย!',
+                    html: `
+                        <div class="text-left text-xs space-y-1.5 p-2 font-sans">
+                            <div><strong class="text-amber-400">อุปกรณ์:</strong> ${tpl.equipment}</div>
+                            <div><strong class="text-amber-400">รายการ:</strong> ${tpl.problem}</div>
+                            <div><strong class="text-emerald-400">ผลการดำเนินการ:</strong> ${tpl.result}</div>
+                            <div><strong class="text-cyan-400">ค่าใช้จ่าย:</strong> ฿${tpl.cost.toLocaleString('th-TH', {minimumFractionDigits: 2})}</div>
+                            <div><strong class="text-slate-300">ผู้บันทึก:</strong> ${operatorName}</div>
+                        </div>
+                    `,
+                    timer: 2500,
+                    showConfirmButton: false,
+                    background: '#0c1322',
+                    color: '#f8fafc'
+                });
+            }
+        } catch (err) {
+            console.error('Failed to quick add PM record:', err);
+            if (window.Swal) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'บันทึกไม่สำเร็จ',
+                    text: err.message,
+                    background: '#0c1322',
+                    color: '#f8fafc'
+                });
+            }
+        }
     }
 
     async openEditModal(id) {
@@ -23543,6 +24349,8 @@ class RiskIncidentModule {
 
         const totalItems = list ? list.length : 0;
         const highRiskCount = list ? list.filter(item => item.severity_level === 'สูง' || item.severity_level === 'สูงมาก').length : 0;
+        const medRiskCount = list ? list.filter(item => item.severity_level === 'ปานกลาง' || item.severity_level === 'กลาง').length : 0;
+        const lowRiskCount = list ? list.filter(item => item.severity_level === 'ต่ำ' || item.severity_level === 'ต่ำมาก').length : 0;
         const activeRiskCount = list ? list.filter(item => item.status !== 'ยุติความเสี่ยง' && item.status !== 'ควบคุมได้แล้ว').length : 0;
 
         if (!list || list.length === 0) {
@@ -23577,16 +24385,22 @@ class RiskIncidentModule {
 
         tbody.innerHTML = pageItems.map((item, idx) => {
             const globalIdx = startIndex + idx + 1;
-            const isHigh = item.severity_level === 'สูง' || item.severity_level === 'สูงมาก';
+            const rkName = item.risk_name || item.risk_title || '-';
+            const rkSev = item.severity_level || item.severity || 'ปานกลาง';
+            const isHigh = rkSev === 'สูง' || rkSev === 'สูงมาก' || rkSev === 'high';
+            const rkImpact = item.impact || '-';
+            const rkPlan = item.prevention_plan || item.mitigation_measure || '-';
+            const rkStatus = item.status || 'ควบคุมได้';
+            const rkMgr = item.risk_manager || item.responsible_person || '-';
             return `
                 <tr>
                     <td class="text-slate-400 font-mono text-center">${globalIdx}</td>
-                    <td class="font-semibold text-white">${item.risk_name}</td>
-                    <td><span class="badge ${isHigh ? 'badge-danger' : 'badge-warning'}">${item.severity_level}</span></td>
-                    <td class="text-xs text-slate-300">${item.impact}</td>
-                    <td class="text-xs text-emerald-400 font-medium">${item.prevention_plan}</td>
-                    <td><span class="badge badge-success">${item.status}</span></td>
-                    <td class="text-xs text-slate-300">${item.risk_manager || '-'}</td>
+                    <td class="font-semibold text-white">${rkName}</td>
+                    <td><span class="badge ${isHigh ? 'badge-danger' : 'badge-warning'}">${rkSev}</span></td>
+                    <td class="text-xs text-slate-300">${rkImpact}</td>
+                    <td class="text-xs text-emerald-400 font-medium">${rkPlan}</td>
+                    <td><span class="badge badge-success">${rkStatus}</span></td>
+                    <td class="text-xs text-slate-300">${rkMgr}</td>
                     <td class="text-center">
                         <div class="flex items-center justify-center gap-1.5">
                             <button class="btn btn-outline btn-icon btn-sm text-blue-400 hover:text-white" onclick="window.RiskIncidentModule.viewRiskDetails('${item.id}')" title="ดูรายละเอียด">
@@ -23706,21 +24520,29 @@ class RiskIncidentModule {
             return;
         }
 
-        tbody.innerHTML = list.map((item, idx) => `
+        tbody.innerHTML = list.map((item, idx) => {
+            const incDate = item.recorded_at || item.incident_date;
+            const incType = item.incident_type || item.incident_title || 'เหตุการณ์ขัดข้องทั่วไป';
+            const incDesc = item.description || item.root_cause || item.location || '-';
+            const incAction = item.action_taken || item.corrective_action || '-';
+            const incStatus = item.resolution_status || item.status || 'แก้ไขแล้ว';
+            const statusClass = (incStatus.includes('แก้ไขแล้ว') || incStatus === 'resolved' || incStatus === 'เสร็จสิ้น') ? 'badge-success' : 'badge-warning';
+            return `
             <tr>
                 <td class="text-slate-400 font-mono text-center">${idx + 1}</td>
-                <td class="font-mono text-xs text-slate-300">${window.App.formatDateTime(item.incident_date || item.recorded_at)}</td>
-                <td class="font-semibold text-white">${item.incident_type}</td>
-                <td class="text-xs text-slate-300">${item.description}</td>
-                <td class="text-xs text-cyan-400">${item.action_taken || '-'}</td>
-                <td><span class="badge badge-success">${item.resolution_status}</span></td>
+                <td class="font-mono text-xs text-slate-300">${window.App ? window.App.formatDateTime(incDate) : incDate}</td>
+                <td class="font-semibold text-white">${incType}</td>
+                <td class="text-xs text-slate-300">${incDesc}</td>
+                <td class="text-xs text-cyan-400">${incAction}</td>
+                <td><span class="badge ${statusClass}">${incStatus}</span></td>
                 <td class="text-center">
                     <button class="btn btn-outline btn-icon btn-sm text-rose-400 hover:text-white" onclick="window.RiskIncidentModule.deleteIncidentRecord('${item.id}')" title="ลบ">
                         <i class="fa-solid fa-trash-can"></i>
                     </button>
                 </td>
             </tr>
-        `).join('');
+            `;
+        }).join('');
 
         // Render Table Footer Summary Row
         const tfoot = document.getElementById('table-incident-foot');
@@ -23740,35 +24562,36 @@ class RiskIncidentModule {
             `;
         }
 
-        // Summary Cards Configuration
+        // Summary Cards Configuration for Incidents
+        const resolvedPct = totalItems > 0 ? Math.round((resolvedCount / totalItems) * 100) : 100;
         const summaryCards = [
             {
-                title: 'บันทึกประเมินความเสี่ยง',
-                value: `${totalItems.toLocaleString()} รายการ`,
-                subText: 'ตามตัวกรองที่เลือก',
-                icon: 'fa-solid fa-shield-halved',
+                title: 'เหตุการณ์ผิดปกติทั้งหมด',
+                value: `${totalItems.toLocaleString()} เหตุการณ์`,
+                subText: 'ประวัติอุบัติการณ์ในระบบ',
+                icon: 'fa-solid fa-bell',
                 color: 'cyan'
             },
             {
-                title: 'ความเสี่ยงสูง (+) VS ต่ำ/กลาง (-)',
-                value: `สูง: ${highRiskCount} / ต่ำ-กลาง: ${lowRiskCount + medRiskCount}`,
-                subText: 'ระดับความเสี่ยงตามเกณฑ์ สร.',
-                icon: 'fa-solid fa-right-left',
-                color: 'blue'
-            },
-            {
-                title: 'สถานะมาตรการป้องกัน (SAFE)',
-                value: 'ควบคุมได้ 100%',
-                subText: 'มีมาตรการลดความเสี่ยงทุกจุด',
+                title: 'สถานะแก้ไขแล้วเสร็จ',
+                value: `${resolvedPct}% (${resolvedCount} เรื่อง)`,
+                subText: 'แก้ไขและควบคุมเรียบร้อย',
                 icon: 'fa-solid fa-circle-check',
                 color: 'emerald'
             },
             {
-                title: 'ความเสี่ยงระดับสูง/วิกฤต',
-                value: `${highRiskCount} รายการ`,
-                subText: 'ต้องเฝ้าระวังและติดตามใกล้ชิด',
-                icon: 'fa-solid fa-triangle-exclamation',
-                color: 'rose'
+                title: 'เหตุการณ์รอแก้ไข/ติดตาม',
+                value: `${pendingCount} เรื่อง`,
+                subText: pendingCount > 0 ? 'ต้องติดตามเร่งด่วน' : 'ไม่มีเหตุการณ์ตกค้าง',
+                icon: 'fa-solid fa-clock-rotate-left',
+                color: pendingCount > 0 ? 'amber' : 'emerald'
+            },
+            {
+                title: 'ความพร้อมระบบบำบัดน้ำเสีย',
+                value: 'พร้อม 100%',
+                subText: 'ไม่มีรายงานฉุกเฉินวิกฤต',
+                icon: 'fa-solid fa-shield-check',
+                color: 'purple'
             }
         ];
 
@@ -23950,14 +24773,25 @@ class RiskIncidentModule {
             riskFileVal = window.AttachmentManager.serializeAttachments(this.uploadedRiskAttachments, false);
         }
 
+        const rkNameVal = document.getElementById('risk-form-name').value.trim();
+        const rkSevVal = document.getElementById('risk-form-severity').value;
+        const rkImpactVal = document.getElementById('risk-form-impact').value.trim();
+        const rkLikeVal = document.getElementById('risk-form-likelihood').value;
+        const rkPlanVal = document.getElementById('risk-form-plan').value.trim();
+        const rkStatusVal = document.getElementById('risk-form-status').value;
+
         const payload = {
-            risk_name: document.getElementById('risk-form-name').value.trim(),
-            severity_level: document.getElementById('risk-form-severity').value,
-            impact: document.getElementById('risk-form-impact').value.trim(),
-            likelihood: document.getElementById('risk-form-likelihood').value,
-            prevention_plan: document.getElementById('risk-form-plan').value.trim(),
-            status: document.getElementById('risk-form-status').value,
+            risk_name: rkNameVal,
+            risk_title: rkNameVal,
+            severity_level: rkSevVal,
+            severity: rkSevVal,
+            impact: rkImpactVal,
+            likelihood: rkLikeVal,
+            prevention_plan: rkPlanVal,
+            mitigation_measure: rkPlanVal,
+            status: rkStatusVal,
             risk_manager: managerName,
+            responsible_person: managerName,
             image_url: riskFileVal
         };
 
@@ -24031,14 +24865,29 @@ class RiskIncidentModule {
             incFileVal = window.AttachmentManager.serializeAttachments(this.uploadedIncidentAttachments, false);
         }
 
+        const incDate = document.getElementById('inc-form-datetime').value ? new Date(document.getElementById('inc-form-datetime').value).toISOString() : new Date().toISOString();
+        const incType = document.getElementById('inc-form-type').value;
+        const incSev = document.getElementById('inc-form-severity').value;
+        const incDesc = document.getElementById('inc-form-desc').value.trim();
+        const incAction = document.getElementById('inc-form-action').value.trim();
+        const incStatus = document.getElementById('inc-form-status').value;
+        const incReporter = window.AuthService?.getCurrentUser()?.full_name || 'เจ้าหน้าที่';
+
         const payload = {
-            incident_date: document.getElementById('inc-form-datetime').value ? new Date(document.getElementById('inc-form-datetime').value).toISOString() : new Date().toISOString(),
-            incident_type: document.getElementById('inc-form-type').value,
-            severity_level: document.getElementById('inc-form-severity').value,
-            description: document.getElementById('inc-form-desc').value.trim(),
-            action_taken: document.getElementById('inc-form-action').value.trim(),
-            resolution_status: document.getElementById('inc-form-status').value,
-            reported_by: window.AuthService.getCurrentUser()?.full_name || 'เจ้าหน้าที่',
+            recorded_at: incDate,
+            incident_date: incDate,
+            incident_type: incType,
+            incident_title: incType,
+            severity: incSev,
+            severity_level: incSev,
+            description: incDesc,
+            root_cause: incDesc,
+            action_taken: incAction,
+            corrective_action: incAction,
+            resolution_status: incStatus,
+            status: incStatus,
+            reporter: incReporter,
+            reported_by: incReporter,
             image_url: incFileVal
         };
 
@@ -24431,11 +25280,13 @@ class MonthlyReportModule {
 
         this.onMonthChange(monthStr);
 
+        // เปิด Modal ก่อน แล้วค่อยโหลดข้อมูลอัตโนมัติในพื้นหลัง
+        window.App.openModal('modal-monthly-report');
+
         // ถ้ายังไม่มีข้อมูลในเดือนนี้ ให้ดึงข้อมูลจริงมาคำนวณเป็นค่าเริ่มต้น
         if (!this.editingId) {
             await this.autoCalculateFromMonth(false);
         }
-        window.App.openModal('modal-monthly-report');
     }
 
     async openEditModal(id) {
@@ -26074,6 +26925,7 @@ class DocumentsModule {
         this.editingDocId = null;
         this.editingManualId = null;
         this.activeTab = 'reports'; // 'reports' or 'manuals'
+        this.selectedCategory = 'all';
         this.sortField = 'report_date';
         this.sortDir = 'desc';
     }
@@ -26117,45 +26969,237 @@ class DocumentsModule {
             });
         }
 
-        // File upload helper for Reports
-        const drepFileInput = document.getElementById('drep-file-upload-input');
-        if (drepFileInput) {
-            drepFileInput.addEventListener('change', (e) => this.handleFileUpload(e, 'drep-form-url', 'drep-form-size'));
+        // Category Filter for Reports
+        const filterCat = document.getElementById('drep-filter-category');
+        if (filterCat) {
+            filterCat.addEventListener('change', (e) => {
+                this.selectedCategory = e.target.value;
+                this.applyFilters();
+            });
         }
 
-        // File upload helper for Manuals
+        // Interactive Dropzone for Reports (PDF, Image, Word, Excel)
+        const dropzone = document.getElementById('drep-dropzone');
+        const drepFileInput = document.getElementById('drep-file-upload-input');
+        const clearFileBtn = document.getElementById('drep-btn-clear-file');
+
+        if (dropzone && drepFileInput) {
+            dropzone.addEventListener('click', (e) => {
+                if (e.target.closest('#drep-btn-clear-file')) return;
+                drepFileInput.click();
+            });
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropzone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropzone.classList.add('border-cyan-400', 'bg-slate-800/90');
+                });
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropzone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropzone.classList.remove('border-cyan-400', 'bg-slate-800/90');
+                });
+            });
+
+            dropzone.addEventListener('drop', (e) => {
+                const dt = e.dataTransfer;
+                if (dt && dt.files && dt.files.length > 0) {
+                    this.processReportFile(dt.files[0]);
+                }
+            });
+
+            drepFileInput.addEventListener('change', (e) => {
+                if (e.target.files && e.target.files[0]) {
+                    this.processReportFile(e.target.files[0]);
+                }
+            });
+        }
+
+        if (clearFileBtn) {
+            clearFileBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.resetReportDropzone();
+            });
+        }
+
+        // Interactive Dropzone for Manuals (SOP)
+        const manDropzone = document.getElementById('man-dropzone');
         const manFileInput = document.getElementById('man-file-upload-input');
-        if (manFileInput) {
-            manFileInput.addEventListener('change', (e) => this.handleFileUpload(e, 'man-form-url', 'man-form-size'));
+        const manRemoveFileBtn = document.getElementById('man-btn-remove-file');
+
+        if (manDropzone && manFileInput) {
+            manDropzone.addEventListener('click', (e) => {
+                if (e.target.closest('#man-btn-remove-file')) return;
+                manFileInput.click();
+            });
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                manDropzone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    manDropzone.classList.add('border-emerald-400', 'bg-slate-800/90');
+                });
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                manDropzone.addEventListener(eventName, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    manDropzone.classList.remove('border-emerald-400', 'bg-slate-800/90');
+                });
+            });
+
+            manDropzone.addEventListener('drop', (e) => {
+                const dt = e.dataTransfer;
+                if (dt && dt.files && dt.files.length > 0) {
+                    this.processManualFile(dt.files[0]);
+                }
+            });
+
+            manFileInput.addEventListener('change', (e) => {
+                if (e.target.files && e.target.files[0]) {
+                    this.processManualFile(e.target.files[0]);
+                }
+            });
+        }
+
+        if (manRemoveFileBtn) {
+            manRemoveFileBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.resetManualDropzone();
+            });
         }
     }
 
-    handleFileUpload(e, urlTargetId, sizeTargetId) {
-        const file = e.target.files[0];
+    processManualFile(file) {
         if (!file) return;
 
-        // คำนวณขนาดไฟล์ให้อัตโนมัติ (เช่น 2.1 MB)
-        const sizeMB = (file.size / (1024 * 1024)).toFixed(1) + ' MB';
-        const sizeInput = document.getElementById(sizeTargetId);
-        if (sizeInput) sizeInput.value = sizeMB;
+        let formattedSize = '';
+        if (file.size < 1048576) {
+            formattedSize = (file.size / 1024).toFixed(1) + ' KB';
+        } else {
+            formattedSize = (file.size / (1024 * 1024)).toFixed(1) + ' MB';
+        }
 
-        // อ่านไฟล์เป็น Base64 Data URI
+        const sizeInput = document.getElementById('man-form-size');
+        if (sizeInput) sizeInput.value = formattedSize;
+
+        const fileInfo = this.getFileTypeInfo(file.name, file.name);
+
+        const titleInput = document.getElementById('man-form-title');
+        if (titleInput && (!titleInput.value || titleInput.value.trim() === '')) {
+            titleInput.value = file.name.replace(/\.[^/.]+$/, "");
+        }
+
         const reader = new FileReader();
         reader.onload = (event) => {
-            const urlInput = document.getElementById(urlTargetId);
-            if (urlInput) {
-                urlInput.value = event.target.result;
+            const urlInput = document.getElementById('man-form-url');
+            if (urlInput) urlInput.value = event.target.result;
+
+            const promptEl = document.getElementById('man-dropzone-prompt');
+            const infoEl = document.getElementById('man-dropzone-fileinfo');
+            const iconEl = document.getElementById('man-file-type-icon');
+            const nameEl = document.getElementById('man-dropzone-filename');
+            const sizeEl = document.getElementById('man-dropzone-filesize');
+
+            if (promptEl) promptEl.classList.add('hidden');
+            if (infoEl) {
+                infoEl.classList.remove('hidden');
+                infoEl.style.display = 'flex';
             }
+            if (iconEl) iconEl.innerHTML = `<i class="${fileInfo.icon}"></i>`;
+            if (nameEl) nameEl.textContent = file.name;
+            if (sizeEl) sizeEl.textContent = `${fileInfo.label} • ${formattedSize}`;
+
             Swal.fire({
                 icon: 'success',
-                title: 'แนบไฟล์สำเร็จ!',
-                html: `ไฟล์: <strong>${file.name}</strong> (${sizeMB})`,
+                title: 'แนบไฟล์คู่มือสำเร็จ!',
+                html: `ประเภท: <strong>${fileInfo.label}</strong><br>ไฟล์: <strong>${file.name}</strong> (${formattedSize})`,
                 timer: 1500,
                 showConfirmButton: false
             });
         };
         reader.readAsDataURL(file);
     }
+
+    resetManualDropzone() {
+        const fileInput = document.getElementById('man-file-upload-input');
+        const urlInput = document.getElementById('man-form-url');
+        const promptEl = document.getElementById('man-dropzone-prompt');
+        const infoEl = document.getElementById('man-dropzone-fileinfo');
+
+        if (fileInput) fileInput.value = '';
+        if (urlInput) urlInput.value = '';
+        if (promptEl) promptEl.classList.remove('hidden');
+        if (infoEl) {
+            infoEl.classList.add('hidden');
+            infoEl.style.display = 'none';
+        }
+    }
+
+    processReportFile(file) {
+        if (!file) return;
+
+        // คำนวณขนาดไฟล์ให้อัตโนมัติ (KB หรือ MB)
+        let formattedSize = '';
+        if (file.size < 1048576) {
+            formattedSize = (file.size / 1024).toFixed(1) + ' KB';
+        } else {
+            formattedSize = (file.size / (1024 * 1024)).toFixed(1) + ' MB';
+        }
+
+        const sizeInput = document.getElementById('drep-form-size');
+        if (sizeInput) sizeInput.value = formattedSize;
+
+        // ดึงข้อมูลประเภทไฟล์
+        const fileInfo = this.getFileTypeInfo(file.name, file.name);
+
+        // หากช่องชื่อเรื่องยังว่างอยู่ ให้เติมชื่อไฟล์ลงไปอัตโนมัติ (ตัดนามสกุลออก)
+        const titleInput = document.getElementById('drep-form-title');
+        if (titleInput && (!titleInput.value || titleInput.value.trim() === '')) {
+            const cleanTitle = file.name.replace(/\.[^/.]+$/, "");
+            titleInput.value = cleanTitle;
+        }
+
+        // อ่านไฟล์เป็น Base64 Data URI
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const urlInput = document.getElementById('drep-form-url');
+            if (urlInput) {
+                urlInput.value = event.target.result;
+            }
+
+            // แสดงการ์ดไฟล์ที่เลือกใน Dropzone
+            const promptEl = document.getElementById('drep-dropzone-prompt');
+            const infoEl = document.getElementById('drep-dropzone-fileinfo');
+            const iconEl = document.getElementById('drep-file-icon');
+            const nameEl = document.getElementById('drep-file-name');
+            const metaEl = document.getElementById('drep-file-meta');
+
+            if (promptEl) promptEl.style.display = 'none';
+            if (infoEl) {
+                infoEl.classList.remove('hidden');
+                infoEl.style.display = 'flex';
+            }
+            if (iconEl) iconEl.innerHTML = `<i class="${fileInfo.icon}"></i>`;
+            if (nameEl) nameEl.textContent = file.name;
+            if (metaEl) metaEl.textContent = `${fileInfo.label} • ${formattedSize}`;
+
+            Swal.fire({
+                icon: 'success',
+                title: 'แนบไฟล์สำเร็จ!',
+                html: `ประเภท: <strong>${fileInfo.label}</strong><br>ไฟล์: <strong>${file.name}</strong> (${formattedSize})`,
+                timer: 1500,
+                showConfirmButton: false
+            });
+        };
+        reader.readAsDataURL(file);
+    }
+
 
     switchTab() {
         const secRep = document.getElementById('section-docs-report');
@@ -26196,19 +27240,198 @@ class DocumentsModule {
     }
 
     applyFilters() {
-        this.filteredReports = [...this.reportDocs];
-        this.filteredManuals = [...this.manualDocs];
+        let reports = [...this.reportDocs];
+        let manuals = [...this.manualDocs];
+
+        // กรองตามหมวดหมู่รายงานที่เลือก
+        if (this.selectedCategory && this.selectedCategory !== 'all') {
+            reports = reports.filter(r => (r.category || r.doc_type || '').trim() === this.selectedCategory.trim());
+        }
 
         if (window.App && window.App.sortData) {
-            this.filteredReports = window.App.sortData(this.filteredReports, this.sortField, this.sortDir);
+            reports = window.App.sortData(reports, this.sortField, this.sortDir);
             window.App.updateTableSortUI('table-doc-reports-body', this.sortField, this.sortDir);
 
-            this.filteredManuals = window.App.sortData(this.filteredManuals, this.sortField, this.sortDir);
+            manuals = window.App.sortData(manuals, this.sortField, this.sortDir);
             window.App.updateTableSortUI('table-doc-manuals-body', this.sortField, this.sortDir);
         }
 
+        this.filteredReports = reports;
+        this.filteredManuals = manuals;
+
         this.renderReportsTable(this.filteredReports);
         this.renderManualsTable(this.filteredManuals);
+    }
+
+    getFileTypeInfo(fileUrl = '', title = '') {
+        const url = (fileUrl || '').toLowerCase();
+        const t = (title || '').toLowerCase();
+
+        // 1. Excel (.xlsx, .xls, .csv, mime)
+        if (url.includes('.xlsx') || url.includes('.xls') || url.includes('.csv') ||
+            url.includes('spreadsheetml') || url.includes('vnd.ms-excel') || url.includes('text/csv') ||
+            t.endsWith('.xlsx') || t.endsWith('.xls') || t.endsWith('.csv')) {
+            return {
+                type: 'excel',
+                icon: 'fa-solid fa-file-excel text-emerald-400',
+                badgeClass: 'badge-success bg-emerald-500/20 text-emerald-300 border border-emerald-500/40',
+                badgeText: 'Excel',
+                label: 'ไฟล์ Excel',
+                color: 'emerald',
+                isDocument: true
+            };
+        }
+
+        // 2. Word (.docx, .doc, mime)
+        if (url.includes('.docx') || url.includes('.doc') ||
+            url.includes('wordprocessingml') || url.includes('msword') ||
+            t.endsWith('.docx') || t.endsWith('.doc')) {
+            return {
+                type: 'word',
+                icon: 'fa-solid fa-file-word text-blue-400',
+                badgeClass: 'badge-info bg-blue-500/20 text-blue-300 border border-blue-500/40',
+                badgeText: 'Word',
+                label: 'ไฟล์ Word',
+                color: 'blue',
+                isDocument: true
+            };
+        }
+
+        // 3. Image (png, jpg, jpeg, webp, data:image/)
+        if (url.startsWith('data:image/') || url.includes('.png') || url.includes('.jpg') || url.includes('.jpeg') || url.includes('.webp') ||
+            t.endsWith('.png') || t.endsWith('.jpg') || t.endsWith('.jpeg') || t.endsWith('.webp')) {
+            return {
+                type: 'image',
+                icon: 'fa-solid fa-file-image text-amber-400',
+                badgeClass: 'badge-warning bg-amber-500/20 text-amber-300 border border-amber-500/40',
+                badgeText: 'รูปภาพ',
+                label: 'ไฟล์รูปภาพ',
+                color: 'amber',
+                isDocument: false
+            };
+        }
+
+        // 4. PDF (Default or .pdf, data:application/pdf)
+        return {
+            type: 'pdf',
+            icon: 'fa-solid fa-file-pdf text-rose-400',
+            badgeClass: 'badge-danger bg-rose-500/20 text-rose-300 border border-rose-500/40',
+            badgeText: 'PDF',
+            label: 'เอกสาร PDF',
+            color: 'rose',
+            isDocument: true
+        };
+    }
+
+    getCategoryBadge(cat = '') {
+        const c = (cat || '').trim();
+        if (c === 'รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งกระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม') {
+            return `<span class="badge bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-xs py-1 px-2.5 whitespace-nowrap"><i class="fa-solid fa-tree mr-1"></i>ทส.2 ส่ง ก.ทรัพยากรฯ</span>`;
+        }
+        if (c === 'รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งสำนักงานสาธารณสุขจังหวัดอุบลราชธานี') {
+            return `<span class="badge bg-teal-500/20 text-teal-300 border border-teal-500/40 text-xs py-1 px-2.5 whitespace-nowrap"><i class="fa-solid fa-hospital mr-1"></i>ทส.2 ส่ง สสจ.อุบลฯ</span>`;
+        }
+        if (c === 'รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งองค์การบริหารส่วนตำบลไร่น้อย') {
+            return `<span class="badge bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 text-xs py-1 px-2.5 whitespace-nowrap"><i class="fa-solid fa-landmark mr-1"></i>ทส.2 ส่ง อบต.ไร่น้อย</span>`;
+        }
+        if (c === 'รายงานวิเคราะห์คุณภาพน้ำ') {
+            return `<span class="badge bg-sky-500/20 text-sky-300 border border-sky-500/30 text-xs py-1 px-2.5 whitespace-nowrap"><i class="fa-solid fa-flask mr-1"></i>วิเคราะห์คุณภาพน้ำ</span>`;
+        }
+        if (c === 'รายงานสิ่งแวดล้อม') {
+            return `<span class="badge bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs py-1 px-2.5 whitespace-nowrap"><i class="fa-solid fa-leaf mr-1"></i>สิ่งแวดล้อม</span>`;
+        }
+        if (c === 'รายงานสรุปการเดินระบบ') {
+            return `<span class="badge bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs py-1 px-2.5 whitespace-nowrap"><i class="fa-solid fa-chart-line mr-1"></i>สรุปการเดินระบบ</span>`;
+        }
+        if (c === 'รายงานส่งหน่วยงานภายนอก') {
+            return `<span class="badge bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs py-1 px-2.5 whitespace-nowrap"><i class="fa-solid fa-paper-plane mr-1"></i>ส่งหน่วยงานภายนอก</span>`;
+        }
+        return `<span class="badge badge-info text-xs py-1 px-2.5 whitespace-nowrap">${c || 'รายงานทั่วไป'}</span>`;
+    }
+
+    openOrDownloadFile(fileUrl, fileName, fileType) {
+        if (!fileUrl || fileUrl === '#' || fileUrl.trim() === '') {
+            Swal.fire({
+                icon: 'info',
+                title: 'ไม่มีไฟล์เอกสารแนบ',
+                text: 'รายการนี้เป็นข้อมูลตัวอย่างหรือยังไม่ได้อัปโหลดไฟล์จริง',
+                confirmButtonText: 'รับทราบ',
+                confirmButtonColor: '#0ea5e9'
+            });
+            return;
+        }
+
+        const info = this.getFileTypeInfo(fileUrl, fileName);
+        const resolvedType = fileType || info.type;
+
+        // 1. PDF: เปิดใน AttachmentManager หรือ new tab
+        if (resolvedType === 'pdf') {
+            if (window.AttachmentManager && window.AttachmentManager.openMediaViewer) {
+                window.AttachmentManager.openMediaViewer({ data: fileUrl, type: 'pdf', name: fileName || 'เอกสารรายงาน PDF' });
+            } else {
+                window.open(fileUrl, '_blank');
+            }
+            return;
+        }
+
+        // 2. Image: เปิดดูรูปภาพขยาย
+        if (resolvedType === 'image') {
+            if (window.AttachmentManager && window.AttachmentManager.openMediaViewer) {
+                window.AttachmentManager.openMediaViewer({ data: fileUrl, type: 'image', name: fileName || 'รูปภาพรายงาน' });
+            } else {
+                window.open(fileUrl, '_blank');
+            }
+            return;
+        }
+
+        // 3. Word หรือ Excel: ดาวน์โหลดไฟล์ลงเครื่องทันที
+        try {
+            const link = document.createElement('a');
+            link.href = fileUrl;
+            let ext = resolvedType === 'excel' ? '.xlsx' : '.docx';
+            let safeName = fileName ? (fileName.includes('.') ? fileName : fileName + ext) : ('รายงาน_' + (resolvedType === 'excel' ? 'ข้อมูล.xlsx' : 'เอกสาร.docx'));
+            link.download = safeName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            Swal.fire({
+                icon: 'success',
+                title: resolvedType === 'excel' ? 'ดาวน์โหลดไฟล์ Excel เรียบร้อย' : 'ดาวน์โหลดไฟล์ Word เรียบร้อย',
+                html: `ระบบได้ทำการดาวน์โหลดไฟล์ <strong>${safeName}</strong> ลงเครื่องของคุณเรียบร้อยแล้ว`,
+                timer: 2000,
+                showConfirmButton: false
+            });
+        } catch (err) {
+            window.open(fileUrl, '_blank');
+        }
+    }
+
+    // ==========================================
+    // Dropzone Helpers
+    // ==========================================
+    resetReportDropzone() {
+        const fileInput = document.getElementById('drep-file-upload-input');
+        if (fileInput) fileInput.value = '';
+
+        const prompt = document.getElementById('drep-dropzone-prompt');
+        const fileInfo = document.getElementById('drep-dropzone-fileinfo');
+        if (prompt) prompt.classList.remove('hidden');
+        if (fileInfo) fileInfo.classList.add('hidden');
+
+        const fileName = document.getElementById('drep-file-name');
+        if (fileName) fileName.textContent = '';
+
+        const urlWrapper = document.getElementById('drep-form-url-wrapper');
+        if (urlWrapper) urlWrapper.classList.add('hidden');
+
+        const urlInput = document.getElementById('drep-form-url');
+        if (urlInput) urlInput.value = '';
+
+        const sizeInput = document.getElementById('drep-form-size');
+        if (sizeInput) sizeInput.value = '';
+
+        this.currentReportFile = null;
     }
 
     // ==========================================
@@ -26221,7 +27444,7 @@ class DocumentsModule {
         if (!form) return;
 
         form.reset();
-        if (title) title.innerHTML = '<i class="fa-solid fa-file-pdf text-rose-400"></i> อัปโหลด / บันทึกรายงาน';
+        if (title) title.innerHTML = '<i class="fa-solid fa-cloud-arrow-up text-cyan-400"></i> อัปโหลด / บันทึกรายงาน';
         
         const dateInput = document.getElementById('drep-form-date');
         if (dateInput) dateInput.value = new Date().toISOString().split('T')[0];
@@ -26234,8 +27457,9 @@ class DocumentsModule {
         if (urlInput) urlInput.value = '';
 
         const sizeInput = document.getElementById('drep-form-size');
-        if (sizeInput) sizeInput.value = '2.1 MB';
+        if (sizeInput) sizeInput.value = '';
 
+        this.resetReportDropzone();
         window.App.openModal('modal-doc-report');
     }
 
@@ -26251,10 +27475,10 @@ class DocumentsModule {
         if (dateInput) dateInput.value = item.report_date ? item.report_date.split('T')[0] : "";
 
         const titleInput = document.getElementById('drep-form-title');
-        if (titleInput) titleInput.value = item.title || "";
+        if (titleInput) titleInput.value = item.title || item.doc_title || "";
 
         const catInput = document.getElementById('drep-form-category');
-        if (catInput) catInput.value = item.category || "รายงานสิ่งแวดล้อม";
+        if (catInput) catInput.value = item.category || item.doc_type || "รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งกระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม";
 
         const urlInput = document.getElementById('drep-form-url');
         if (urlInput) urlInput.value = item.file_url || "";
@@ -26263,7 +27487,28 @@ class DocumentsModule {
         if (sizeInput) sizeInput.value = item.file_size || "2.1 MB";
 
         const uploaderInput = document.getElementById('drep-form-uploader');
-        if (uploaderInput) uploaderInput.value = item.uploaded_by || "";
+        if (uploaderInput) uploaderInput.value = item.uploaded_by || item.uploader || "แสงตะวัน ชาวเขา (Super Admin)";
+
+        // Set dropzone display if file_url exists
+        if (item.file_url && item.file_url !== '#') {
+            const fileInfo = this.getFileTypeInfo(item.file_url, item.title || item.doc_title);
+            const promptEl = document.getElementById('drep-dropzone-prompt');
+            const infoEl = document.getElementById('drep-dropzone-fileinfo');
+            const iconEl = document.getElementById('drep-file-icon');
+            const nameEl = document.getElementById('drep-file-name');
+            const metaEl = document.getElementById('drep-file-meta');
+
+            if (promptEl) promptEl.style.display = 'none';
+            if (infoEl) {
+                infoEl.classList.remove('hidden');
+                infoEl.style.display = 'flex';
+            }
+            if (iconEl) iconEl.innerHTML = `<i class="${fileInfo.icon}"></i>`;
+            if (nameEl) nameEl.textContent = item.title || item.doc_title || 'ไฟล์รายงาน';
+            if (metaEl) metaEl.textContent = `${fileInfo.label} • ${item.file_size || 'พร้อมใช้งาน'}`;
+        } else {
+            this.resetReportDropzone();
+        }
 
         window.App.openModal('modal-doc-report');
     }
@@ -26278,7 +27523,7 @@ class DocumentsModule {
         const payload = {
             report_date: document.getElementById('drep-form-date')?.value || new Date().toISOString().split('T')[0],
             title: document.getElementById('drep-form-title')?.value?.trim() || '',
-            category: document.getElementById('drep-form-category')?.value || 'รายงานสิ่งแวดล้อม',
+            category: document.getElementById('drep-form-category')?.value || 'รายงานระบบบำบัดน้ำเสีย(ทส.2)ส่งกระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม',
             file_url: document.getElementById('drep-form-url')?.value?.trim() || 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
             file_size: document.getElementById('drep-form-size')?.value?.trim() || '2.1 MB',
             uploaded_by: document.getElementById('drep-form-uploader')?.value?.trim() || "แสงตะวัน ชาวเขา (Super Admin)"
@@ -26292,15 +27537,41 @@ class DocumentsModule {
         Swal.fire({ title: 'กำลังบันทึกเอกสาร...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
 
         try {
+            let res;
             if (this.editingDocId) {
-                await window.DataStore.set('report_storage', this.editingDocId, { ...payload, id: this.editingDocId });
+                res = await window.DataStore.update('report_storage', this.editingDocId, payload);
             } else {
-                await window.DataStore.insert('report_storage', payload);
+                res = await window.DataStore.insert('report_storage', payload);
             }
 
-            Swal.fire({ icon: 'success', title: 'บันทึกสำเร็จ!', timer: 1500, showConfirmButton: false });
             window.App.closeModal('modal-doc-report');
             await this.loadData();
+
+            if (res && res.savedSupabase) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'บันทึกรายงานสำเร็จ!',
+                    html: '<span class="text-xs text-emerald-400 font-bold"><i class="fa-solid fa-cloud-arrow-up"></i> บันทึกลง Supabase Cloud เรียบร้อย</span>',
+                    timer: 1800,
+                    showConfirmButton: false
+                });
+            } else if (res && res.savedLocal && res.error) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'บันทึกข้อมูลในเครื่อง (LocalStore) แล้ว',
+                    html: `
+                        <div class="text-left text-xs space-y-1.5 p-3 bg-slate-900 rounded border border-slate-800 text-slate-300">
+                            <div class="text-amber-400 font-bold"><i class="fa-solid fa-triangle-exclamation"></i> ไม่สามารถบันทึกขึ้น Supabase Cloud ได้</div>
+                            <div class="text-rose-400 font-mono text-[11px]"><strong>สาเหตุ:</strong> ${res.error}</div>
+                            <div class="text-slate-400 text-[11px] pt-1 border-t border-slate-800">ระบบได้บันทึกเอกสารไว้ในเครื่องให้อัตโนมัติ และแสดงผลในตารางเรียบร้อย</div>
+                        </div>
+                    `,
+                    confirmButtonText: 'รับทราบ',
+                    confirmButtonColor: '#3b82f6'
+                });
+            } else {
+                Swal.fire({ icon: 'success', title: 'บันทึกสำเร็จ!', timer: 1500, showConfirmButton: false });
+            }
         } catch (err) {
             Swal.fire({ icon: 'error', title: 'เกิดข้อผิดพลาด', text: err.message });
         }
@@ -26331,7 +27602,7 @@ class DocumentsModule {
         const totalItems = list ? list.length : 0;
 
         if (!list || list.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="7" class="text-center py-8 text-slate-500">ไม่พบเอกสารรายงานในระบบ</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="7" class="text-center py-8 text-slate-500">ไม่พบเอกสารรายงานในระบบตามตัวกรองที่เลือก</td></tr>`;
             const tfoot = document.getElementById('table-doc-reports-foot');
             if (tfoot) tfoot.innerHTML = '';
 
@@ -26342,8 +27613,8 @@ class DocumentsModule {
                     currentPage: 1,
                     pageSize: 'all',
                     summaryCards: [
-                        { title: 'จำนวนรายงานทั้งหมด', value: '0 ฉบับ', subText: 'เอกสารรายงาน', icon: 'fa-solid fa-file-pdf', color: 'cyan' },
-                        { title: 'คลังเอกสารดิจิทัล', value: 'พร้อมใช้งาน', subText: 'ระบบจัดเก็บไฟล์ PDF', icon: 'fa-solid fa-folder-open', color: 'emerald' },
+                        { title: 'จำนวนรายงานทั้งหมด', value: '0 ฉบับ', subText: 'เอกสารรายงาน', icon: 'fa-solid fa-file-lines', color: 'cyan' },
+                        { title: 'คลังเอกสารดิจิทัล', value: 'พร้อมใช้งาน', subText: 'ระบบจัดเก็บไฟล์ PDF/Office', icon: 'fa-solid fa-folder-open', color: 'emerald' },
                         { title: 'ความสมบูรณ์ไฟล์รายงาน', value: '100%', subText: 'เชื่อมต่อคลาวด์', icon: 'fa-solid fa-cloud-check', color: 'cyan' },
                         { title: 'สถานะตัวกรอง & การเลือก', value: 'ไม่พบรายการ', subText: 'กรุณาปรับเปลี่ยนตัวกรอง', icon: 'fa-solid fa-filter', color: 'purple' }
                     ]
@@ -26355,24 +27626,32 @@ class DocumentsModule {
         const isAdmin = window.AuthService ? window.AuthService.isAdmin() : true;
 
         tbody.innerHTML = list.map((item, idx) => {
-            const isPdf = item.file_url && (item.file_url.startsWith('data:application/pdf') || item.file_url.toLowerCase().endsWith('.pdf'));
+            const fileInfo = this.getFileTypeInfo(item.file_url, item.title || item.doc_title);
+            const categoryBadge = this.getCategoryBadge(item.category || item.doc_type);
+            const displayTitle = item.title || item.doc_title || '-';
+            const displayDate = item.report_date || '-';
+            const displaySize = item.file_size || '2.1 MB';
+            const displayUploader = item.uploaded_by || item.uploader || 'แสงตะวัน ชาวเขา (Super Admin)';
+            const isDocDownload = fileInfo.type === 'word' || fileInfo.type === 'excel';
+
             return `
             <tr>
                 <td class="text-slate-400 font-mono text-xs text-center">${idx + 1}</td>
-                <td class="font-medium text-white whitespace-nowrap">${item.report_date || '-'}</td>
+                <td class="font-medium text-white whitespace-nowrap">${displayDate}</td>
                 <td class="font-semibold text-white">
                     <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-file-pdf text-rose-400 text-base shrink-0"></i>
-                        <span>${item.title}</span>
+                        <i class="${fileInfo.icon} text-base shrink-0"></i>
+                        <span class="truncate max-w-[320px] md:max-w-[450px]" title="${displayTitle}">${displayTitle}</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded font-mono font-bold uppercase ${fileInfo.badgeClass} shrink-0">${fileInfo.badgeText}</span>
                     </div>
                 </td>
-                <td><span class="badge badge-info">${item.category || 'รายงานสิ่งแวดล้อม'}</span></td>
-                <td class="font-mono text-xs text-slate-400">${item.file_size || '2.1 MB'}</td>
-                <td class="text-xs text-slate-300">${item.uploaded_by || 'แสงตะวัน'}</td>
+                <td>${categoryBadge}</td>
+                <td class="font-mono text-xs text-slate-300 whitespace-nowrap">${displaySize}</td>
+                <td class="text-xs text-slate-300 whitespace-nowrap">${displayUploader}</td>
                 <td>
-                    <div class="flex items-center gap-1.5">
-                        <button onclick="window.AttachmentManager ? window.AttachmentManager.openMediaViewer({data: '${item.file_url}', type: '${isPdf ? 'pdf' : 'image'}', name: '${item.title}'}) : window.open('${item.file_url}', '_blank')" class="btn btn-secondary btn-icon btn-sm" title="เปิด/ดาวน์โหลดไฟล์">
-                            <i class="fa-solid fa-arrow-up-right-from-square text-cyan-400"></i>
+                    <div class="flex items-center gap-1.5 whitespace-nowrap">
+                        <button onclick="window.DocumentsModule.openOrDownloadFile('${(item.file_url || '').replace(/'/g, "\\'")}', '${displayTitle.replace(/'/g, "\\'")}', '${fileInfo.type}')" class="btn btn-secondary btn-icon btn-sm" title="${isDocDownload ? 'ดาวน์โหลดเอกสาร' : 'เปิดดูไฟล์'}">
+                            <i class="${isDocDownload ? 'fa-solid fa-download text-emerald-400' : 'fa-solid fa-arrow-up-right-from-square text-cyan-400'}"></i>
                         </button>
                         <button class="btn btn-secondary btn-icon btn-sm" onclick="window.DocumentsModule.openEditReportModal('${item.id}')" title="แก้ไข">
                             <i class="fa-solid fa-pen text-rose-400"></i>
@@ -26471,6 +27750,7 @@ class DocumentsModule {
         const sizeInput = document.getElementById('man-form-size');
         if (sizeInput) sizeInput.value = '4.2 MB';
 
+        this.resetManualDropzone();
         window.App.openModal('modal-doc-manual');
     }
 
@@ -26500,6 +27780,27 @@ class DocumentsModule {
         const uploaderInput = document.getElementById('man-form-uploader');
         if (uploaderInput) uploaderInput.value = item.uploaded_by || "";
 
+        // Populate dropzone with existing file info if available
+        if (item.file_url && item.file_url !== '#') {
+            const fileInfo = this.getFileTypeInfo(item.file_url, item.title);
+            const promptEl = document.getElementById('man-dropzone-prompt');
+            const infoEl = document.getElementById('man-dropzone-fileinfo');
+            const iconEl = document.getElementById('man-file-type-icon');
+            const nameEl = document.getElementById('man-dropzone-filename');
+            const sizeEl = document.getElementById('man-dropzone-filesize');
+
+            if (promptEl) promptEl.classList.add('hidden');
+            if (infoEl) {
+                infoEl.classList.remove('hidden');
+                infoEl.style.display = 'flex';
+            }
+            if (iconEl) iconEl.innerHTML = `<i class="${fileInfo.icon}"></i>`;
+            if (nameEl) nameEl.textContent = item.title || 'ไฟล์คู่มือ SOP';
+            if (sizeEl) sizeEl.textContent = `${fileInfo.label} • ${item.file_size || 'พร้อมใช้งาน'}`;
+        } else {
+            this.resetManualDropzone();
+        }
+
         window.App.openModal('modal-doc-manual');
     }
 
@@ -26527,15 +27828,41 @@ class DocumentsModule {
         Swal.fire({ title: 'กำลังบันทึกคู่มือ...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
 
         try {
+            let res;
             if (this.editingManualId) {
-                await window.DataStore.set('treatment_manuals', this.editingManualId, { ...payload, id: this.editingManualId });
+                res = await window.DataStore.update('treatment_manuals', this.editingManualId, payload);
             } else {
-                await window.DataStore.insert('treatment_manuals', payload);
+                res = await window.DataStore.insert('treatment_manuals', payload);
             }
 
-            Swal.fire({ icon: 'success', title: 'บันทึกสำเร็จ!', timer: 1500, showConfirmButton: false });
             window.App.closeModal('modal-doc-manual');
             await this.loadData();
+
+            if (res && res.savedSupabase) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'บันทึกคู่มือสำเร็จ!',
+                    html: '<span class="text-xs text-emerald-400 font-bold"><i class="fa-solid fa-cloud-arrow-up"></i> บันทึกลง Supabase Cloud เรียบร้อย</span>',
+                    timer: 1800,
+                    showConfirmButton: false
+                });
+            } else if (res && res.savedLocal && res.error) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'บันทึกคู่มือในเครื่อง (LocalStore) แล้ว',
+                    html: `
+                        <div class="text-left text-xs space-y-1.5 p-3 bg-slate-900 rounded border border-slate-800 text-slate-300">
+                            <div class="text-amber-400 font-bold"><i class="fa-solid fa-triangle-exclamation"></i> ไม่สามารถบันทึกขึ้น Supabase Cloud ได้</div>
+                            <div class="text-rose-400 font-mono text-[11px]"><strong>สาเหตุ:</strong> ${res.error}</div>
+                            <div class="text-slate-400 text-[11px] pt-1 border-t border-slate-800">ระบบได้บันทึกคู่มือไว้ในเครื่องให้อัตโนมัติ และแสดงผลในตารางเรียบร้อย</div>
+                        </div>
+                    `,
+                    confirmButtonText: 'รับทราบ',
+                    confirmButtonColor: '#10b981'
+                });
+            } else {
+                Swal.fire({ icon: 'success', title: 'บันทึกสำเร็จ!', timer: 1500, showConfirmButton: false });
+            }
         } catch (err) {
             Swal.fire({ icon: 'error', title: 'เกิดข้อผิดพลาด', text: err.message });
         }
@@ -26590,23 +27917,29 @@ class DocumentsModule {
         const isAdmin = window.AuthService ? window.AuthService.isAdmin() : true;
 
         tbody.innerHTML = list.map((item, idx) => {
-            const isPdf = item.file_url && (item.file_url.startsWith('data:application/pdf') || item.file_url.toLowerCase().endsWith('.pdf'));
+            const fileInfo = this.getFileTypeInfo(item.file_url, item.title);
+            const isDocDownload = fileInfo.type === 'word' || fileInfo.type === 'excel';
+            const displayTitle = item.title || '-';
+            const displaySize = item.file_size || '4.2 MB';
+            const displayUploader = item.uploaded_by || 'แสงตะวัน ชาวเขา (Super Admin)';
+
             return `
             <tr>
                 <td class="text-slate-400 font-mono text-xs text-center">${idx + 1}</td>
                 <td class="font-semibold text-white">
                     <div class="flex items-center gap-2">
-                        <i class="fa-solid fa-book text-emerald-400 text-base shrink-0"></i>
-                        <span>${item.title}</span>
+                        <i class="${fileInfo.icon} text-base shrink-0"></i>
+                        <span class="truncate max-w-[320px] md:max-w-[450px]" title="${displayTitle}">${displayTitle}</span>
+                        <span class="text-[10px] px-1.5 py-0.5 rounded font-mono font-bold uppercase ${fileInfo.badgeClass} shrink-0">${fileInfo.badgeText}</span>
                     </div>
                 </td>
                 <td><span class="badge badge-purple">${item.category || 'คู่มือการปฏิบัติงาน (SOP)'}</span></td>
-                <td class="font-mono text-xs text-slate-400">${item.file_size || '4.2 MB'}</td>
-                <td class="text-xs text-slate-300">${item.uploaded_by || 'แสงตะวัน'}</td>
+                <td class="font-mono text-xs text-slate-300 whitespace-nowrap">${displaySize}</td>
+                <td class="text-xs text-slate-300 whitespace-nowrap">${displayUploader}</td>
                 <td>
-                    <div class="flex items-center gap-1.5">
-                        <button onclick="window.AttachmentManager ? window.AttachmentManager.openMediaViewer({data: '${item.file_url}', type: '${isPdf ? 'pdf' : 'image'}', name: '${item.title}'}) : window.open('${item.file_url}', '_blank')" class="btn btn-secondary btn-icon btn-sm" title="เปิด/อ่านคู่มือ">
-                            <i class="fa-solid fa-book-open text-emerald-400"></i>
+                    <div class="flex items-center gap-1.5 whitespace-nowrap">
+                        <button onclick="window.DocumentsModule.openOrDownloadFile('${(item.file_url || '').replace(/'/g, "\\'")}', '${displayTitle.replace(/'/g, "\\'")}', '${fileInfo.type}')" class="btn btn-secondary btn-icon btn-sm" title="${isDocDownload ? 'ดาวน์โหลดคู่มือ' : 'เปิดอ่านคู่มือ'}">
+                            <i class="${isDocDownload ? 'fa-solid fa-download text-emerald-400' : 'fa-solid fa-book-open text-emerald-400'}"></i>
                         </button>
                         <button class="btn btn-secondary btn-icon btn-sm" onclick="window.DocumentsModule.openEditManualModal('${item.id}')" title="แก้ไข">
                             <i class="fa-solid fa-pen text-emerald-400"></i>
@@ -29075,6 +30408,14 @@ class AppController {
             lastToggleTime = now;
             this.toggleSidebar(forceState);
         };
+
+        window.handleTopAction = () => {
+            if (typeof window._currentTopAction === 'function') {
+                window._currentTopAction();
+            } else if (window.openAutoRecordModal) {
+                window.openAutoRecordModal(this.currentRoute || 'all');
+            }
+        };
     }
 
     async init() {
@@ -29170,11 +30511,20 @@ class AppController {
                 if (backdrop) backdrop.classList.remove('active');
             }
 
+            // ติดตามการเปลี่ยน URL Hash เพื่อเปลี่ยนหน้าอัตโนมัติ
+            window.addEventListener('hashchange', () => {
+                const hash = (window.location.hash || '').replace(/^#/, '');
+                if (hash && hash !== this.currentRoute) {
+                    this.navigateTo(hash);
+                }
+            });
+
             this.isAppInitialized = true;
         }
 
-        // นำไปยังหน้าที่กำลังดูอยู่หรือหน้าเริ่มต้น (Dashboard)
-        this.navigateTo(this.currentRoute || 'dashboard');
+        // นำไปยังหน้าที่กำลังดูอยู่หรือหน้าเริ่มต้น (ซิงค์กับ URL Hash)
+        const initHash = (window.location.hash || '').replace(/^#/, '');
+        this.navigateTo(initHash || this.currentRoute || 'dashboard');
 
         // ปิด Loader หลัก
         const globalLoader = document.getElementById('global-app-loader');
@@ -29260,6 +30610,15 @@ class AppController {
                 e.preventDefault();
                 e.stopPropagation();
                 window.toggleSidebar();
+            };
+        }
+
+        // ปุ่ม Action หลักประจำหน้าบนแถบ Top Navbar (บันทึกอัตโนมัติ / เพิ่มข้อมูล)
+        const btnTopAction = document.getElementById('btn-top-auto-gen');
+        if (btnTopAction) {
+            btnTopAction.onclick = (e) => {
+                if (e) e.preventDefault();
+                window.handleTopAction();
             };
         }
 
@@ -29503,7 +30862,7 @@ class AppController {
         }
     }
 
-    navigateTo(routeId) {
+    async navigateTo(routeId) {
         // ปิด Modal ทุกตัวและปลดล็อกหน้าจอเสมอเมื่อสลับหน้า
         this.closeModal();
 
@@ -29559,35 +30918,158 @@ class AppController {
             if (pageSubtitle) pageSubtitle.innerText = routeTitles[routeId].sub;
         }
 
+        // ปรับแต่งปุ่ม Action หลักบน Top Navbar ให้ตรงตามบริบทของแต่ละหน้า 100%
+        this.updateTopActionBar(routeId);
+
         // รีเฟรชข้อมูลสดจาก Supabase เมื่อสลับหน้า
-        if (routeId === 'dashboard' && window.DashboardModule) {
-            window.DashboardModule.render();
-        } else if (routeId === 'influent' && window.InfluentModule) {
-            window.InfluentModule.loadData();
-        } else if (routeId === 'electricity' && window.ElectricityModule) {
-            window.ElectricityModule.loadData();
-        } else if (routeId === 'water-quality' && window.WaterQualityModule) {
-            window.WaterQualityModule.loadData();
-        } else if (routeId === 'machinery' && window.MachineryModule) {
-            window.MachineryModule.loadData();
-        } else if (routeId === 'maintenance' && window.MaintenanceModule) {
-            window.MaintenanceModule.loadData();
-        } else if (routeId === 'risk-incident' && window.RiskIncidentModule) {
-            window.RiskIncidentModule.loadData();
-        } else if (routeId === 'monthly-report' && window.MonthlyReportModule) {
-            window.MonthlyReportModule.loadData();
-        } else if (routeId === 'equipment-ref' && window.EquipmentRefModule) {
-            window.EquipmentRefModule.loadData();
-        } else if (routeId === 'documents' && window.DocumentsModule) {
-            window.DocumentsModule.loadData();
-        } else if (routeId === 'users-admin' && window.UsersAdminModule) {
-            window.UsersAdminModule.loadData();
-        } else if (routeId === 'backup-restore' && window.ExportImportModule) {
-            window.ExportImportModule.renderBackupHistory();
+        try {
+            if (routeId === 'dashboard' && window.DashboardModule) {
+                await window.DashboardModule.render();
+            } else if (routeId === 'influent' && window.InfluentModule) {
+                await window.InfluentModule.loadData();
+            } else if (routeId === 'electricity' && window.ElectricityModule) {
+                await window.ElectricityModule.loadData();
+            } else if (routeId === 'water-quality' && window.WaterQualityModule) {
+                await window.WaterQualityModule.loadData();
+            } else if (routeId === 'machinery' && window.MachineryModule) {
+                await window.MachineryModule.loadData();
+            } else if (routeId === 'maintenance' && window.MaintenanceModule) {
+                await window.MaintenanceModule.loadData();
+            } else if (routeId === 'risk-incident' && window.RiskIncidentModule) {
+                await window.RiskIncidentModule.loadData();
+            } else if (routeId === 'monthly-report' && window.MonthlyReportModule) {
+                await window.MonthlyReportModule.loadData();
+            } else if (routeId === 'equipment-ref' && window.EquipmentRefModule) {
+                await window.EquipmentRefModule.loadData();
+            } else if (routeId === 'documents' && window.DocumentsModule) {
+                await window.DocumentsModule.loadData();
+            } else if (routeId === 'users-admin' && window.UsersAdminModule) {
+                await window.UsersAdminModule.loadData();
+            } else if (routeId === 'backup-restore' && window.ExportImportModule) {
+                window.ExportImportModule.renderBackupHistory();
+            }
+        } catch (navErr) {
+            console.warn(`[App] Error loading data during navigation to ${routeId}:`, navErr);
         }
 
         // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /**
+     * ปรับเปลี่ยนข้อความ ไอคอน และ Action ของปุ่ม Top Action Bar ตามโมดูล/หน้าที่กำลังเปิดดู
+     * แก้ไขปัญหาคลิกปุ่มแล้วเด้งข้ามหน้า หรือเปิดหน้าต่างไม่ตรงกับบริบท
+     */
+    updateTopActionBar(routeId) {
+        const topBtn = document.getElementById('btn-top-auto-gen');
+        if (!topBtn) return;
+
+        const actionConfigs = {
+            'dashboard': {
+                label: '⚡ บันทึกข้อมูลอัตโนมัติ (ทุกมิติ)',
+                icon: 'fa-solid fa-bolt',
+                title: 'บันทึกข้อมูลอัตโนมัติทุกแผนกประจำวัน (All-In-One)',
+                action: () => {
+                    if (window.openAutoRecordModal) window.openAutoRecordModal('all');
+                    else if (window.AutoGeneratorModule) window.AutoGeneratorModule.openGeneratorModal('all');
+                }
+            },
+            'influent': {
+                label: '⚡ บันทึกน้ำเสียอัตโนมัติ',
+                icon: 'fa-solid fa-faucet-drip',
+                title: 'บันทึกปริมาณน้ำเสียเข้าระบบอัตโนมัติ (เฉพาะน้ำเสีย 80%)',
+                action: () => {
+                    if (window.openAutoRecordModal) window.openAutoRecordModal('influent');
+                    else if (window.AutoGeneratorModule) window.AutoGeneratorModule.openGeneratorModal('influent');
+                }
+            },
+            'electricity': {
+                label: '⚡ บันทึกค่าไฟอัตโนมัติ',
+                icon: 'fa-solid fa-bolt',
+                title: 'บันทึกการใช้พลังงานไฟฟ้าอัตโนมัติ (เฉพาะหน่วยไฟฟ้าและค่าไฟ)',
+                action: () => {
+                    if (window.openAutoRecordModal) window.openAutoRecordModal('electricity');
+                    else if (window.AutoGeneratorModule) window.AutoGeneratorModule.openGeneratorModal('electricity');
+                }
+            },
+            'water-quality': {
+                label: '⚡ บันทึกคุณภาพน้ำอัตโนมัติ',
+                icon: 'fa-solid fa-flask-vial',
+                title: 'บันทึกผลตรวจวัดคุณภาพน้ำเบื้องต้นอัตโนมัติ',
+                action: () => {
+                    if (window.openAutoRecordModal) window.openAutoRecordModal('water_quality');
+                    else if (window.AutoGeneratorModule) window.AutoGeneratorModule.openGeneratorModal('water_quality');
+                }
+            },
+            'machinery': {
+                label: '⚡ บันทึกตรวจเครื่องจักร',
+                icon: 'fa-solid fa-gears',
+                title: 'บันทึกการตรวจเช็คเครื่องจักรอัตโนมัติประจำวัน',
+                action: () => {
+                    if (window.openAutoRecordModal) window.openAutoRecordModal('machinery');
+                    else if (window.AutoGeneratorModule) window.AutoGeneratorModule.openGeneratorModal('machinery');
+                }
+            },
+            'maintenance': {
+                label: '+ บันทึกงานซ่อมบำรุง',
+                icon: 'fa-solid fa-screwdriver-wrench',
+                title: 'เปิดหน้าต่างบันทึกประวัติงานซ่อมบำรุงเครื่องจักร',
+                action: () => {
+                    if (window.MaintenanceModule) window.MaintenanceModule.openAddModal();
+                    else if (window.App) window.App.openModal('modal-maintenance');
+                }
+            },
+            'risk-incident': {
+                label: '+ บันทึกความเสี่ยง',
+                icon: 'fa-solid fa-shield-halved',
+                title: 'บันทึกการประเมินความเสี่ยงใหม่',
+                action: () => {
+                    if (window.RiskIncidentModule) window.RiskIncidentModule.openAddRiskModal();
+                    else if (window.App) window.App.openModal('modal-risk');
+                }
+            },
+            'monthly-report': {
+                label: '+ บันทึกสรุปรายเดือน',
+                icon: 'fa-solid fa-chart-line',
+                title: 'สร้างรายงานสรุปผลการเดินระบบประจำเดือน',
+                action: () => {
+                    if (window.MonthlyReportModule) window.MonthlyReportModule.openAddModal();
+                    else if (window.App) window.App.openModal('modal-monthly-report');
+                }
+            },
+            'equipment-ref': {
+                label: '+ เพิ่มอุปกรณ์ใหม่',
+                icon: 'fa-solid fa-list-check',
+                title: 'เพิ่มอุปกรณ์ใหม่ลงฐานข้อมูลอ้างอิง',
+                action: () => {
+                    if (window.EquipmentRefModule) window.EquipmentRefModule.openAddModal();
+                    else if (window.App) window.App.openModal('modal-equipment-ref');
+                }
+            },
+            'documents': {
+                label: '+ อัปโหลดเอกสาร/คู่มือ',
+                icon: 'fa-solid fa-file-arrow-up',
+                title: 'อัปโหลดรายงานผลวิเคราะห์หรือคู่มือ SOP',
+                action: () => {
+                    if (window.DocumentsModule) window.DocumentsModule.openAddReportModal();
+                    else if (window.App) window.App.openModal('modal-doc-report');
+                }
+            },
+            'users-admin': {
+                label: '+ เพิ่มผู้ใช้งานใหม่',
+                icon: 'fa-solid fa-user-plus',
+                title: 'ลงทะเบียนบัญชีผู้ใช้งานระบบใหม่',
+                action: () => {
+                    if (window.UsersAdminModule) window.UsersAdminModule.openAddModal();
+                    else if (window.App) window.App.openModal('modal-user-admin');
+                }
+            }
+        };
+
+        const cfg = actionConfigs[routeId] || actionConfigs.dashboard;
+        topBtn.title = cfg.title;
+        topBtn.innerHTML = `<i class="${cfg.icon} text-slate-950"></i><span class="hidden xs:inline sm:inline">${cfg.label}</span>`;
+        window._currentTopAction = cfg.action;
     }
 
     openModal(modalId) {
@@ -29981,7 +31463,7 @@ class AppController {
 
         if (urlInput) urlInput.value = currentUrl;
         if (keyInput) keyInput.value = currentKey;
-        if (dbUrlSpan) dbUrlSpan.innerText = currentUrl || "https://vzamkmomhvgnylvrspec.supabase.co";
+        if (dbUrlSpan) dbUrlSpan.innerText = currentUrl || "https://gcvbfhsnyohxudcdvwzg.supabase.co";
 
         this.openModal('modal-settings');
 

@@ -5915,6 +5915,355 @@ body {
     border-color: #ef4444 !important;
 }
 
+/* ==========================================================================
+   ROLE-BASED ACCESS CONTROL (RBAC) - REGULAR USER PERMISSIONS
+   ========================================================================== */
+
+/* 1. ซ่อนเมนูผู้ดูแลระบบ (Admin Only) จาก Sidebar */
+body.role-user .admin-only-menu,
+body.role-user [data-route="users-admin"],
+body.role-user [data-route="backup-restore"],
+body.role-user #btn-open-auto-settings,
+body.role-user #btn-seed-sample-data,
+body.role-user #btn-export-excel-all,
+body.role-user #btn-dash-auto-gen,
+body.role-user [id*="btn-dash-auto"],
+body.role-user .admin-control-btn {
+    display: none !important;
+}
+
+/* 2. ใน Action Toolbar ทุกโมดูล: ให้ User เห็นเฉพาะปุ่ม "ดูตัวอย่าง" (Preview) เท่านั้น */
+body.role-user .module-pill-toolbar .btn-pill-action:not(.btn-pill-preview) {
+    display: none !important;
+}
+
+body.role-user .module-pill-toolbar .btn-pill-preview {
+    display: inline-flex !important;
+    padding: 0.45rem 1.25rem !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.45) !important;
+}
+
+/* 3. ซ่อนปุ่มลบข้อมูลทุกชนิดทั่วทั้งระบบสำหรับ User (ห้ามลบข้อมูล) */
+body.role-user .btn-pill-clear,
+body.role-user [data-action="clear"],
+body.role-user .btn-action-clear-all,
+body.role-user .btn-delete,
+body.role-user .btn-table-delete,
+body.role-user button[onclick*="delete"],
+body.role-user button[onclick*="Delete"],
+body.role-user a[onclick*="delete"],
+body.role-user a[onclick*="Delete"],
+body.role-user [data-action="delete"] {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+/* ==========================================================================
+   LIGHT THEME OVERRIDES (ธีมสว่าง / สีขาว)
+   ========================================================================== */
+html.light,
+body.light-theme {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+
+body.light-theme .main-content {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+}
+
+body.light-theme .top-header {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    color: #0f172a !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-theme .header-page-title,
+body.light-theme #top-page-title {
+    color: #0f172a !important;
+}
+
+body.light-theme .header-subtitle,
+body.light-theme #top-page-subtitle {
+    color: #64748b !important;
+}
+
+body.light-theme .top-header .btn-secondary,
+body.light-theme #btn-theme-toggle,
+body.light-theme #btn-open-settings,
+body.light-theme #btn-open-login,
+body.light-theme #btn-toggle-sidebar {
+    background-color: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #334155 !important;
+}
+
+body.light-theme .top-header .btn-secondary:hover,
+body.light-theme #btn-theme-toggle:hover,
+body.light-theme #btn-open-settings:hover,
+body.light-theme #btn-open-login:hover {
+    background-color: #f1f5f9 !important;
+    border-color: #94a3b8 !important;
+    color: #0f172a !important;
+}
+
+/* Sidebar contrast in Light Theme */
+body.light-theme .sidebar {
+    background: #0f172a !important;
+    border-right: 1px solid #1e293b !important;
+}
+
+/* Cards, Containers, and Panels in Light Theme */
+body.light-theme .glass-card,
+body.light-theme .operations-panel,
+body.light-theme .param-card,
+body.light-theme .chart-card,
+body.light-theme .stat-card,
+body.light-theme .dashboard-card,
+body.light-theme .record-card,
+body.light-theme .summary-card,
+body.light-theme [class*="bg-[#0c1322]"],
+body.light-theme [class*="bg-[#0a1120]"],
+body.light-theme [class*="bg-[#070d18]"],
+body.light-theme [class*="bg-[#080d1a]"],
+body.light-theme [class*="bg-[#060a12]"],
+body.light-theme [class*="bg-slate-900"],
+body.light-theme [class*="bg-slate-950"],
+body.light-theme [class*="bg-slate-900/"] {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    color: #0f172a !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Borders in Light Theme */
+body.light-theme [class*="border-slate-800"],
+body.light-theme [class*="border-slate-700"] {
+    border-color: #e2e8f0 !important;
+}
+
+/* Typography in Light Theme */
+body.light-theme h1,
+body.light-theme h2,
+body.light-theme h3,
+body.light-theme h4,
+body.light-theme h5,
+body.light-theme h6,
+body.light-theme .operations-header span.text-white,
+body.light-theme .panel-title,
+body.light-theme .card-title {
+    color: #0f172a !important;
+}
+
+body.light-theme .text-white:not(.btn-primary *):not(.btn-success *):not(.btn-danger *):not(.btn-pill-action *):not(.badge *) {
+    color: #0f172a !important;
+}
+
+body.light-theme .text-slate-200,
+body.light-theme .text-slate-300 {
+    color: #334155 !important;
+}
+
+body.light-theme .text-slate-400,
+body.light-theme .text-slate-500 {
+    color: #64748b !important;
+}
+
+/* Tables in Light Theme */
+body.light-theme table {
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+}
+
+body.light-theme thead,
+body.light-theme thead tr,
+body.light-theme table th,
+body.light-theme th {
+    background-color: #f8fafc !important;
+    color: #334155 !important;
+    border-bottom: 2px solid #e2e8f0 !important;
+    border-top: 1px solid #e2e8f0 !important;
+}
+
+body.light-theme tbody tr {
+    background-color: #ffffff !important;
+    color: #1e293b !important;
+    border-bottom: 1px solid #f1f5f9 !important;
+}
+
+body.light-theme tbody tr:nth-child(even) {
+    background-color: #f8fafc !important;
+}
+
+body.light-theme tbody tr:hover {
+    background-color: #f1f5f9 !important;
+}
+
+body.light-theme td {
+    border-color: #e2e8f0 !important;
+    color: #1e293b !important;
+}
+
+/* Form Inputs, Selects, and Textareas in Light Theme */
+body.light-theme input:not([type="checkbox"]):not([type="radio"]),
+body.light-theme select,
+body.light-theme textarea,
+body.light-theme .form-control {
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #0f172a !important;
+}
+
+body.light-theme input::placeholder,
+body.light-theme textarea::placeholder {
+    color: #94a3b8 !important;
+}
+
+body.light-theme input:focus,
+body.light-theme select:focus,
+body.light-theme textarea:focus,
+body.light-theme .form-control:focus {
+    border-color: #10b981 !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15) !important;
+    outline: none !important;
+}
+
+/* Modals & SweetAlert in Light Theme */
+body.light-theme .modal-overlay {
+    background-color: rgba(15, 23, 42, 0.45) !important;
+    backdrop-filter: blur(4px) !important;
+}
+
+body.light-theme .modal-container,
+body.light-theme .modal-content,
+body.light-theme .modal-dialog,
+body.light-theme .modal-body,
+body.light-theme .modal-header,
+body.light-theme .modal-footer,
+body.light-theme .swal2-popup {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    border-color: #e2e8f0 !important;
+}
+
+body.light-theme .modal-header {
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+body.light-theme .modal-footer {
+    border-top: 1px solid #e2e8f0 !important;
+    background-color: #f8fafc !important;
+}
+
+/* Quick Filter Pills in Light Theme */
+body.light-theme .btn-action-pill {
+    background-color: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #334155 !important;
+}
+
+body.light-theme .btn-action-pill.active {
+    background-color: #e2e8f0 !important;
+    border-color: #94a3b8 !important;
+    color: #0f172a !important;
+}
+
+body.light-theme #pill-dash-all.active {
+    background-color: #ecfdf5 !important;
+    border-color: #10b981 !important;
+    color: #059669 !important;
+}
+
+/* Pagination in Light Theme */
+body.light-theme .pagination-container,
+body.light-theme .pagination-btn {
+    background-color: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    color: #334155 !important;
+}
+
+body.light-theme .pagination-btn:hover {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+
+/* Operations Panel & Table Refinements in Light Theme */
+body.light-theme .operations-panel {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-theme .operations-panel .operations-header {
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+body.light-theme .operations-panel .operations-header span.text-white {
+    color: #0f172a !important;
+}
+
+body.light-theme .operations-panel .operations-header span.text-slate-400 {
+    color: #64748b !important;
+}
+
+body.light-theme .operations-panel select.form-control,
+body.light-theme .operations-panel input.form-control,
+body.light-theme .operations-panel select,
+body.light-theme .operations-panel input {
+    background: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #0f172a !important;
+}
+
+body.light-theme .operations-panel select.form-control:focus,
+body.light-theme .operations-panel input.form-control:focus,
+body.light-theme .operations-panel select:focus,
+body.light-theme .operations-panel input:focus {
+    border-color: #10b981 !important;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15) !important;
+}
+
+body.light-theme .operations-panel .border-slate-800,
+body.light-theme .operations-panel .border-slate-800\/80 {
+    border-color: #e2e8f0 !important;
+}
+
+body.light-theme .table-responsive {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+body.light-theme #pill-dash-this-year,
+body.light-theme #pill-dash-this-month,
+body.light-theme #pill-dash-today,
+body.light-theme [id*="pill-"][id*="-this-year"],
+body.light-theme [id*="pill-"][id*="-this-month"],
+body.light-theme [id*="pill-"][id*="-today"] {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #475569 !important;
+}
+
+body.light-theme [id*="pill-"][id*="-this-year"]:hover,
+body.light-theme [id*="pill-"][id*="-this-month"]:hover,
+body.light-theme [id*="pill-"][id*="-today"]:hover {
+    background: #e2e8f0 !important;
+    color: #0f172a !important;
+}
+
+body.light-theme #pill-dash-all.active,
+body.light-theme [id*="pill-"][id*="-all"].active {
+    background: #ecfdf5 !important;
+    border-color: #10b981 !important;
+    color: #059669 !important;
+}
+
+
+
 
 
 
@@ -5929,6 +6278,26 @@ body {
         window.APP_CONFIG = {
             supabase: window.SUPABASE_EMBEDDED_CONFIG
         };
+    </script>
+
+    <!-- Early Theme Detection to prevent FOUC -->
+    <script>
+        (function() {
+            try {
+                var savedTheme = localStorage.getItem('spa_theme');
+                if (savedTheme === 'light') {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                    if (document.body) {
+                        document.body.classList.add('light-theme');
+                    } else {
+                        document.addEventListener('DOMContentLoaded', function() {
+                            document.body.classList.add('light-theme');
+                        });
+                    }
+                }
+            } catch(e) {}
+        })();
     </script>
 </head>
 <body class="bg-[#060a12] text-slate-200 antialiased selection:bg-emerald-500 selection:text-white">
@@ -6239,6 +6608,12 @@ body {
                     <!-- Supabase Settings Trigger -->
                     <button id="btn-open-settings" class="btn btn-secondary btn-icon" title="ตั้งค่าการเชื่อมต่อฐานข้อมูล Supabase">
                         <i class="fa-solid fa-gear text-emerald-400"></i>
+                    </button>
+
+                    <!-- Theme Toggle Button (สลับธีมสีขาว / สีดำ) -->
+                    <button type="button" id="btn-theme-toggle" class="btn btn-secondary btn-sm flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-700 hover:border-amber-400 transition cursor-pointer" onclick="window.App ? window.App.toggleTheme() : null" title="สลับธีมสีขาว (สว่าง) / สีดำ (มืด)">
+                        <i id="theme-toggle-icon" class="fa-solid fa-sun text-amber-400 text-sm"></i>
+                        <span id="theme-toggle-text" class="text-xs font-semibold hidden md:inline">ธีมสว่าง</span>
                     </button>
 
                     <!-- Switch User / Login Modal Trigger -->
@@ -10076,16 +10451,23 @@ body {
                         </div>
                     </div>
 
-                    <!-- Equipment Basket with Quick Add Button -->
+                    <!-- Equipment Select Dropdown from Equipment Reference with Quick Add Button -->
                     <div class="form-group">
-                        <div class="flex items-center justify-between mb-1">
-                            <label class="form-label mb-0">อุปกรณ์ที่เกี่ยวข้อง <span class="required">*</span></label>
-                            <button type="button" id="btn-quick-add-eq-maint" class="btn btn-outline btn-sm text-xs">
+                        <div class="flex items-center justify-between mb-1.5">
+                            <label class="form-label mb-0 flex items-center gap-1.5" for="maint-form-equipment">
+                                <i class="fa-solid fa-gears text-amber-400"></i>
+                                <span>อุปกรณ์ที่เกี่ยวข้อง</span>
+                                <span class="required">*</span>
+                                <span class="text-[11px] text-slate-400 font-normal hidden sm:inline">(ดึงข้อมูลจากทะเบียน Equipment Reference)</span>
+                            </label>
+                            <button type="button" id="btn-quick-add-eq-maint" class="btn btn-outline btn-sm text-xs py-1 px-2.5 rounded-lg border-amber-500/50 text-amber-300 hover:bg-amber-500/20 transition flex items-center gap-1">
                                 <i class="fa-solid fa-plus text-amber-400"></i> เพิ่มอุปกรณ์ใหม่
                             </button>
                         </div>
-                        <div class="equipment-basket-container">
-                            <div id="maint-equipment-checklist" class="equipment-checklist-grid"></div>
+                        <div class="relative">
+                            <select id="maint-form-equipment" class="form-control text-xs w-full bg-[#0a1120] border border-slate-700 focus:border-amber-500 rounded-xl p-2.5 text-white font-medium" required>
+                                <option value="">-- กรุณาเลือกอุปกรณ์ / เครื่องจักรจากฐานข้อมูลอ้างอิง --</option>
+                            </select>
                         </div>
                     </div>
 
@@ -13099,7 +13481,10 @@ class AuthService {
     }
 
     isAdmin() {
-        return this.currentUser && (this.currentUser.role === 'admin' || (this.currentUser.username || '').toLowerCase() === 'sangtawan');
+        if (!this.currentUser) return false;
+        const role = (this.currentUser.role || '').toLowerCase();
+        const username = (this.currentUser.username || '').toLowerCase();
+        return role === 'admin' || role === 'superadmin' || username === 'sangtawan';
     }
 
     async login(username, password, remember = true) {
@@ -24573,6 +24958,20 @@ class MaintenanceModule {
             btnQuickAddEq.addEventListener('click', () => this.quickAddNewEquipment());
         }
 
+        // เมื่อเลือกอุปกรณ์ ให้ดึงสถานที่ตั้งจาก data-location มาใส่ให้อัตโนมัติ
+        const selMaintEq = document.getElementById('maint-form-equipment');
+        if (selMaintEq) {
+            selMaintEq.addEventListener('change', (e) => {
+                const opt = e.target.selectedOptions?.[0];
+                if (opt && opt.dataset && opt.dataset.location) {
+                    const locInput = document.getElementById('maint-form-location');
+                    if (locInput) {
+                        locInput.value = opt.dataset.location;
+                    }
+                }
+            });
+        }
+
         // ผูก Universal Attachment Manager (รองรับ อัปโหลดรูปภาพ, PDF, ถ่ายรูปสด, URL)
         if (window.AttachmentManager) {
             window.AttachmentManager.bindFormAttachments({
@@ -24615,6 +25014,10 @@ class MaintenanceModule {
                         <label class="text-xs text-slate-300 block mb-1">หมวดหมู่อุปกรณ์ *</label>
                         <select id="swal-maint-input-eq-cat" class="swal2-select !mt-0 !w-full text-xs">
                             <option value="เครื่องจักรบำบัดน้ำเสีย">เครื่องจักรบำบัดน้ำเสีย (WWTP)</option>
+                            <option value="เครื่องสูบน้ำเสีย">เครื่องสูบน้ำเสีย (Pumps)</option>
+                            <option value="เครื่องเติมอากาศ">เครื่องเติมอากาศ (Blowers)</option>
+                            <option value="เครื่องจ่ายสารเคมี">เครื่องจ่ายสารเคมี (Dosing Pumps)</option>
+                            <option value="เครื่องมือวัดและเซนเซอร์">เครื่องมือวัดและเซนเซอร์ (Instruments)</option>
                             <option value="ท่อส่งน้ำและเมนต์โฮลด์">ท่อส่งน้ำและเมนต์โฮลด์ (Manhole)</option>
                             <option value="บ่อบำบัดเฉพาะที่ (On-site)">บ่อบำบัดเฉพาะที่ (On-site)</option>
                             <option value="ระบบไฟฟ้าและควบคุม">ระบบไฟฟ้าและควบคุม</option>
@@ -24623,7 +25026,7 @@ class MaintenanceModule {
                     </div>
                     <div>
                         <label class="text-xs text-slate-300 block mb-1">สถานที่ติดตั้ง / อาคาร</label>
-                        <input id="swal-maint-input-eq-loc" class="swal2-input !mt-0 !w-full text-xs" placeholder="เช่น อาคารระบบบำบัดน้ำเสีย">
+                        <input id="swal-maint-input-eq-loc" class="swal2-input !mt-0 !w-full text-xs" placeholder="เช่น อาคารระบบบำบัดน้ำเสีย, บ่อพักน้ำเสียรวม">
                     </div>
                 </div>
             `,
@@ -24649,21 +25052,24 @@ class MaintenanceModule {
             try {
                 const newRecord = {
                     id: 'eq-' + Date.now(),
+                    equipment_code: 'EQ-' + String(Date.now()).slice(-4),
                     equipment_name: formValues.equipment_name,
                     category: formValues.category,
                     location: formValues.location,
-                    status: 'active',
+                    status: 'ready',
                     created_at: new Date().toISOString()
                 };
                 await window.DataStore.insert('equipment_ref', newRecord);
-                await this.populateEquipmentSelect();
+                await this.populateEquipmentSelect(formValues.equipment_name);
                 const sel = document.getElementById('maint-form-equipment');
                 if (sel) sel.value = formValues.equipment_name;
+                const locInput = document.getElementById('maint-form-location');
+                if (locInput && formValues.location) locInput.value = formValues.location;
 
                 Swal.fire({
                     icon: 'success',
                     title: 'เพิ่มอุปกรณ์ใหม่เรียบร้อย',
-                    text: `เพิ่ม "${formValues.equipment_name}" เข้าสู่ฐานข้อมูล equipment_ref แล้ว`,
+                    text: `เพิ่ม "${formValues.equipment_name}" เข้าสู่ฐานข้อมูล Equipment Reference แล้ว`,
                     timer: 1500,
                     showConfirmButton: false
                 });
@@ -24891,7 +25297,8 @@ class MaintenanceModule {
                 const matchProb = (item.problem || '').toLowerCase().includes(q);
                 const matchLoc = (item.location || '').toLowerCase().includes(q);
                 const matchOp = (item.operator || '').toLowerCase().includes(q);
-                const matchEq = (item.equipment_list || []).join(' ').toLowerCase().includes(q);
+                const eqArr = Array.isArray(item.equipment_list) && item.equipment_list.length > 0 ? item.equipment_list : (item.equipment_name ? [item.equipment_name] : []);
+                const matchEq = eqArr.join(' ').toLowerCase().includes(q);
                 if (!matchProb && !matchLoc && !matchOp && !matchEq) return false;
             }
 
@@ -24999,7 +25406,7 @@ class MaintenanceModule {
 
         tbody.innerHTML = pageItems.map((item, idx) => {
             const globalIdx = startIndex + idx + 1;
-            const eqList = Array.isArray(item.equipment_list) ? item.equipment_list : [];
+            const eqList = Array.isArray(item.equipment_list) && item.equipment_list.length > 0 ? item.equipment_list : (item.equipment_name ? [item.equipment_name] : []);
             const isPM = item.job_type === 'ป้องกัน';
 
             let imgCount = 0;
@@ -25160,7 +25567,11 @@ class MaintenanceModule {
             this.renderImageGallery();
         }
 
-        // เปิด Modal ก่อน แล้วโหลดอุปกรณ์ในพื้นหลัง
+        // รีเซ็ตดรอปดาวน์อุปกรณ์
+        const selEq = document.getElementById('maint-form-equipment');
+        if (selEq) selEq.value = '';
+
+        // เปิด Modal ก่อนทันที เพื่อความรวดเร็วและตอบสนองทันใจ
         window.App.openModal('modal-maintenance');
         await this.populateEquipmentSelect();
     }
@@ -25314,28 +25725,75 @@ class MaintenanceModule {
             this.renderImageGallery();
         }
 
-        await this.populateEquipmentSelect();
-        const selEq = document.getElementById('maint-form-equipment');
-        if (selEq && item.equipment_list && item.equipment_list.length > 0) {
-            selEq.value = item.equipment_list[0];
-        }
-
         window.App.openModal('modal-maintenance');
+        const existingEq = (Array.isArray(item.equipment_list) && item.equipment_list[0]) || item.equipment_name || '';
+        await this.populateEquipmentSelect(existingEq);
+        const selEq = document.getElementById('maint-form-equipment');
+        if (selEq && existingEq) {
+            selEq.value = existingEq;
+        }
     }
 
-    async populateEquipmentSelect() {
+    async populateEquipmentSelect(selectedVal = null) {
         const sel = document.getElementById('maint-form-equipment');
         if (!sel) return;
 
-        const refList = await window.DataStore.getAll('equipment_ref');
-        sel.innerHTML = refList.map(e => `<option value="${e.equipment_name}">${e.equipment_name} (${e.category || 'ทั่วไป'})</option>`).join('');
+        let refList = [];
+        try {
+            refList = (await window.DataStore.getAll('equipment_ref', { orderBy: 'category', ascending: true })) || [];
+        } catch (e) {
+            console.warn('Failed to load equipment_ref for maintenance modal:', e);
+        }
+
+        if ((!refList || refList.length === 0) && typeof SAMPLE_DATABASE !== 'undefined' && Array.isArray(SAMPLE_DATABASE.equipment_ref)) {
+            refList = SAMPLE_DATABASE.equipment_ref;
+        }
+
+        // จัดกลุ่มตามหมวดหมู่อุปกรณ์
+        const grouped = {};
+        (refList || []).forEach(eq => {
+            const cat = eq.category || 'เครื่องจักรและอุปกรณ์ทั่วไป';
+            if (!grouped[cat]) grouped[cat] = [];
+            grouped[cat].push(eq);
+        });
+
+        let html = '<option value="">-- กรุณาเลือกอุปกรณ์ / เครื่องจักรจากฐานข้อมูลอ้างอิง --</option>';
+        const sortedCats = Object.keys(grouped).sort((a, b) => a.localeCompare(b, 'th'));
+
+        sortedCats.forEach(cat => {
+            html += `<optgroup label="📂 หมวด: ${cat}">`;
+            grouped[cat].sort((a, b) => (a.equipment_name || '').localeCompare(b.equipment_name || '', 'th'));
+            grouped[cat].forEach(eq => {
+                const codePrefix = eq.equipment_code ? `[${eq.equipment_code}] ` : '';
+                const locSuffix = eq.location ? ` - ${eq.location}` : '';
+                const val = eq.equipment_name;
+                const isSel = selectedVal && (selectedVal === val || selectedVal === eq.id || selectedVal === eq.equipment_code) ? 'selected' : '';
+                html += `<option value="${val}" data-location="${eq.location || ''}" data-code="${eq.equipment_code || ''}" data-cat="${eq.category || ''}" ${isSel}>${codePrefix}${eq.equipment_name}${locSuffix}</option>`;
+            });
+            html += `</optgroup>`;
+        });
+
+        // หากมีค่า selectedVal เดิมแต่ไม่ตรงกับใน refList ให้เติมเข้าไปเพื่อไม่ให้ข้อมูลสูญหาย
+        if (selectedVal && !refList.some(e => e.equipment_name === selectedVal || e.equipment_code === selectedVal)) {
+            html += `<optgroup label="📌 อุปกรณ์ที่ระบุไว้เดิม">`;
+            html += `<option value="${selectedVal}" selected>${selectedVal}</option>`;
+            html += `</optgroup>`;
+        }
+
+        sel.innerHTML = html;
+
+        if (selectedVal) {
+            sel.value = selectedVal;
+        }
     }
 
     viewDetails(id) {
         const item = this.items.find(x => x.id === id);
         if (!item) return;
 
-        const eqList = Array.isArray(item.equipment_list) ? item.equipment_list : [];
+        const eqList = Array.isArray(item.equipment_list) && item.equipment_list.length > 0 
+            ? item.equipment_list 
+            : (item.equipment_name ? [item.equipment_name] : []);
 
         const images = window.AttachmentManager 
             ? window.AttachmentManager.normalizeAttachments(item.image_url) 
@@ -25509,10 +25967,27 @@ class MaintenanceModule {
         const elOp = document.getElementById('maint-form-operator');
         const operatorName = (elOp && elOp.value && elOp.value.trim()) ? elOp.value.trim() : currentName;
 
+        const selEqEl = document.getElementById('maint-form-equipment');
+        const selectedEquipment = selEqEl ? selEqEl.value.trim() : '';
+
+        if (!selectedEquipment) {
+            if (window.Swal) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'กรุณาเลือกอุปกรณ์ที่เกี่ยวข้อง',
+                    text: 'โปรดเลือกอุปกรณ์หรือเครื่องจักรจากฐานข้อมูลอ้างอิง หรือกด "+ เพิ่มอุปกรณ์ใหม่"',
+                    confirmButtonColor: '#f59e0b'
+                });
+            }
+            if (selEqEl) selEqEl.focus();
+            return;
+        }
+
         const payload = {
             recorded_at: document.getElementById('maint-form-datetime').value ? new Date(document.getElementById('maint-form-datetime').value).toISOString() : new Date().toISOString(),
             location: document.getElementById('maint-form-location').value.trim() || 'อาคารระบบบำบัดน้ำเสีย',
-            equipment_list: [selEq],
+            equipment_name: selectedEquipment,
+            equipment_list: [selectedEquipment],
             job_type: document.getElementById('maint-form-jobtype').value,
             problem: document.getElementById('maint-form-problem').value.trim(),
             cause: document.getElementById('maint-form-cause').value.trim() || null,
@@ -25572,7 +26047,7 @@ class MaintenanceModule {
             'วัน-เวลา': window.App.formatDateTime(item.recorded_at),
             'สถานที่': item.location,
             'ประเภทงาน': item.job_type,
-            'อุปกรณ์': (item.equipment_list || []).join(', '),
+            'อุปกรณ์': Array.isArray(item.equipment_list) && item.equipment_list.length > 0 ? item.equipment_list.join(', ') : (item.equipment_name || ''),
             'ปัญหาที่พบ': item.problem,
             'วิธีการแก้ไข': item.fix_method || '',
             'ผลการซ่อม': item.fix_result || '',
@@ -25592,7 +26067,7 @@ class MaintenanceModule {
             'วัน-เวลา': window.App.formatDateTime(item.recorded_at),
             'สถานที่': item.location,
             'ประเภทงาน': item.job_type,
-            'อุปกรณ์': (item.equipment_list || []).join(', '),
+            'อุปกรณ์': Array.isArray(item.equipment_list) && item.equipment_list.length > 0 ? item.equipment_list.join(', ') : (item.equipment_name || ''),
             'ปัญหาที่พบ': item.problem,
             'ค่าใช้จ่าย': item.cost || 0,
             'ผู้ดำเนินการ': item.operator
@@ -32589,6 +33064,9 @@ class AppController {
     async init() {
         console.log("Initializing Wastewater SPA...");
         
+        // ธีมเริ่มต้นตามค่าที่ผู้ใช้เคยตั้งไว้ (Light / Dark)
+        this.initTheme();
+
         // 0. รอให้การเชื่อมต่อและดึงข้อมูลจาก Supabase Cloud สมบูรณ์ก่อน
         if (window.DataStore && window.DataStore.initPromise) {
             try {
@@ -32627,6 +33105,7 @@ class AppController {
     async launchApp() {
         // ซ่อนหน้า Auth Portal และแสดงหน้าจอแอปพลิเคชันหลัก
         this.hideAuthPortal();
+        this.initTheme();
         this.updateUserUI();
 
         // ผูก Event Listeners หลักและโหลดโมดูล (รันเพียงครั้งเดียว)
@@ -33031,6 +33510,23 @@ class AppController {
     }
 
     async navigateTo(routeId) {
+        // RBAC Guard: ผู้ใช้งานทั่วไป (User) ห้ามเข้าถึงหน้า จัดการผู้ใช้ & สิทธิ์ และ สำรองข้อมูล
+        const isAdmin = window.AuthService ? window.AuthService.isAdmin() : false;
+        if (!isAdmin && (routeId === 'users-admin' || routeId === 'backup-restore')) {
+            if (typeof Swal !== 'undefined') {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'ไม่มีสิทธิ์เข้าถึง',
+                    text: 'หน้านี้สงวนไว้สำหรับผู้ดูแลระบบ (Admin) เท่านั้น',
+                    timer: 2000,
+                    showConfirmButton: false,
+                    toast: true,
+                    position: 'top-end'
+                });
+            }
+            routeId = 'dashboard';
+        }
+
         // ปิด Modal ทุกตัวและปลดล็อกหน้าจอเสมอเมื่อสลับหน้า
         this.closeModal();
 
@@ -33119,6 +33615,9 @@ class AppController {
         } catch (navErr) {
             console.warn(`[App] Error loading data during navigation to ${routeId}:`, navErr);
         }
+
+        // บังคับใช้สิทธิ์การแสดงผล (RBAC) ทันทีหลังโหลดหน้า/ตารางใหม่
+        this.updateUserUI();
 
         // Scroll to top immediately
         window.scrollTo({ top: 0, behavior: 'instant' });
@@ -33319,6 +33818,15 @@ class AppController {
         const user = window.AuthService ? window.AuthService.getCurrentUser() : null;
         const isAdmin = window.AuthService ? window.AuthService.isAdmin() : false;
 
+        // สลับคลาสบทบาทบน <body> เพื่อให้ CSS RBAC ควบคุมการซ่อน/แสดงปุ่มทุกจุดอัตโนมัติ
+        if (isAdmin) {
+            document.body.classList.add('role-admin');
+            document.body.classList.remove('role-user');
+        } else {
+            document.body.classList.add('role-user');
+            document.body.classList.remove('role-admin');
+        }
+
         const nameEl = document.getElementById('sidebar-display-username') || document.getElementById('sidebar-user-name');
         const roleEl = document.getElementById('sidebar-display-role') || document.getElementById('sidebar-user-role');
         const avatarEl = document.getElementById('sidebar-display-avatar') || document.getElementById('sidebar-user-avatar');
@@ -33333,19 +33841,95 @@ class AppController {
             }
             if (roleEl) {
                 if (roleEl.id === 'sidebar-display-role') {
-                    roleEl.textContent = isAdmin ? 'Super Admin' : (user.role || 'เจ้าหน้าที่');
+                    roleEl.textContent = isAdmin ? 'Super Admin' : (user.role === 'admin' ? 'ผู้ดูแลระบบ' : 'ผู้ใช้งานทั่วไป (User)');
                 } else {
                     roleEl.innerHTML = isAdmin ? 
                         '<i class="fa-solid fa-circle text-[6px] text-emerald-400"></i> Super Admin' : 
-                        '<i class="fa-solid fa-circle text-[6px] text-blue-400"></i> เจ้าหน้าที่/Admin';
+                        '<i class="fa-solid fa-circle text-[6px] text-blue-400"></i> ผู้ใช้งานทั่วไป (User)';
                 }
             }
         }
 
         // ซ่อน/แสดง เมนูเฉพาะ Admin
         adminOnlyMenus.forEach(el => {
-            el.style.display = isAdmin ? 'block' : 'none';
+            el.style.display = isAdmin ? '' : 'none';
         });
+
+        // ควบคุมปุ่มตั้งค่าและปุ่มจำลองข้อมูลบน Top Header สำหรับ Admin
+        const autoSettingsBtn = document.getElementById('btn-open-auto-settings');
+        if (autoSettingsBtn) autoSettingsBtn.style.display = isAdmin ? '' : 'none';
+        const seedDataBtn = document.getElementById('btn-seed-sample-data');
+        if (seedDataBtn) seedDataBtn.style.display = isAdmin ? '' : 'none';
+        const exportExcelAllBtn = document.getElementById('btn-export-excel-all');
+        if (exportExcelAllBtn) exportExcelAllBtn.style.display = isAdmin ? '' : 'none';
+
+        // บังคับในระดับ JS: Action Toolbar ทุกหน้า ให้เห็นเฉพาะปุ่ม "ดูตัวอย่าง" เมื่อเป็น User
+        document.querySelectorAll('.module-pill-toolbar').forEach(toolbar => {
+            toolbar.querySelectorAll('.btn-pill-action').forEach(btn => {
+                if (!isAdmin) {
+                    if (btn.classList.contains('btn-pill-preview')) {
+                        btn.style.display = '';
+                    } else {
+                        btn.style.display = 'none';
+                    }
+                } else {
+                    btn.style.display = '';
+                }
+            });
+        });
+
+        // บังคับในระดับ JS: ซ่อนปุ่มลบข้อมูลทุกตารางสำหรับ User
+        document.querySelectorAll('.btn-pill-clear, [data-action="clear"], .btn-action-clear-all, button[onclick*="delete"], button[onclick*="Delete"]').forEach(delBtn => {
+            if (!isAdmin) {
+                delBtn.style.display = 'none';
+            } else {
+                delBtn.style.display = '';
+            }
+        });
+    }
+
+    // =========================================================================
+    // THEME MANAGEMENT (สลับธีมสีขาว Light Theme / สีดำ Dark Theme)
+    // =========================================================================
+    initTheme() {
+        const savedTheme = localStorage.getItem('spa_theme') || 'dark';
+        this.setTheme(savedTheme);
+    }
+
+    setTheme(theme) {
+        const isLight = theme === 'light';
+        if (isLight) {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+            document.body.classList.add('light-theme');
+            localStorage.setItem('spa_theme', 'light');
+        } else {
+            document.documentElement.classList.remove('light');
+            document.documentElement.classList.add('dark');
+            document.body.classList.remove('light-theme');
+            localStorage.setItem('spa_theme', 'dark');
+        }
+        this.updateThemeUI(isLight);
+    }
+
+    toggleTheme() {
+        const isCurrentlyLight = document.body.classList.contains('light-theme');
+        this.setTheme(isCurrentlyLight ? 'dark' : 'light');
+    }
+
+    updateThemeUI(isLight) {
+        const icon = document.getElementById('theme-toggle-icon');
+        const text = document.getElementById('theme-toggle-text');
+        const btn = document.getElementById('btn-theme-toggle');
+        if (icon) {
+            icon.className = isLight ? 'fa-solid fa-moon text-indigo-400 text-sm' : 'fa-solid fa-sun text-amber-400 text-sm';
+        }
+        if (text) {
+            text.textContent = isLight ? 'ธีมมืด' : 'ธีมสว่าง';
+        }
+        if (btn) {
+            btn.title = isLight ? 'สลับเป็นธีมสีดำ (Dark Mode)' : 'สลับเป็นธีมสีขาว (Light Mode)';
+        }
     }
 
     // =========================================================================
@@ -34690,6 +35274,36 @@ WHERE EXTRACT(DAY FROM recorded_at) = 10 AND EXTRACT(MONTH FROM recorded_at) != 
     // =========================================================================
     async handleModuleAction(action, moduleKey) {
         console.log(`[App] Handling module action: ${action} for ${moduleKey}`);
+        const isAdmin = window.AuthService ? window.AuthService.isAdmin() : false;
+
+        // ข้อกำหนดสิทธิ์ User: อนุญาตให้ดูตัวอย่าง (Preview) ได้เท่านั้น ปุ่มอื่นสงวนไว้สำหรับ Admin
+        if (!isAdmin && action !== 'preview') {
+            if (typeof Swal !== 'undefined') {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'ไม่มีสิทธิ์ดำเนินการ',
+                    text: 'ผู้ใช้งานทั่วไปสามารถกดปุ่ม "ดูตัวอย่าง" ได้เท่านั้น กรุณาติดต่อผู้ดูแลระบบ',
+                    timer: 2500,
+                    showConfirmButton: false,
+                    toast: true,
+                    position: 'top-end'
+                });
+            }
+            return;
+        }
+
+        if (action === 'clear' && !isAdmin) {
+            if (typeof Swal !== 'undefined') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'ไม่มีสิทธิ์ลบข้อมูล',
+                    text: 'ผู้ใช้งานทั่วไปไม่ได้รับอนุญาตให้ลบข้อมูล กรุณาติดต่อผู้ดูแลระบบ',
+                    confirmButtonColor: '#10b981'
+                });
+            }
+            return;
+        }
+
         switch (action) {
             case 'refresh':
                 await this.refreshModuleData(moduleKey);

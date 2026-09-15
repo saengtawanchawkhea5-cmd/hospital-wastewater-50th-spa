@@ -6262,6 +6262,189 @@ body.light-theme [id*="pill-"][id*="-all"].active {
     color: #059669 !important;
 }
 
+/* ==========================================================================
+   AUTO-GENERATOR EQUIPMENT SELECTOR (EQUIPMENT REFERENCE INTEGRATION)
+   ========================================================================== */
+#auto-gen-machinery-eq-section {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.auto-gen-eq-group {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(51, 65, 85, 0.6);
+    border-radius: 0.75rem;
+    padding: 0.75rem 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.auto-gen-eq-group:hover {
+    border-color: rgba(56, 189, 248, 0.3);
+    background: rgba(15, 23, 42, 0.8);
+}
+
+.auto-gen-eq-group-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94a3b8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.4);
+}
+
+.auto-gen-eq-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.65rem;
+    border-radius: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(51, 65, 85, 0.8);
+    color: #94a3b8;
+}
+
+.auto-gen-eq-chip:hover {
+    border-color: rgba(56, 189, 248, 0.6);
+    color: #e2e8f0;
+    background: rgba(30, 41, 59, 0.8);
+    transform: translateY(-1px);
+}
+
+.auto-gen-eq-chip.selected {
+    background: linear-gradient(135deg, rgba(6, 78, 59, 0.7) 0%, rgba(4, 120, 87, 0.5) 100%);
+    border-color: #10b981;
+    color: #ecfdf5;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+}
+
+.auto-gen-eq-chip input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 0.95rem;
+    height: 0.95rem;
+    border: 1.5px solid #64748b;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    display: grid;
+    place-content: center;
+    background: transparent;
+    transition: all 0.15s ease;
+}
+
+.auto-gen-eq-chip input[type="checkbox"]::before {
+    content: "";
+    width: 0.55rem;
+    height: 0.55rem;
+    transform: scale(0);
+    transition: 0.12s transform ease-in-out;
+    box-shadow: inset 1em 1em #10b981;
+    transform-origin: center;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.auto-gen-eq-chip.selected input[type="checkbox"] {
+    border-color: #10b981;
+    background: rgba(16, 185, 129, 0.15);
+}
+
+.auto-gen-eq-chip.selected input[type="checkbox"]::before {
+    transform: scale(1);
+}
+
+.auto-gen-eq-code {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.65rem;
+    padding: 0.1rem 0.35rem;
+    border-radius: 4px;
+    background: rgba(51, 65, 85, 0.5);
+    color: #38bdf8;
+}
+
+.auto-gen-eq-chip.selected .auto-gen-eq-code {
+    background: rgba(6, 95, 70, 0.6);
+    color: #6ee7b7;
+}
+
+/* Light Theme Styling for Auto-Generator Equipment Selector */
+body.light-theme #auto-gen-machinery-eq-section {
+    background: #f8fafc !important;
+    border-color: #cbd5e1 !important;
+}
+
+body.light-theme .auto-gen-eq-group {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+}
+
+body.light-theme .auto-gen-eq-group:hover {
+    border-color: #93c5fd !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+body.light-theme .auto-gen-eq-group-title {
+    color: #475569 !important;
+    border-bottom-color: #f1f5f9 !important;
+}
+
+body.light-theme .auto-gen-eq-chip {
+    background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+    color: #334155 !important;
+}
+
+body.light-theme .auto-gen-eq-chip:hover {
+    background: #e2e8f0 !important;
+    border-color: #94a3b8 !important;
+    color: #0f172a !important;
+}
+
+body.light-theme .auto-gen-eq-chip.selected {
+    background: #ecfdf5 !important;
+    border-color: #10b981 !important;
+    color: #065f46 !important;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.15) !important;
+}
+
+body.light-theme .auto-gen-eq-code {
+    background: #e2e8f0 !important;
+    color: #0284c7 !important;
+}
+
+body.light-theme .auto-gen-eq-chip.selected .auto-gen-eq-code {
+    background: #d1fae5 !important;
+    color: #047857 !important;
+}
+
+body.light-theme #auto-gen-eq-search {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    color: #0f172a !important;
+}
+
+body.light-theme #auto-gen-eq-search:focus {
+    border-color: #0284c7 !important;
+}
+
+body.light-theme .btn-eq-preset {
+    background: #ffffff !important;
+    border-color: #cbd5e1 !important;
+    color: #334155 !important;
+}
+
+body.light-theme .btn-eq-preset:hover {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+
+
 
 
 
@@ -11967,6 +12150,66 @@ body.light-theme [id*="pill-"][id*="-all"].active {
                     </div>
                 </div>
 
+                <!-- Section 6.5: Equipment Selector from Equipment Reference (Machinery / All Scope Only) -->
+                <div id="auto-gen-machinery-eq-section" class="p-4 rounded-xl bg-slate-900/70 border border-slate-800 space-y-3" style="display: none;">
+                    <div class="flex items-center justify-between flex-wrap gap-2 border-b border-slate-800/80 pb-3">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-sm">
+                                <i class="fa-solid fa-gears"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white flex items-center gap-2">
+                                    เลือกอุปกรณ์จากฐานข้อมูลอ้างอิง (Equipment Reference)
+                                    <span class="text-[10px] text-emerald-400 font-normal bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 rounded-full">
+                                        <i class="fa-solid fa-database mr-1"></i> เชื่อมต่อฐานข้อมูลสด
+                                    </span>
+                                </h4>
+                                <span class="text-[11px] text-slate-400">เลือกอุปกรณ์ที่ต้องการลงบันทึกการตรวจเช็คประจำวันตามความเป็นจริงในระบบ</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span id="auto-gen-eq-count-badge" class="px-2.5 py-1 rounded-lg bg-blue-950/80 border border-blue-500/40 text-blue-300 text-xs font-semibold font-mono shadow-sm">
+                                เลือก 0 / 0 รายการ
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Presets and Search Bar -->
+                    <div class="flex items-center justify-between gap-2 flex-wrap pt-1">
+                        <div class="flex items-center gap-1.5 flex-wrap">
+                            <span class="text-[11px] text-slate-400 font-medium mr-1">เลือกด่วน:</span>
+                            <button type="button" class="btn-eq-preset py-1.5 px-2.5 rounded-lg border border-slate-700 bg-slate-800/90 text-slate-200 hover:text-white hover:border-cyan-500 text-xs font-medium transition cursor-pointer" onclick="window.AutoGeneratorModule && window.AutoGeneratorModule.selectEquipmentPreset('all')">
+                                <i class="fa-solid fa-check-double text-cyan-400 mr-1"></i>เลือกทั้งหมด
+                            </button>
+                            <button type="button" class="btn-eq-preset py-1.5 px-2.5 rounded-lg border border-slate-700 bg-slate-800/90 text-slate-200 hover:text-white hover:border-blue-500 text-xs font-medium transition cursor-pointer" onclick="window.AutoGeneratorModule && window.AutoGeneratorModule.selectEquipmentPreset('machinery')">
+                                <i class="fa-solid fa-gears text-blue-400 mr-1"></i>เฉพาะเครื่องจักร & ปั๊มน้ำ
+                            </button>
+                            <button type="button" class="btn-eq-preset py-1.5 px-2.5 rounded-lg border border-slate-700 bg-slate-800/90 text-slate-200 hover:text-white hover:border-emerald-500 text-xs font-medium transition cursor-pointer" onclick="window.AutoGeneratorModule && window.AutoGeneratorModule.selectEquipmentPreset('sensors')">
+                                <i class="fa-solid fa-wave-square text-emerald-400 mr-1"></i>เฉพาะเครื่องมือวัด & เซนเซอร์
+                            </button>
+                            <button type="button" class="btn-eq-preset py-1.5 px-2.5 rounded-lg border border-slate-700 bg-slate-800/90 text-slate-200 hover:text-white hover:border-amber-500 text-xs font-medium transition cursor-pointer" onclick="window.AutoGeneratorModule && window.AutoGeneratorModule.selectEquipmentPreset('daily')">
+                                <i class="fa-solid fa-calendar-day text-amber-400 mr-1"></i>ระบบบำบัดประจำวัน
+                            </button>
+                            <button type="button" class="btn-eq-preset py-1.5 px-2.5 rounded-lg border border-slate-700 bg-slate-800/90 text-slate-300 hover:text-rose-300 hover:border-rose-500 text-xs font-medium transition cursor-pointer" onclick="window.AutoGeneratorModule && window.AutoGeneratorModule.selectEquipmentPreset('clear')">
+                                <i class="fa-solid fa-xmark text-rose-400 mr-1"></i>ล้างทั้งหมด
+                            </button>
+                        </div>
+                        <div class="relative w-full sm:w-64">
+                            <i class="fa-solid fa-search absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                            <input type="text" id="auto-gen-eq-search" placeholder="ค้นหาชื่อหรือรหัสอุปกรณ์..." class="form-control text-xs w-full pl-8 pr-3 py-1.5 bg-[#0a1120] border border-slate-800 focus:border-cyan-500 rounded-lg text-white font-sans" oninput="window.AutoGeneratorModule && window.AutoGeneratorModule.filterEquipmentList(this.value)" />
+                        </div>
+                    </div>
+
+                    <!-- Equipment Groups & Chips Container -->
+                    <div id="auto-gen-eq-list-container" class="space-y-3 max-h-64 overflow-y-auto custom-scrollbar p-1">
+                        <!-- Populated dynamically via renderEquipmentSelector() -->
+                        <div class="text-center py-6 text-slate-500 text-xs">
+                            <i class="fa-solid fa-spinner fa-spin text-lg mb-2"></i>
+                            <div>กำลังโหลดรายการอุปกรณ์จากฐานข้อมูลอ้างอิง...</div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Section 7: Live Preview & Editable Data Table (Matching Image 3) -->
                 <div class="space-y-3 pt-2">
                     <div class="flex items-center justify-between gap-2 flex-wrap">
@@ -13647,6 +13890,8 @@ class AutoGeneratorController {
         this.lastWaterMeter = 441921.42;
         this.lastElecMeter = 202842.10;
         this.initialized = false;
+        this.equipmentReferenceList = [];
+        this.selectedEquipmentNames = [];
 
         // โมเดลสัดส่วนโรงพยาบาล ๕๐ พรรษา มหาวชิราลงกรณ (330 เตียง)
         this.hospitalModel = {
@@ -13663,17 +13908,7 @@ class AutoGeneratorController {
             },
             electricityBaseKwh: 460.0,
             electricityUnitPrice: 4.50,
-            equipmentList: [
-                'เครื่องเติมอากาศ Roots Blower #1',
-                'เครื่องเติมอากาศ Roots Blower #2 (สแตนด์บาย)',
-                'ปั๊มจุ่มสูบน้ำเสีย Submersible Pump #1',
-                'ปั๊มจุ่มสูบน้ำเสีย Submersible Pump #2',
-                'ปั๊มสูบตะกอนเวียนกลับ Sludge Return Pump',
-                'ปั๊มจ่ายสารคลอรีน Dosing Pump #1',
-                'ปั๊มจ่ายสารโพลีอะลูมิเนียมคลอไรด์ (PAC)',
-                'เครื่องวัดอัตราการไหล Flow Meter',
-                'หัววัดค่าออนไลน์ Online pH / DO Sensor'
-            ]
+            equipmentList: []
         };
     }
 
@@ -13883,6 +14118,7 @@ class AutoGeneratorController {
                 this.currentModule = btn.getAttribute('data-module') || 'influent';
                 this.highlightModuleScope(this.currentModule);
                 this.updateModalHeaders(this.currentModule);
+                await this.updateEquipmentSectionVisibility();
                 await this.loadLatestMeters();
                 await this.checkMissingDates();
                 this.updatePreviewBadge();
@@ -13954,12 +14190,311 @@ class AutoGeneratorController {
     }
 
     /**
+     * ดึงข้อมูลรายการอุปกรณ์สดจากฐานข้อมูลอ้างอิงอุปกรณ์ (Equipment Reference)
+     * เพื่อให้ระบบตรวจสอบอัตโนมัติใช้อุปกรณ์จริงในระบบ 100% ไม่มีอุปกรณ์นอกระบบ
+     */
+    async loadEquipmentReference() {
+        try {
+            let list = [];
+            if (window.DataStore && typeof window.DataStore.getAll === 'function') {
+                list = await window.DataStore.getAll('equipment_ref', { orderBy: 'equipment_name', ascending: true });
+            }
+            if ((!list || list.length === 0) && window.EquipmentRefModule && Array.isArray(window.EquipmentRefModule.items) && window.EquipmentRefModule.items.length > 0) {
+                list = window.EquipmentRefModule.items;
+            }
+            if ((!list || list.length === 0) && typeof SAMPLE_DATABASE !== 'undefined' && Array.isArray(SAMPLE_DATABASE.equipment_ref) && SAMPLE_DATABASE.equipment_ref.length > 0) {
+                list = SAMPLE_DATABASE.equipment_ref;
+            }
+
+            // กรองเฉพาะอุปกรณ์ที่พร้อมใช้งาน (ready/active)
+            this.equipmentReferenceList = (list || []).filter(item => {
+                const s = (item.status || '').toLowerCase();
+                return s !== 'inactive' && s !== 'decommissioned' && s !== 'ยกเลิก' && s !== 'จำหน่าย';
+            });
+
+            // ตรวจสอบความถูกต้องของ selectedEquipmentNames ให้ตรงกับฐานข้อมูลจริงเท่านั้น
+            const validNameSet = new Set(this.equipmentReferenceList.map(x => x.equipment_name));
+            if (this.selectedEquipmentNames && this.selectedEquipmentNames.length > 0) {
+                this.selectedEquipmentNames = this.selectedEquipmentNames.filter(name => validNameSet.has(name));
+            }
+
+            // หากยังไม่มีการเลือก หรือรายการว่าง ให้เลือกชุดอุปกรณ์ตรวจเช็คระบบหลักเป็นค่าเริ่มต้น
+            if (!this.selectedEquipmentNames || this.selectedEquipmentNames.length === 0) {
+                const defaultItems = this.equipmentReferenceList.filter(item => {
+                    const cat = (item.category || '').toLowerCase();
+                    return !cat.includes('วัสดุสิ้นเปลือง') && !cat.includes('ความปลอดภัย') && !cat.includes('สารเคมี') && !cat.includes('อะไหล่');
+                });
+                
+                if (defaultItems.length > 0) {
+                    this.selectedEquipmentNames = defaultItems.map(item => item.equipment_name);
+                } else {
+                    this.selectedEquipmentNames = this.equipmentReferenceList.map(item => item.equipment_name);
+                }
+            }
+
+            this.hospitalModel.equipmentList = [...this.selectedEquipmentNames];
+        } catch (e) {
+            console.error('Error loading equipment reference:', e);
+            this.equipmentReferenceList = [];
+            this.selectedEquipmentNames = [];
+        }
+    }
+
+    /**
+     * ดึงไอคอนและสีประจำหมวดหมู่อุปกรณ์
+     */
+    getCategoryIcon(cat) {
+        const c = (cat || '').toLowerCase();
+        if (c.includes('เติมอากาศ') || c.includes('blower') || c.includes('aerat')) return { icon: '🌀', color: 'text-cyan-400' };
+        if (c.includes('สูบน้ำ') || c.includes('pump')) return { icon: '⚡', color: 'text-blue-400' };
+        if (c.includes('จ่ายสาร') || c.includes('dosing')) return { icon: '🧪', color: 'text-violet-400' };
+        if (c.includes('วัด') || c.includes('sensor') || c.includes('ตรวจ')) return { icon: '📊', color: 'text-emerald-400' };
+        if (c.includes('คัดกรอง') || c.includes('ขยะ') || c.includes('screen')) return { icon: '🗑️', color: 'text-teal-400' };
+        if (c.includes('กรองน้ำ') || c.includes('filter')) return { icon: '🪨', color: 'text-amber-400' };
+        if (c.includes('กลบำบัด') || c.includes('mix') || c.includes('press')) return { icon: '⚙️', color: 'text-indigo-400' };
+        if (c.includes('ฆ่าเชื้อ') || c.includes('uv')) return { icon: '💡', color: 'text-purple-400' };
+        if (c.includes('ไฟฟ้า') || c.includes('generator')) return { icon: '🔋', color: 'text-yellow-400' };
+        if (c.includes('วาล์ว') || c.includes('valve') || c.includes('ท่อ')) return { icon: '🚰', color: 'text-sky-400' };
+        return { icon: '🔧', color: 'text-slate-400' };
+    }
+
+    /**
+     * เรนเดอร์กล่องตัวเลือกอุปกรณ์จัดกลุ่มตามหมวดหมู่ใน Equipment Reference
+     */
+    renderEquipmentSelector(searchTerm = '') {
+        const container = document.getElementById('auto-gen-eq-list-container');
+        const badgeEl = document.getElementById('auto-gen-eq-count-badge');
+        if (!container) return;
+
+        if (!this.equipmentReferenceList || this.equipmentReferenceList.length === 0) {
+            container.innerHTML = `
+                <div class="text-center py-6 text-slate-400 text-xs">
+                    <i class="fa-solid fa-triangle-exclamation text-amber-400 text-lg mb-1.5"></i>
+                    <div>ไม่พบรายการอุปกรณ์ในฐานข้อมูล Equipment Reference</div>
+                </div>
+            `;
+            if (badgeEl) badgeEl.textContent = 'เลือก 0 / 0 รายการ';
+            return;
+        }
+
+        const totalAvailable = this.equipmentReferenceList.length;
+        const selectedCount = (this.selectedEquipmentNames || []).length;
+        if (badgeEl) {
+            badgeEl.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-400 mr-1"></i>เลือก ${selectedCount} / ${totalAvailable} รายการ`;
+        }
+
+        // กรองตาม searchTerm
+        let filtered = this.equipmentReferenceList;
+        const term = (searchTerm || '').trim().toLowerCase();
+        if (term) {
+            filtered = filtered.filter(item => {
+                const name = (item.equipment_name || '').toLowerCase();
+                const code = (item.equipment_code || '').toLowerCase();
+                const cat = (item.category || '').toLowerCase();
+                const loc = (item.location || '').toLowerCase();
+                return name.includes(term) || code.includes(term) || cat.includes(term) || loc.includes(term);
+            });
+        }
+
+        if (filtered.length === 0) {
+            const safeTerm = window.App ? window.App.escapeHtml(searchTerm) : searchTerm;
+            container.innerHTML = `
+                <div class="text-center py-6 text-slate-400 text-xs">
+                    <i class="fa-solid fa-magnifying-glass text-slate-500 text-base mb-1.5"></i>
+                    <div>ไม่พบอุปกรณ์ที่ตรงกับ "${safeTerm}"</div>
+                </div>
+            `;
+            return;
+        }
+
+        // จัดกลุ่มตามหมวดหมู่ category
+        const groups = {};
+        filtered.forEach(item => {
+            const cat = item.category || 'ระบบเครื่องจักรและอุปกรณ์';
+            if (!groups[cat]) groups[cat] = [];
+            groups[cat].push(item);
+        });
+
+        const selectedSet = new Set(this.selectedEquipmentNames || []);
+
+        let html = '';
+        Object.keys(groups).forEach(catName => {
+            const items = groups[catName];
+            const meta = this.getCategoryIcon(catName);
+            const groupSelectedCount = items.filter(x => selectedSet.has(x.equipment_name)).length;
+
+            html += `
+                <div class="auto-gen-eq-group">
+                    <div class="auto-gen-eq-group-title">
+                        <span class="flex items-center gap-1.5 text-xs">
+                            <span>${meta.icon}</span>
+                            <span class="text-white font-semibold">${catName}</span>
+                            <span class="text-[10px] text-slate-400 font-mono">(${groupSelectedCount}/${items.length})</span>
+                        </span>
+                        <button type="button" class="text-[10px] text-cyan-400 hover:text-cyan-200 underline cursor-pointer font-medium"
+                            onclick="window.AutoGeneratorModule && window.AutoGeneratorModule.toggleGroupSelection('${encodeURIComponent(catName)}')">
+                            ${groupSelectedCount === items.length ? 'ยกเลิกทั้งหมวด' : 'เลือกทั้งหมวด'}
+                        </button>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+            `;
+
+            items.forEach(item => {
+                const isSelected = selectedSet.has(item.equipment_name);
+                const safeNameAttr = encodeURIComponent(item.equipment_name);
+                html += `
+                    <label class="auto-gen-eq-chip ${isSelected ? 'selected' : ''}" title="${item.location ? `ตำแหน่ง: ${item.location}` : item.equipment_name}">
+                        <input type="checkbox" value="${safeNameAttr}" ${isSelected ? 'checked' : ''}
+                            onchange="window.AutoGeneratorModule && window.AutoGeneratorModule.toggleEquipmentSelection(decodeURIComponent(this.value), this.checked)" />
+                        ${item.equipment_code ? `<span class="auto-gen-eq-code">${item.equipment_code}</span>` : ''}
+                        <span>${item.equipment_name}</span>
+                    </label>
+                `;
+            });
+
+            html += `
+                    </div>
+                </div>
+            `;
+        });
+
+        container.innerHTML = html;
+    }
+
+    /**
+     * สลับการเลือกอุปกรณ์รายชิ้น
+     */
+    toggleEquipmentSelection(name, isChecked) {
+        if (!this.selectedEquipmentNames) this.selectedEquipmentNames = [];
+        const set = new Set(this.selectedEquipmentNames);
+        if (isChecked) {
+            set.add(name);
+        } else {
+            set.delete(name);
+        }
+        this.selectedEquipmentNames = Array.from(set);
+        this.hospitalModel.equipmentList = [...this.selectedEquipmentNames];
+
+        const searchInput = document.getElementById('auto-gen-eq-search');
+        this.renderEquipmentSelector(searchInput ? searchInput.value : '');
+        this.updateModalHeaders(this.currentModule);
+        this.renderPreviewTable();
+    }
+
+    /**
+     * สลับการเลือกอุปกรณ์ยกหมวดหมู่
+     */
+    toggleGroupSelection(catNameEncoded) {
+        const catName = decodeURIComponent(catNameEncoded);
+        const groupItems = (this.equipmentReferenceList || []).filter(x => (x.category || 'ระบบเครื่องจักรและอุปกรณ์') === catName);
+        if (groupItems.length === 0) return;
+
+        const set = new Set(this.selectedEquipmentNames || []);
+        const allInGroupSelected = groupItems.every(x => set.has(x.equipment_name));
+
+        if (allInGroupSelected) {
+            groupItems.forEach(x => set.delete(x.equipment_name));
+        } else {
+            groupItems.forEach(x => set.add(x.equipment_name));
+        }
+
+        this.selectedEquipmentNames = Array.from(set);
+        this.hospitalModel.equipmentList = [...this.selectedEquipmentNames];
+
+        const searchInput = document.getElementById('auto-gen-eq-search');
+        this.renderEquipmentSelector(searchInput ? searchInput.value : '');
+        this.updateModalHeaders(this.currentModule);
+        this.renderPreviewTable();
+    }
+
+    /**
+     * เลือกอุปกรณ์ตามชุดทางลัดที่ตั้งไว้ (Presets)
+     */
+    selectEquipmentPreset(presetType) {
+        if (!this.equipmentReferenceList || this.equipmentReferenceList.length === 0) return;
+
+        if (presetType === 'all') {
+            this.selectedEquipmentNames = this.equipmentReferenceList.map(x => x.equipment_name);
+        } else if (presetType === 'clear') {
+            this.selectedEquipmentNames = [];
+        } else if (presetType === 'machinery') {
+            this.selectedEquipmentNames = this.equipmentReferenceList.filter(item => {
+                const cat = (item.category || '').toLowerCase();
+                const name = (item.equipment_name || '').toLowerCase();
+                return cat.includes('เติมอากาศ') || cat.includes('สูบน้ำ') || cat.includes('blower') || cat.includes('pump') ||
+                       cat.includes('กลบำบัด') || cat.includes('mix') || cat.includes('press') || cat.includes('กรองน้ำ') ||
+                       name.includes('ปั๊ม') || name.includes('blower') || name.includes('เครื่องกวน') || name.includes('เครื่องรีด') || name.includes('ขับสะพาน');
+            }).map(x => x.equipment_name);
+        } else if (presetType === 'sensors') {
+            this.selectedEquipmentNames = this.equipmentReferenceList.filter(item => {
+                const cat = (item.category || '').toLowerCase();
+                const name = (item.equipment_name || '').toLowerCase();
+                return cat.includes('วัด') || cat.includes('sensor') || cat.includes('ตรวจวัด') ||
+                       name.includes('flow') || name.includes('sensor') || name.includes('หัววัด') || name.includes('meter');
+            }).map(x => x.equipment_name);
+        } else if (presetType === 'daily') {
+            this.selectedEquipmentNames = this.equipmentReferenceList.filter(item => {
+                const cat = (item.category || '').toLowerCase();
+                return !cat.includes('วัสดุสิ้นเปลือง') && !cat.includes('ความปลอดภัย') && !cat.includes('อะไหล่') && !cat.includes('สารเคมี');
+            }).map(x => x.equipment_name);
+        }
+
+        this.hospitalModel.equipmentList = [...this.selectedEquipmentNames];
+        const searchInput = document.getElementById('auto-gen-eq-search');
+        this.renderEquipmentSelector(searchInput ? searchInput.value : '');
+        this.updateModalHeaders(this.currentModule);
+        this.renderPreviewTable();
+    }
+
+    /**
+     * ค้นหากรองอุปกรณ์
+     */
+    filterEquipmentList(searchTerm) {
+        this.renderEquipmentSelector(searchTerm);
+    }
+
+    /**
+     * ควบคุมการแสดงผลของส่วนเลือกอุปกรณ์ตามโมดูล
+     */
+    async updateEquipmentSectionVisibility() {
+        const sec = document.getElementById('auto-gen-machinery-eq-section');
+        const isMach = this.currentModule === 'machinery' || this.currentModule === 'all';
+        if (sec) {
+            sec.style.display = isMach ? 'block' : 'none';
+        }
+        if (isMach) {
+            await this.loadEquipmentReference();
+            this.renderEquipmentSelector();
+            this.updateModalHeaders(this.currentModule);
+        }
+    }
+
+    /**
+     * สร้างข้อความสรุปอุปกรณ์แบบไดนามิกสำหรับแถวตารางพรีวิว
+     */
+    getEquipmentSummaryText() {
+        const count = (this.selectedEquipmentNames || []).length;
+        if (count === 0) {
+            return '⚠️ ยังไม่ได้เลือกอุปกรณ์จากฐานข้อมูลอ้างอิงอุปกรณ์ (Equipment Reference)';
+        }
+        if (count === 1) {
+            return `ตรวจเช็ค: ${this.selectedEquipmentNames[0]} ทำงานปกติ 100%`;
+        }
+        if (count <= 3) {
+            return `ตรวจเช็ค: ${this.selectedEquipmentNames.join(', ')} ทำงานปกติ 100%`;
+        }
+        const first3 = this.selectedEquipmentNames.slice(0, 3).join(', ');
+        return `ตรวจเช็ค: ${first3} และอื่นๆ รวม ${count} รายการ ทำงานปกติ 100%`;
+    }
+
+    /**
      * อัปเดตหัวข้อ คำอธิบาย และหัวคอลัมน์ของหน้าต่าง Auto Generator ตามโมดูลที่เลือก
      */
     updateModalHeaders(mod) {
         const titleEl = document.getElementById('auto-gen-modal-title');
         const subtitleEl = document.getElementById('auto-gen-modal-subtitle');
         const colMetricEl = document.getElementById('auto-gen-col-metric-header');
+        const eqCount = (this.selectedEquipmentNames || []).length;
         
         const configs = {
             influent: {
@@ -13979,8 +14514,8 @@ class AutoGeneratorController {
             },
             machinery: {
                 title: 'ระบบบันทึกการตรวจเช็คเครื่องจักรอัตโนมัติ (Machinery Daily Checklist)',
-                subtitle: 'บันทึกสถานะการทำงานปกติของเครื่องจักรหลัก 9 รายการประจำวัน',
-                colMetric: 'สถานะการทำงานเครื่องจักร 9 รายการ (แก้ไขได้ ✏️)'
+                subtitle: `บันทึกสถานะการทำงานปกติของเครื่องจักร (${eqCount} รายการ) ที่เลือกจากฐานข้อมูลอ้างอิงอุปกรณ์ประจำวัน`,
+                colMetric: `สถานะการทำงานเครื่องจักร (${eqCount} รายการ) (แก้ไขได้ ✏️)`
             },
             all: {
                 title: 'ระบบบันทึกข้อมูลครบวงจรอัตโนมัติ (All-In-One Auto Generator)',
@@ -14092,6 +14627,7 @@ class AutoGeneratorController {
 
         // 2. ไฮไลต์โมดูลที่เลือก และอัปเดตหัวข้อ/คอลัมน์ให้ตรงกับโมดูลเป้าหมาย
         this.highlightModuleScope(this.currentModule);
+        await this.updateEquipmentSectionVisibility();
         this.updateModalHeaders(this.currentModule);
 
         // 3. ตรวจสอบให้แน่ใจว่ามีวันที่ และ Clamp ไม่ให้เกินวันปัจจุบัน
@@ -14850,6 +15386,7 @@ class AutoGeneratorController {
                     // 4. โมดูลตรวจเช็คเครื่องจักร
                     else if (mod === 'machinery') {
                         const machStatus = existing ? existing.machineryStatus : 'normal';
+                        const eqCount = (this.selectedEquipmentNames || []).length;
                         newTableItems.push({
                             date: dateStr,
                             shift: shiftKey,
@@ -14858,7 +15395,7 @@ class AutoGeneratorController {
                             shiftPillClass: shiftPillClass,
                             time: realisticTime,
                             moduleType: 'machinery',
-                            department: 'เครื่องจักรหลัก 9 รายการ',
+                            department: `เครื่องจักรอ้างอิง (${eqCount} รายการ)`,
                             machineryStatus: machStatus
                         });
                     }
@@ -14953,7 +15490,7 @@ class AutoGeneratorController {
                             </select>
                         </div>
                         <div class="text-[11px] text-slate-400 font-sans tracking-tight" id="auto-gen-row-subtext-${idx}">
-                            ตรวจเช็ค Roots Blower 2 ชุด, Submersible Pumps 2 ตัว, Sludge Return, Dosing Pump ทำงานปกติ
+                            ${this.getEquipmentSummaryText()}
                         </div>
                     </div>
                 `;
@@ -15238,19 +15775,31 @@ class AutoGeneratorController {
                     await window.DataStore.insert('preliminary_water_quality', record);
                     totalSaved++;
                 } else if (item.moduleType === 'machinery') {
+                    // ใช้อุปกรณ์จริงที่เลือกจากฐานข้อมูลอ้างอิง equipment_ref
+                    let actualEquipment = this.selectedEquipmentNames;
+                    if (!actualEquipment || actualEquipment.length === 0) {
+                        if (this.equipmentReferenceList && this.equipmentReferenceList.length > 0) {
+                            actualEquipment = this.equipmentReferenceList.map(x => x.equipment_name);
+                        } else {
+                            actualEquipment = [];
+                        }
+                    }
+                    const eqCount = actualEquipment.length;
+                    const abnormalEquip = item.machineryStatus === 'normal' ? '-' : (actualEquipment[0] || 'เครื่องจักรขัดข้อง');
+
                     const record = {
                         id: generateUUID(),
                         recorded_at: recordedAt,
-                        equipment_list: this.hospitalModel.equipmentList,
+                        equipment_list: actualEquipment,
                         status: item.machineryStatus === 'normal' ? 'ปกติทุกรายการ' : 'มีอุปกรณ์ต้องบำรุงรักษา',
-                        abnormal_equipment: item.machineryStatus === 'normal' ? '-' : 'เครื่องเติมอากาศ Roots Blower #2',
+                        abnormal_equipment: abnormalEquip,
                         cause: '-',
                         solution: '-',
                         inspector: recorderName,
                         inspector_name: recorderName,
                         checked_by: recorderName,
-                        remarks: `ตรวจเช็คความพร้อมประจำเวร (${item.shiftName}) อุปกรณ์ทำงานปกติสมบูรณ์`,
-                        notes: `ตรวจเช็คความพร้อมประจำเวร (${item.shiftName}) อุปกรณ์ทำงานปกติสมบูรณ์`,
+                        remarks: `ตรวจเช็คความพร้อมประจำเวร (${item.shiftName}) อุปกรณ์ ${eqCount} รายการ จากฐานข้อมูลอ้างอิงอุปกรณ์ ทำงานปกติสมบูรณ์`,
+                        notes: `ตรวจเช็คความพร้อมประจำเวร (${item.shiftName}) อุปกรณ์ ${eqCount} รายการ จากฐานข้อมูลอ้างอิงอุปกรณ์ ทำงานปกติสมบูรณ์`,
                         blower_status: item.machineryStatus,
                         pump_status: item.machineryStatus,
                         aerator_status: item.machineryStatus,
@@ -15354,7 +15903,7 @@ class AutoGeneratorController {
             case 'influent': return 'ปริมาณน้ำเสียเข้าระบบ (80% Wastewater)';
             case 'electricity': return 'การใช้พลังงานไฟฟ้า (kWh)';
             case 'water_quality': return 'การตรวจคุณภาพน้ำเบื้องต้น (5 พารามิเตอร์)';
-            case 'machinery': return 'การตรวจเช็คเครื่องจักรประจำวัน (9 รายการ)';
+            case 'machinery': return 'การตรวจเช็คเครื่องจักรประจำวัน (ฐานข้อมูลอ้างอิงอุปกรณ์)';
             case 'all': return 'บันทึกครบทุกมิติ (All-In-One)';
             default: return mod;
         }

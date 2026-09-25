@@ -13697,6 +13697,15 @@ class DataStore {
                             return true;
                         });
 
+                        // เติมค่าน้ำประปาอัตโนมัติหากยังไม่มีหรือเป็น 0
+                        mergedRows.forEach(r => {
+                            const curWater = parseFloat(r.total_water_supply || r.total_water_m3 || 0);
+                            const curWw = parseFloat(r.total_wastewater_inflow || r.wastewater_80_m3 || 0);
+                            if (curWater <= 0 && curWw > 0) {
+                                r.total_water_supply = parseFloat((curWw / 0.80).toFixed(2));
+                            }
+                        });
+
                         // ซิงค์เดือนที่ยังค้างอยู่ใน LocalStore ขึ้น Supabase Cloud ในเบื้องหลังอัตโนมัติ (Auto-Sync)
                         if (unsyncedMonths.length > 0 && this.supabaseClient) {
                             setTimeout(async () => {
@@ -13796,6 +13805,13 @@ class DataStore {
                 seenMonths.add(m);
                 return true;
             });
+            items.forEach(r => {
+                const curWater = parseFloat(r.total_water_supply || r.total_water_m3 || 0);
+                const curWw = parseFloat(r.total_wastewater_inflow || r.wastewater_80_m3 || 0);
+                if (curWater <= 0 && curWw > 0) {
+                    r.total_water_supply = parseFloat((curWw / 0.80).toFixed(2));
+                }
+            });
         }
         if (window.App && typeof window.App.sortData === 'function') {
             items = window.App.sortData(items, orderField, sortDirection);
@@ -13871,9 +13887,10 @@ class DataStore {
                 'department', 'created_at', 'updated_at'
             ],
             monthly_reports: [
-                'id', 'report_month', 'total_wastewater_inflow', 'total_electricity_kwh',
+                'id', 'report_month', 'total_water_supply', 'total_water_m3', 'total_wastewater_inflow', 'total_electricity_kwh',
+                'daily_water_avg', 'daily_wastewater_avg', 'daily_kwh_avg',
                 'avg_ph', 'avg_do', 'avg_tds', 'avg_sediment', 'avg_chlorine',
-                'standard_pass_rate', 'total_cost', 'created_at'
+                'standard_pass_rate', 'total_cost', 'status', 'recorded_by', 'approved_by', 'notes', 'created_at'
             ],
             report_storage: [
                 'id', 'report_date', 'title', 'category', 'file_url', 'file_size', 'uploaded_by', 'created_at'
@@ -14141,6 +14158,20 @@ class DataStore {
                 let updRes = null;
                 if (cloudTargetId) {
                     updRes = await this.supabaseClient.from('monthly_reports').update(cloudPayload).eq('id', cloudTargetId).select();
+                    let retryCount = 0;
+                    while (updRes && updRes.error && updRes.error.message && retryCount < 15) {
+                        const colMatch = updRes.error.message.match(/Could not find the '([^']+)' column/i)
+                                      || updRes.error.message.match(/column "([^"]+)" of relation "[^"]+" does not exist/i);
+                        if (colMatch && colMatch[1] && cloudPayload[colMatch[1]] !== undefined) {
+                            const missingCol = colMatch[1];
+                            console.warn(`Supabase schema mismatch on update [monthly_reports]: column '${missingCol}' does not exist on Supabase Cloud. Retrying without it (attempt ${retryCount + 1})...`);
+                            delete cloudPayload[missingCol];
+                            retryCount++;
+                            updRes = await this.supabaseClient.from('monthly_reports').update(cloudPayload).eq('id', cloudTargetId).select();
+                        } else {
+                            break;
+                        }
+                    }
                 }
 
                 if (updRes && updRes.data && updRes.data.length > 0) {
@@ -14172,7 +14203,21 @@ class DataStore {
                         insPayload.id = generateUUID();
                     }
                     if (normMonth) insPayload.report_month = normMonth;
-                    const insRes = await this.supabaseClient.from('monthly_reports').insert([insPayload]).select();
+                    let insRes = await this.supabaseClient.from('monthly_reports').insert([insPayload]).select();
+                    let retryCount = 0;
+                    while (insRes && insRes.error && insRes.error.message && retryCount < 15) {
+                        const colMatch = insRes.error.message.match(/Could not find the '([^']+)' column/i)
+                                      || insRes.error.message.match(/column "([^"]+)" of relation "[^"]+" does not exist/i);
+                        if (colMatch && colMatch[1] && insPayload[colMatch[1]] !== undefined) {
+                            const missingCol = colMatch[1];
+                            console.warn(`Supabase schema mismatch on insert [monthly_reports]: column '${missingCol}' does not exist on Supabase Cloud. Retrying without it (attempt ${retryCount + 1})...`);
+                            delete insPayload[missingCol];
+                            retryCount++;
+                            insRes = await this.supabaseClient.from('monthly_reports').insert([insPayload]).select();
+                        } else {
+                            break;
+                        }
+                    }
                     if (insRes.data && insRes.data.length > 0) {
                         const savedRow = insRes.data[0];
                         this.isSupabaseConnected = true;
@@ -40713,8 +40758,8 @@ WHERE EXTRACT(DAY FROM recorded_at) = 10 AND EXTRACT(MONTH FROM recorded_at) != 
                     const days = (window.MonthlyReportModule && typeof window.MonthlyReportModule.getDaysInMonth === 'function')
                         ? window.MonthlyReportModule.getDaysInMonth(month)
                         : 30;
-                    const water = parseFloat(item.total_water_supply || item.total_water_m3 || 0);
-                    const ww = parseFloat(item.total_wastewater_inflow || item.wastewater_80_m3 || (water * 0.8));
+                    const ww = parseFloat(item.total_wastewater_inflow || item.wastewater_80_m3 || 0);
+                    const water = parseFloat(item.total_water_supply || item.total_water_m3 || (ww > 0 ? parseFloat((ww / 0.80).toFixed(2)) : 0));
                     const kwh = parseFloat(item.total_electricity_kwh || item.total_kwh || 0);
                     const cost = parseFloat(item.total_cost || item.total_cost_thb || (kwh * 4.5));
                     const bod = item.avg_bod !== undefined && item.avg_bod !== null ? parseFloat(item.avg_bod).toFixed(1) : '-';

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="th" class="dark">
 <head>
     <meta charset="UTF-8">
@@ -7010,6 +7010,7 @@ body.light-theme [class*="bg-slate-950"] .text-slate-400 {
                     <button type="submit" class="auth-submit-btn btn-login-emerald">
                         <i class="fa-solid fa-arrow-right-to-bracket"></i>
                         <span>เข้าสู่ระบบ (Sign In)</span>
+                    </button>
                 </form>
                 <script>
                     (function() {
@@ -13678,11 +13679,13 @@ class DataStore {
                     let mergedRows = [...allRows];
                     if (tableName === 'monthly_reports') {
                         const cloudMonths = new Set(allRows.map(r => String(r.report_month || '').trim().slice(0, 7)));
+                        const unsyncedMonths = [];
                         for (const loc of localItems) {
                             const lm = String(loc.report_month || '').trim().slice(0, 7);
                             if (lm && !cloudMonths.has(lm)) {
                                 mergedRows.push(loc);
                                 cloudMonths.add(lm);
+                                unsyncedMonths.push(loc);
                             }
                         }
                         const seenMonths = new Set();
@@ -13693,6 +13696,24 @@ class DataStore {
                             seenMonths.add(m);
                             return true;
                         });
+
+                        // ซิงค์เดือนที่ยังค้างอยู่ใน LocalStore ขึ้น Supabase Cloud ในเบื้องหลังอัตโนมัติ (Auto-Sync)
+                        if (unsyncedMonths.length > 0 && this.supabaseClient) {
+                            setTimeout(async () => {
+                                for (const item of unsyncedMonths) {
+                                    try {
+                                        const cleanPayload = this.sanitizeForSupabase('monthly_reports', item);
+                                        if (!cleanPayload.id || cleanPayload.id.startsWith('mr-')) {
+                                            cleanPayload.id = generateUUID();
+                                        }
+                                        await this.supabaseClient.from('monthly_reports').insert([cleanPayload]);
+                                        console.log(`[AutoSync] Synced monthly report ${item.report_month} to Supabase Cloud`);
+                                    } catch (e) {
+                                        console.warn(`[AutoSync] Failed to sync ${item.report_month}:`, e);
+                                    }
+                                }
+                            }, 500);
+                        }
                     } else {
                         const cloudIds = new Set(allRows.map(r => String(r.id)));
                         for (const loc of localItems) {
@@ -13906,11 +13927,31 @@ class DataStore {
         // ป้องกันข้อมูลซ้ำสำหรับรายงานรายเดือน (1 เดือนมีได้เพียง 1 รายงานเท่านั้น)
         if (tableName === 'monthly_reports' && record.report_month) {
             const normMonth = String(record.report_month).trim().slice(0, 7);
+            record.report_month = normMonth;
+
+            // ตรวจสอบบน Supabase Cloud โดยตรงก่อนเป็นอันดับแรก
+            if (this.supabaseClient) {
+                try {
+                    const { data: cloudExisting } = await this.supabaseClient
+                        .from('monthly_reports')
+                        .select('id, report_month')
+                        .eq('report_month', normMonth)
+                        .maybeSingle();
+
+                    if (cloudExisting && cloudExisting.id) {
+                        console.log(`[Store] Monthly report for ${normMonth} already on Supabase (ID: ${cloudExisting.id}). Routing to update...`);
+                        return await this.update('monthly_reports', cloudExisting.id, { ...record, id: cloudExisting.id });
+                    }
+                } catch (e) {
+                    console.warn('[Store] Supabase check existing month failed:', e);
+                }
+            }
+
             const db = this.getLocalDatabase();
             const localList = db['monthly_reports'] || [];
             const existing = localList.find(x => String(x.report_month || '').trim().slice(0, 7) === normMonth);
             if (existing && existing.id !== record.id) {
-                console.warn(`Monthly report for ${normMonth} already exists (ID: ${existing.id}). Auto-updating existing record to prevent duplicates...`);
+                console.warn(`Monthly report for ${normMonth} already exists in Local (ID: ${existing.id}). Auto-updating existing record to prevent duplicates...`);
                 return await this.update('monthly_reports', existing.id, record);
             }
         }
@@ -13974,6 +14015,9 @@ class DataStore {
         if (this.supabaseClient) {
             try {
                 let cloudPayload = this.sanitizeForSupabase(tableName, record);
+                if (tableName === 'monthly_reports' && (!cloudPayload.id || cloudPayload.id.startsWith('mr-'))) {
+                    cloudPayload.id = generateUUID();
+                }
                 let { data, error } = await this.supabaseClient.from(tableName).insert([cloudPayload]).select();
 
                 // Self-healing schema retry: If Supabase reports a column does not exist in schema cache
@@ -14064,7 +14108,7 @@ class DataStore {
         let updatedLocalItem = null;
         const db = this.getLocalDatabase();
         if (db[tableName]) {
-            const idx = db[tableName].findIndex(item => item.id === id);
+            const idx = db[tableName].findIndex(item => item.id === id || (tableName === 'monthly_reports' && updates.report_month && String(item.report_month || '').trim().slice(0,7) === String(updates.report_month).trim().slice(0,7)));
             if (idx !== -1) {
                 db[tableName][idx] = { ...db[tableName][idx], ...updates };
                 this.saveLocalDatabase(db);
@@ -14072,7 +14116,99 @@ class DataStore {
             }
         }
 
-        // 2. อัปเดตใน Supabase
+        // กรณีพิเศษสำหรับ monthly_reports: ซิงค์ตาม report_month บน Supabase Cloud โดยตรง 100%
+        if (tableName === 'monthly_reports' && this.supabaseClient) {
+            try {
+                const targetMonth = updates.report_month || (updatedLocalItem && updatedLocalItem.report_month);
+                const normMonth = targetMonth ? String(targetMonth).trim().slice(0, 7) : null;
+                if (normMonth) updates.report_month = normMonth;
+
+                let cloudTargetId = id;
+                if (normMonth) {
+                    const { data: cloudRow } = await this.supabaseClient
+                        .from('monthly_reports')
+                        .select('id')
+                        .eq('report_month', normMonth)
+                        .maybeSingle();
+                    if (cloudRow && cloudRow.id) {
+                        cloudTargetId = cloudRow.id;
+                    }
+                }
+
+                let cloudPayload = this.sanitizeForSupabase('monthly_reports', updates);
+                delete cloudPayload.id;
+
+                let updRes = null;
+                if (cloudTargetId) {
+                    updRes = await this.supabaseClient.from('monthly_reports').update(cloudPayload).eq('id', cloudTargetId).select();
+                }
+
+                if (updRes && updRes.data && updRes.data.length > 0) {
+                    const savedRow = updRes.data[0];
+                    this.isSupabaseConnected = true;
+                    const freshDb = this.getLocalDatabase();
+                    const fIdx = (freshDb['monthly_reports'] || []).findIndex(x => 
+                        x.id === id || x.id === cloudTargetId || (normMonth && String(x.report_month).trim().slice(0,7) === normMonth)
+                    );
+                    if (fIdx >= 0) freshDb['monthly_reports'][fIdx] = savedRow;
+                    else {
+                        if (!freshDb['monthly_reports']) freshDb['monthly_reports'] = [];
+                        freshDb['monthly_reports'].unshift(savedRow);
+                    }
+                    this.saveLocalDatabase(freshDb);
+                    this.logAction("แก้ไขข้อมูล", `อัปเดตรายงานประจำเดือน ${normMonth || id} บน Supabase Cloud สำเร็จ`);
+                    return {
+                        success: true,
+                        savedSupabase: true,
+                        record: savedRow,
+                        data: savedRow
+                    };
+                } else {
+                    // หากยังไม่มีบน Supabase ให้เพิ่มเป็นแถวใหม่ (Insert as new month)
+                    console.log(`[Store] Monthly report ${normMonth || id} not on Supabase, inserting...`);
+                    const fullRecord = updatedLocalItem || { ...updates };
+                    let insPayload = this.sanitizeForSupabase('monthly_reports', fullRecord);
+                    if (!insPayload.id || insPayload.id.startsWith('mr-')) {
+                        insPayload.id = generateUUID();
+                    }
+                    if (normMonth) insPayload.report_month = normMonth;
+                    const insRes = await this.supabaseClient.from('monthly_reports').insert([insPayload]).select();
+                    if (insRes.data && insRes.data.length > 0) {
+                        const savedRow = insRes.data[0];
+                        this.isSupabaseConnected = true;
+                        const freshDb = this.getLocalDatabase();
+                        const fIdx = (freshDb['monthly_reports'] || []).findIndex(x => 
+                            x.id === id || (normMonth && String(x.report_month).trim().slice(0,7) === normMonth)
+                        );
+                        if (fIdx >= 0) freshDb['monthly_reports'][fIdx] = savedRow;
+                        else {
+                            if (!freshDb['monthly_reports']) freshDb['monthly_reports'] = [];
+                            freshDb['monthly_reports'].unshift(savedRow);
+                        }
+                        this.saveLocalDatabase(freshDb);
+                        this.logAction("เพิ่มข้อมูล", `บันทึกรายงานประจำเดือน ${normMonth} ขึ้น Supabase Cloud สำเร็จ`);
+                        return {
+                            success: true,
+                            savedSupabase: true,
+                            record: savedRow,
+                            data: savedRow
+                        };
+                    } else if (insRes.error) {
+                        console.error('[Store] Supabase monthly_reports insert error:', insRes.error);
+                        return {
+                            success: false,
+                            savedLocal: true,
+                            error: insRes.error.message,
+                            record: updatedLocalItem
+                        };
+                    }
+                }
+            } catch (err) {
+                console.error('[Store] Supabase monthly_reports exception:', err);
+            }
+        }
+
+        // 2. อัปเดตใน Supabase สำหรับตารางทั่วไป
         if (this.supabaseClient) {
             try {
                 let cloudPayload = this.sanitizeForSupabase(tableName, updates);
@@ -29305,8 +29441,26 @@ class RiskIncidentModule {
     }
 
     async loadData() {
-        this.risks = await window.DataStore.getAll('risk_management', { orderBy: 'recorded_at', ascending: false });
-        this.incidents = await window.DataStore.getAll('incident_records', { orderBy: 'recorded_at', ascending: false });
+        // Cache-First: โหลดข้อมูลจาก Local Database ทันที 0ms เพื่อไม่ให้หน้าเว็บหน่วงหรือแสดง 0 รายการ
+        const localDb = (window.DataStore && typeof window.DataStore.getLocalDatabase === 'function') 
+            ? window.DataStore.getLocalDatabase() 
+            : {};
+        const cachedRisks = localDb['risk_management'] || [];
+        const cachedIncidents = localDb['incident_records'] || [];
+        if ((cachedRisks.length > 0 || cachedIncidents.length > 0) && (!this.risks || this.risks.length === 0)) {
+            this.risks = cachedRisks;
+            this.incidents = cachedIncidents;
+            this.applyFilters();
+        }
+
+        // ดึงข้อมูลสดจาก Supabase Cloud แบบขนาน (Parallel) เพื่อความรวดเร็วสูงสุด
+        const [freshRisks, freshIncidents] = await Promise.all([
+            window.DataStore.getAll('risk_management', { orderBy: 'recorded_at', ascending: false }),
+            window.DataStore.getAll('incident_records', { orderBy: 'recorded_at', ascending: false })
+        ]);
+
+        this.risks = freshRisks || [];
+        this.incidents = freshIncidents || [];
         this.applyFilters();
     }
 
@@ -29791,7 +29945,42 @@ class RiskIncidentModule {
         }
     }
 
-    processRiskFile(file) {
+    async compressImageFile(file, maxWidth = 1200, maxHeight = 1200, quality = 0.75) {
+        if (!file || !file.type || !file.type.startsWith('image/')) {
+            return null;
+        }
+        return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = new Image();
+                img.onload = () => {
+                    let { width, height } = img;
+                    if (width > maxWidth || height > maxHeight) {
+                        if (width > height) {
+                            height = Math.round((height * maxWidth) / width);
+                            width = maxWidth;
+                        } else {
+                            width = Math.round((width * maxHeight) / height);
+                            height = maxHeight;
+                        }
+                    }
+                    const canvas = document.createElement('canvas');
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+                    const compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
+                    resolve(compressedDataUrl);
+                };
+                img.onerror = () => resolve(null);
+                img.src = e.target.result;
+            };
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(file);
+        });
+    }
+
+    async processRiskFile(file) {
         if (!file) return;
 
         const maxBytes = 25 * 1024 * 1024;
@@ -29804,18 +29993,25 @@ class RiskIncidentModule {
             return;
         }
 
-        const formattedSize = file.size > 1024 * 1024 
-            ? `${(file.size / (1024 * 1024)).toFixed(1)} MB` 
-            : `${Math.round(file.size / 1024)} KB`;
-
         const fileInfo = this.getAttachmentTypeInfo(file.type, file.name);
 
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            const base64Data = event.target.result;
+        // หากเป็นไฟล์รูปภาพ ให้ทำการบีบอัดอัตโนมัติ (Resize & Compress) เพื่อให้หน้าเว็บเปิดดูได้เร็ว ไม่หน่วง
+        let base64Data = null;
+        let displaySize = '';
+        if (file.type && file.type.startsWith('image/')) {
+            base64Data = await this.compressImageFile(file, 1200, 1200, 0.75);
+            if (base64Data) {
+                const approxBytes = Math.round((base64Data.length * 3) / 4);
+                displaySize = approxBytes > 1024 * 1024
+                    ? `${(approxBytes / (1024 * 1024)).toFixed(1)} MB (บีบอัดแล้ว)`
+                    : `${Math.round(approxBytes / 1024)} KB (บีบอัดแล้ว)`;
+            }
+        }
+
+        const applyData = (dataUrl, sizeStr) => {
             const fileUrlInput = document.getElementById('risk-form-image');
-            if (fileUrlInput) fileUrlInput.value = base64Data;
-            this.uploadedRiskAttachments = [{ data: base64Data, name: file.name, type: fileInfo.type }];
+            if (fileUrlInput) fileUrlInput.value = dataUrl;
+            this.uploadedRiskAttachments = [{ data: dataUrl, name: file.name, type: fileInfo.type }];
 
             const promptEl = document.getElementById('risk-dropzone-prompt');
             const infoEl = document.getElementById('risk-dropzone-fileinfo');
@@ -29830,19 +30026,29 @@ class RiskIncidentModule {
             }
             if (iconEl) iconEl.innerHTML = `<i class="${fileInfo.icon}"></i>`;
             if (nameEl) nameEl.textContent = file.name;
-            if (sizeEl) sizeEl.textContent = `${fileInfo.badgeText} • ${formattedSize}`;
+            if (sizeEl) sizeEl.textContent = `${fileInfo.badgeText} • ${sizeStr}`;
 
             Swal.fire({
                 icon: 'success',
                 title: 'แนบไฟล์ประเมินความเสี่ยงสำเร็จ!',
-                html: `ประเภท: <strong>${fileInfo.label}</strong><br>ไฟล์: <strong>${file.name}</strong> (${formattedSize})`,
+                html: `ประเภท: <strong>${fileInfo.label}</strong><br>ไฟล์: <strong>${file.name}</strong> (${sizeStr})`,
                 timer: 1500,
                 showConfirmButton: false,
                 toast: true,
                 position: 'top-end'
             });
         };
-        reader.readAsDataURL(file);
+
+        if (base64Data) {
+            applyData(base64Data, displaySize);
+        } else {
+            const formattedSize = file.size > 1024 * 1024 
+                ? `${(file.size / (1024 * 1024)).toFixed(1)} MB` 
+                : `${Math.round(file.size / 1024)} KB`;
+            const reader = new FileReader();
+            reader.onload = (event) => applyData(event.target.result, formattedSize);
+            reader.readAsDataURL(file);
+        }
     }
 
     resetRiskDropzone() {
@@ -29878,7 +30084,7 @@ class RiskIncidentModule {
         }
     }
 
-    processIncidentFile(file) {
+    async processIncidentFile(file) {
         if (!file) return;
 
         const maxBytes = 25 * 1024 * 1024;
@@ -29891,18 +30097,25 @@ class RiskIncidentModule {
             return;
         }
 
-        const formattedSize = file.size > 1024 * 1024 
-            ? `${(file.size / (1024 * 1024)).toFixed(1)} MB` 
-            : `${Math.round(file.size / 1024)} KB`;
-
         const fileInfo = this.getAttachmentTypeInfo(file.type, file.name);
 
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            const base64Data = event.target.result;
+        // หากเป็นไฟล์รูปภาพ ให้ทำการบีบอัดอัตโนมัติ (Resize & Compress) เพื่อให้หน้าเว็บเปิดดูได้เร็ว ไม่หน่วง
+        let base64Data = null;
+        let displaySize = '';
+        if (file.type && file.type.startsWith('image/')) {
+            base64Data = await this.compressImageFile(file, 1200, 1200, 0.75);
+            if (base64Data) {
+                const approxBytes = Math.round((base64Data.length * 3) / 4);
+                displaySize = approxBytes > 1024 * 1024
+                    ? `${(approxBytes / (1024 * 1024)).toFixed(1)} MB (บีบอัดแล้ว)`
+                    : `${Math.round(approxBytes / 1024)} KB (บีบอัดแล้ว)`;
+            }
+        }
+
+        const applyData = (dataUrl, sizeStr) => {
             const fileUrlInput = document.getElementById('inc-form-image');
-            if (fileUrlInput) fileUrlInput.value = base64Data;
-            this.uploadedIncidentAttachments = [{ data: base64Data, name: file.name, type: fileInfo.type }];
+            if (fileUrlInput) fileUrlInput.value = dataUrl;
+            this.uploadedIncidentAttachments = [{ data: dataUrl, name: file.name, type: fileInfo.type }];
 
             const promptEl = document.getElementById('inc-dropzone-prompt');
             const infoEl = document.getElementById('inc-dropzone-fileinfo');
@@ -29917,19 +30130,29 @@ class RiskIncidentModule {
             }
             if (iconEl) iconEl.innerHTML = `<i class="${fileInfo.icon}"></i>`;
             if (nameEl) nameEl.textContent = file.name;
-            if (sizeEl) sizeEl.textContent = `${fileInfo.badgeText} • ${formattedSize}`;
+            if (sizeEl) sizeEl.textContent = `${fileInfo.badgeText} • ${sizeStr}`;
 
             Swal.fire({
                 icon: 'success',
                 title: 'แนบภาพ/รายงานเหตุการณ์สำเร็จ!',
-                html: `ประเภท: <strong>${fileInfo.label}</strong><br>ไฟล์: <strong>${file.name}</strong> (${formattedSize})`,
+                html: `ประเภท: <strong>${fileInfo.label}</strong><br>ไฟล์: <strong>${file.name}</strong> (${sizeStr})`,
                 timer: 1500,
                 showConfirmButton: false,
                 toast: true,
                 position: 'top-end'
             });
         };
-        reader.readAsDataURL(file);
+
+        if (base64Data) {
+            applyData(base64Data, displaySize);
+        } else {
+            const formattedSize = file.size > 1024 * 1024 
+                ? `${(file.size / (1024 * 1024)).toFixed(1)} MB` 
+                : `${Math.round(file.size / 1024)} KB`;
+            const reader = new FileReader();
+            reader.onload = (event) => applyData(event.target.result, formattedSize);
+            reader.readAsDataURL(file);
+        }
     }
 
     resetIncidentDropzone() {
@@ -30419,6 +30642,20 @@ class RiskIncidentModule {
                     timer: 1500,
                     showConfirmButton: false
                 });
+            } else if (res && res.savedLocal && res.error) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'บันทึกข้อมูลในเครื่อง (LocalStore) แล้ว',
+                    html: `
+                        <div class="text-left text-xs space-y-1.5 p-3 bg-slate-900 rounded border border-slate-800 text-slate-300">
+                            <div class="text-amber-400 font-bold"><i class="fa-solid fa-triangle-exclamation"></i> ไม่สามารถบันทึกขึ้น Supabase Cloud ได้</div>
+                            <div class="text-rose-400 font-mono text-[11px]"><strong>สาเหตุ:</strong> ${res.error}</div>
+                            <div class="text-slate-400 text-[11px] pt-1 border-t border-slate-800">ระบบได้บันทึกข้อมูลไว้ในเครื่องชั่วคราวให้แล้ว และแสดงผลในตารางเรียบร้อย</div>
+                        </div>
+                    `,
+                    confirmButtonText: 'รับทราบ',
+                    confirmButtonColor: '#3b82f6'
+                });
             } else {
                 Swal.fire({ icon: 'success', title: 'บันทึกเหตุการณ์สำเร็จ', timer: 1200, showConfirmButton: false });
             }
@@ -30838,9 +31075,8 @@ class MonthlyReportModule {
         }
     }
 
-    async loadData() {
-        let rawItems = await window.DataStore.getAll('monthly_reports', { orderBy: 'report_month', ascending: false }) || [];
-
+    processLoadedItems(rawItems) {
+        if (!rawItems) return;
         // คัดกรองและกำจัดข้อมูลซ้ำระดับเดือน (1 เดือนมีเพียง 1 รายงานเท่านั้น)
         const uniqueMap = new Map();
         const duplicateIdsToDelete = [];
@@ -30876,6 +31112,17 @@ class MonthlyReportModule {
 
         this.populateYearFilter();
         this.applyFilters();
+    }
+
+    async loadData() {
+        // Cache-First: แสดงข้อมูลจาก LocalStorage ก่อนทันที 0ms เพื่อความลื่นไหลสูงสุด
+        const localDb = (window.DataStore && window.DataStore.getLocalDatabase) ? window.DataStore.getLocalDatabase() : {};
+        if (localDb.monthly_reports && localDb.monthly_reports.length > 0 && (!this.items || this.items.length === 0)) {
+            this.processLoadedItems(localDb.monthly_reports);
+        }
+
+        let rawItems = await window.DataStore.getAll('monthly_reports', { orderBy: 'report_month', ascending: false }) || [];
+        this.processLoadedItems(rawItems);
     }
 
     applyFilters() {
@@ -31333,12 +31580,13 @@ class MonthlyReportModule {
                 }
             }
 
+            let saveRes = null;
             if (targetId) {
                 payload.id = targetId;
-                await window.DataStore.update('monthly_reports', targetId, payload);
+                saveRes = await window.DataStore.update('monthly_reports', targetId, payload);
                 this.editingId = null;
             } else {
-                await window.DataStore.insert('monthly_reports', payload);
+                saveRes = await window.DataStore.insert('monthly_reports', payload);
             }
 
             window.App.closeModal('modal-monthly-report');
@@ -31363,15 +31611,41 @@ class MonthlyReportModule {
 
             await this.loadData();
 
-            Swal.fire({ 
-                icon: 'success', 
-                title: targetId ? 'อัปเดตข้อมูลรายงานสำเร็จ!' : 'บันทึกรายงานใหม่สำเร็จ!', 
-                text: `รอบเดือน ${month} เรียบร้อยแล้ว ข้อมูลแสดงในตารางแล้ว`,
-                timer: 1800, 
-                showConfirmButton: false, 
-                toast: true, 
-                position: 'top-end' 
-            });
+            if (saveRes && saveRes.savedSupabase) {
+                Swal.fire({ 
+                    icon: 'success', 
+                    title: targetId ? 'อัปเดตข้อมูลรายงานสำเร็จ!' : 'บันทึกรายงานใหม่สำเร็จ!', 
+                    html: `<div class="text-xs text-emerald-400 font-bold"><i class="fa-solid fa-cloud-arrow-up"></i> บันทึกลงฐานข้อมูล Supabase Cloud เรียบร้อย (${month})</div>`,
+                    timer: 2000, 
+                    showConfirmButton: false, 
+                    toast: true, 
+                    position: 'top-end' 
+                });
+            } else if (saveRes && saveRes.error) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'บันทึกข้อมูลในเครื่องแล้ว',
+                    html: `
+                        <div class="text-left text-xs space-y-1 p-3 bg-slate-900 rounded border border-slate-800 text-slate-300">
+                            <div class="text-amber-400 font-bold"><i class="fa-solid fa-triangle-exclamation"></i> ไม่สามารถส่งไป Supabase Cloud ได้</div>
+                            <div class="text-rose-400 font-mono text-[11px]">${saveRes.error}</div>
+                            <div class="text-slate-400 text-[11px] pt-1">ข้อมูลถูกบันทึกไว้ใน Local Storage ชั่วคราวและแสดงในตารางเรียบร้อย</div>
+                        </div>
+                    `,
+                    confirmButtonText: 'รับทราบ',
+                    confirmButtonColor: '#3b82f6'
+                });
+            } else {
+                Swal.fire({ 
+                    icon: 'success', 
+                    title: targetId ? 'อัปเดตข้อมูลรายงานสำเร็จ!' : 'บันทึกรายงานใหม่สำเร็จ!', 
+                    text: `รอบเดือน ${month} เรียบร้อยแล้ว ข้อมูลแสดงในตารางแล้ว`,
+                    timer: 1800, 
+                    showConfirmButton: false, 
+                    toast: true, 
+                    position: 'top-end' 
+                });
+            }
         } catch (err) {
             Swal.fire({ icon: 'error', title: 'เกิดข้อผิดพลาด', text: err.message });
         } finally {
